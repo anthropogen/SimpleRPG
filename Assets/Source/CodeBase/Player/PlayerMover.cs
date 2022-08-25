@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace EpicRPG.Player
 {
-    public class PlayerMover : MonoBehaviour
+    public class PlayerMover : GameEntity
     {
         [SerializeField] private CharacterController characterController;
         [SerializeField, Range(0, 100)] private float movementSpeed;
@@ -19,7 +19,7 @@ namespace EpicRPG.Player
             inputService = Game.InputService;
             cam = Camera.main;
         }
-        private void Update()
+        protected override void Loop()
         {
             movementVector = Vector3.zero;
             if (inputService.Axis.sqrMagnitude > 0.001f)

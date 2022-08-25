@@ -1,23 +1,16 @@
 ﻿using EpicRPG.Services;
-using System;
-using UnityEngine;
+using EpicRPG.Infrastructure.GameStateMachine;
 
 namespace EpicRPG.Infrastructure
 {
     public class Game
     {
         public static IInputService InputService;
+        public GameStateMachine.GameStateMachine StateMachine { get; private set; }
         public Game()
         {
-            InputService = CreateInputService();
-        }
-
-        private IInputService CreateInputService()
-        {
-            if (Application.isEditor)
-                return new StandaloneInputService();
-
-            return new MobileInputService();
+            StateMachine = new GameStateMachine.GameStateMachine();
+            StateMachine.Enter<BootstrapState>();
         }
     }
 }
