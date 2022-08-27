@@ -7,9 +7,11 @@ namespace EpicRPG.Infrastructure
     {
         public static IInputService InputService;
         public GameStateMachine.GameStateMachine StateMachine { get; private set; }
-        public Game()
+        private readonly SceneLoader sceneLoader;
+        public Game(ICoroutineStarter coroutineStarter)
         {
-            StateMachine = new GameStateMachine.GameStateMachine();
+            sceneLoader = new SceneLoader(coroutineStarter);
+            StateMachine = new GameStateMachine.GameStateMachine(sceneLoader);
             StateMachine.Enter<BootstrapState>();
         }
     }

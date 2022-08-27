@@ -7,15 +7,17 @@ namespace EpicRPG.Infrastructure.GameStateMachine
 {
     public class GameStateMachine
     {
-        private Dictionary<Type, IGameState> states;
+        private readonly Dictionary<Type, IGameState> states;
+        private readonly SceneLoader sceneLoader;
         private IGameState currentState;
 
-        public GameStateMachine()
+        public GameStateMachine(SceneLoader sceneLoader)
         {
             states = new Dictionary<Type, IGameState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this)
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader)
             };
+            this.sceneLoader = sceneLoader;
         }
 
         public void Enter<TState>() where TState : IGameState

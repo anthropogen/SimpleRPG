@@ -12,8 +12,7 @@ public class TestScript
     [Test]
     public void NewTestScriptSimplePasses()
     {
-        Game game = new Game();
-        Assert.IsTrue(Game.InputService is StandaloneInputService);
+
         // Use the Assert class to test conditions
     }
 

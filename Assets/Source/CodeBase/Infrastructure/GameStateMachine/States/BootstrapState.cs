@@ -10,17 +10,23 @@ namespace EpicRPG.Infrastructure.GameStateMachine
 {
     public class BootstrapState : IGameState
     {
-        private GameStateMachine gameStateMachine;
+        private const string InitialScene = "Initial";
+        private readonly GameStateMachine gameStateMachine;
+        private readonly SceneLoader sceneLoader;
 
-        public BootstrapState(GameStateMachine gameStateMachine)
+        public BootstrapState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
         {
             this.gameStateMachine = gameStateMachine;
+            this.sceneLoader = sceneLoader;
         }
 
         public void Enter()
         {
             RegisterServices();
+            sceneLoader.Load(InitialScene, LoadLevel);
         }
+
+
         public void Exit()
         {
         }
@@ -28,6 +34,10 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         private void RegisterServices()
         {
             Game.InputService = CreateInputService();
+        }
+        private void LoadLevel()
+        {
+
         }
         private IInputService CreateInputService()
         {
