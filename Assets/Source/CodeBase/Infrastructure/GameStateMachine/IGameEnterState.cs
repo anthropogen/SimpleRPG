@@ -1,8 +1,7 @@
 ﻿namespace EpicRPG.Infrastructure.GameStateMachine
 {
-    public interface IGameState
+    public interface IGameEnterState : IGameExitState
     {
         void Enter();
-        void Exit();
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace EpicRPG.Infrastructure.GameStateMachine
 {
-    public class BootstrapState : IGameState
+    public class BootstrapState : IGameEnterState
     {
         private const string InitialScene = "Initial";
         private readonly GameStateMachine gameStateMachine;
@@ -37,7 +37,7 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         }
         private void LoadLevel()
         {
-
+            gameStateMachine.Enter<LoadLevelState, string>("Main");
         }
         private IInputService CreateInputService()
         {

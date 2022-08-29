@@ -5,12 +5,11 @@ namespace EpicRPG.Infrastructure
 {
     public class Bootstrapper : MonoBehaviour, ICoroutineStarter
     {
+        [SerializeField] private LoadingCurtain curtain;
         private Game game;
-
-
         private void Awake()
         {
-            game = new Game(this);
+            game = new Game(this,curtain);
             DontDestroyOnLoad(this);
         }
     }

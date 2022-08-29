@@ -1,36 +1,46 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace EpicRPG.Infrastructure.GameStateMachine
 {
     public class GameStateMachine
     {
-        private readonly Dictionary<Type, IGameState> states;
+        private readonly Dictionary<Type, IGameExitState> states;
         private readonly SceneLoader sceneLoader;
-        private IGameState currentState;
+        private IGameExitState currentState;
 
-        public GameStateMachine(SceneLoader sceneLoader)
+        public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain curtain)
         {
-            states = new Dictionary<Type, IGameState>()
+            states = new Dictionary<Type, IGameExitState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader)
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain),
+                [typeof(GameLoopState)] = new GameLoopState()
             };
             this.sceneLoader = sceneLoader;
         }
 
-        public void Enter<TState>() where TState : IGameState
+        public void Enter<TState>() where TState : class, IGameEnterState
         {
-            var state = states[typeof(TState)];
-            ChangeCurrentState(state);
+            var state = ChangeState<TState>();
+            state.Enter();
         }
 
-        private void ChangeCurrentState(IGameState state)
+        public void Enter<TState, TParam>(TParam param) where TState : class, IGameEnterParamState<TParam>
+        {
+            var state = ChangeState<TState>();
+            state.Enter(param);
+        }
+
+        private TState ChangeState<TState>() where TState : class, IGameExitState
         {
             currentState?.Exit();
+            var state = GetState<TState>();
             currentState = state;
-            currentState.Enter();
+            return state;
         }
+
+        private TState GetState<TState>() where TState : class, IGameExitState
+            => states[typeof(TState)] as TState;
     }
 }
