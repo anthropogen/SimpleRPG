@@ -1,5 +1,5 @@
 ﻿using EpicRPG.Player;
-using System;
+using EpicRPG.Services.GameFactory;
 using UnityEngine;
 
 namespace EpicRPG.Infrastructure.GameStateMachine
@@ -9,12 +9,14 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         private readonly GameStateMachine gameStateMachine;
         private readonly SceneLoader sceneLoader;
         private readonly LoadingCurtain curtain;
+        private readonly IGameFactory gameFactory;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory)
         {
             this.gameStateMachine = gameStateMachine;
             this.sceneLoader = sceneLoader;
             this.curtain = curtain;
+            this.gameFactory = gameFactory;
         }
 
         public void Enter(string sceneName)
@@ -29,22 +31,10 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         }
         private void OnLoaded()
         {
-            var playerPos = GameObject.FindObjectOfType<PlayerInitPoint>().Point;
-            var hero = InstantiateAt("Player", playerPos);
-            Instantiate("HUD");
+            var hero = gameFactory.CreateHero();
+            gameFactory.CreateHUD();
             GameObject.FindObjectOfType<FollowingCamera>().SetTarget(hero.transform);
             gameStateMachine.Enter<GameLoopState>();
-        }
-
-        private static GameObject Instantiate(string path)
-        {
-            var prefab = Resources.Load<GameObject>(path);
-            return GameObject.Instantiate<GameObject>(prefab);
-        }
-        private static GameObject InstantiateAt(string path, Vector3 position)
-        {
-            var prefab = Resources.Load<GameObject>(path);
-            return GameObject.Instantiate<GameObject>(prefab, position, Quaternion.identity);
         }
     }
 }

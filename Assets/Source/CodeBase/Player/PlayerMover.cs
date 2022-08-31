@@ -16,7 +16,7 @@ namespace EpicRPG.Player
 
         private void Start()
         {
-            inputService = Game.InputService;
+            inputService = ServiceLocator.Container.Single<IInputService>();
             cam = Camera.main;
         }
         protected override void Loop()
