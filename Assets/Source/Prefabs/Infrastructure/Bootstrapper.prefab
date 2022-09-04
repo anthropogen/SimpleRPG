@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7535f15f6b410b84a80ecf9a9c9d626f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curtainTemplate: {fileID: 2167206080480028141, guid: 2bb0840eeb5b17f4ca4d725185632b68, type: 3}
 --- !u!114 &3453727530630509624
 MonoBehaviour:
   m_ObjectHideFlags: 0

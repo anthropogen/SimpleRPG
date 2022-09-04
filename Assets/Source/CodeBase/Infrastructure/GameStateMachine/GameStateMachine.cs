@@ -1,5 +1,7 @@
 using EpicRPG.Services;
 using EpicRPG.Services.GameFactory;
+using EpicRPG.Services.PersistentData;
+using EpicRPG.Services.SaveLoad;
 using System;
 using System.Collections.Generic;
 
@@ -9,18 +11,19 @@ namespace EpicRPG.Infrastructure.GameStateMachine
     {
         private readonly Dictionary<Type, IGameExitState> states;
         private readonly SceneLoader sceneLoader;
+        private readonly ServiceLocator container;
         private IGameExitState currentState;
-        private ServiceLocator container;
         public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain curtain, ServiceLocator container)
         {
+            this.sceneLoader = sceneLoader;
+            this.container = container;
             states = new Dictionary<Type, IGameExitState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, container),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, container.Single<IGameFactory>()),
+                [typeof(LoadProgressState)] = new LoadProgressState(this, container.Single<IPersistentProgressService>(), container.Single<ISaveLoadService>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, container.Single<IGameFactory>(), container.Single<IPersistentProgressService>()),
                 [typeof(GameLoopState)] = new GameLoopState()
             };
-            this.sceneLoader = sceneLoader;
-            this.container = container;
         }
 
         public void Enter<TState>() where TState : class, IGameEnterState

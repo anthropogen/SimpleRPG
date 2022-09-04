@@ -1,6 +1,8 @@
 ﻿using EpicRPG.Services;
 using EpicRPG.Services.AssetManagement;
 using EpicRPG.Services.GameFactory;
+using EpicRPG.Services.PersistentData;
+using EpicRPG.Services.SaveLoad;
 using UnityEngine;
 
 namespace EpicRPG.Infrastructure.GameStateMachine
@@ -21,7 +23,7 @@ namespace EpicRPG.Infrastructure.GameStateMachine
 
         public void Enter()
         {
-            sceneLoader.Load(InitialScene, LoadLevel);
+            sceneLoader.Load(InitialScene, LoadProgress);
         }
 
         public void Exit()
@@ -30,16 +32,16 @@ namespace EpicRPG.Infrastructure.GameStateMachine
 
         private void RegisterServices()
         {
+            services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             services.RegisterSingle<IInputService>(CreateInputService());
             services.RegisterSingle<IAssetProvider>(new AssetProvider());
             services.RegisterSingle<IGameFactory>(new GameFactory(
             services.Single<IAssetProvider>()));
+            services.RegisterSingle<ISaveLoadService>(new SaveLoadService(services.Single<IGameFactory>(), services.Single<IPersistentProgressService>()));
         }
 
-        private void LoadLevel()
-        {
-            gameStateMachine.Enter<LoadLevelState, string>("Main");
-        }
+        private void LoadProgress()
+            => gameStateMachine.Enter<LoadProgressState>();
 
         private IInputService CreateInputService()
         {
