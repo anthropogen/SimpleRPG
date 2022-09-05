@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3868435604998305741}
   - component: {fileID: 5446966221142773272}
   - component: {fileID: 3868435604998305330}
+  - component: {fileID: 3508786983870209268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -79,6 +80,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 3868435604998305741}
   movementSpeed: 5.7
+--- !u!114 &3508786983870209268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868435604998305743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec35cbf9007a7d64bbb753ac4fccd78b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 10
 --- !u!1 &3868435605581111901
 GameObject:
   m_ObjectHideFlags: 0

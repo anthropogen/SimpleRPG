@@ -11,5 +11,5 @@ namespace EpicRPG.Infrastructure
             game = new Game(this, Instantiate(curtainTemplate));
             DontDestroyOnLoad(this);
         }
-    }
+    } 
 }
