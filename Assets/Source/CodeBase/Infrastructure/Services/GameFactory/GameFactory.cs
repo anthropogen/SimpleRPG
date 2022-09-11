@@ -11,13 +11,16 @@ namespace EpicRPG.Services.GameFactory
         private readonly IAssetProvider assets;
         public List<ISavable> Savables { get; } = new List<ISavable>();
         public List<IProgressReader> ProgressReaders { get; } = new List<IProgressReader>();
+
+        public GameObject HeroGameObject { get; private set; }
+
         public GameFactory(IAssetProvider assets)
         {
             this.assets = assets;
         }
 
         public GameObject CreateHero()
-            => InstantiateRegisteredObject(AssetsPath.Player, GameObject.FindObjectOfType<PlayerInitPoint>().Point);
+            => HeroGameObject = InstantiateRegisteredObject(AssetsPath.Player, GameObject.FindObjectOfType<PlayerInitPoint>().Point);
 
 
         public GameObject CreateHUD()

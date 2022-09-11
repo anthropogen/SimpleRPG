@@ -8,7 +8,7 @@ namespace EpicRPG.Services.GameFactory
     {
         List<ISavable> Savables { get; }
         List<IProgressReader> ProgressReaders { get; }
-
+        GameObject HeroGameObject { get; }
         void CleanUp();
         GameObject CreateHero();
         GameObject CreateHUD();

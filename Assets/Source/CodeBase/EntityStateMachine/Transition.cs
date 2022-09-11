@@ -2,9 +2,11 @@
 
 namespace EpicRPG.EntityFSM
 {
-    public abstract class Transition : MonoBehaviour
+    public abstract class Transition<TState> : MonoBehaviour, ITransition<TState> where TState : IEntityState
     {
-        [field: SerializeField] public EntityState NextState { get; private set; }
+        [field: SerializeField] public TState NextState { get; private set; }
+        public abstract void Construct<TArgument>(TArgument transitionArguments);
         public abstract bool NeedTransit();
     }
+
 }

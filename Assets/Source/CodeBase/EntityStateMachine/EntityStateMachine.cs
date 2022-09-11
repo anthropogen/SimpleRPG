@@ -2,17 +2,18 @@ using UnityEngine;
 
 namespace EpicRPG.EntityFSM
 {
-    public class EntityStateMachine : GameEntity
+    public abstract class EntityStateMachine<TState> : GameEntity where TState : EntityState
     {
-        [SerializeField] private EntityState[] allStates;
-        [SerializeField] private EntityState firstState;
-        private EntityState current;
+        [SerializeField] protected TState[] allStates;
+        [SerializeField] protected TState firstState;
+        protected TState current;
 
-        private void Awake()
+        public virtual void Construct(Transform transform)
         {
-            InitStates();
+            InitStates(transform);
             ChangeState(firstState);
         }
+
         private void Update()
         {
             if (current == null)
@@ -21,14 +22,14 @@ namespace EpicRPG.EntityFSM
             CheckTransitions();
         }
 
-
-        public void ChangeState(EntityState next)
+        public void ChangeState(TState next)
         {
             current?.Exit();
             current = next;
             current.Enter();
         }
-        protected virtual void InitStates()
+
+        protected virtual void InitStates(Transform transform)
         {
             foreach (var state in allStates)
                 state.Init(transform);
@@ -40,11 +41,10 @@ namespace EpicRPG.EntityFSM
             {
                 if (transition.NeedTransit())
                 {
-                    ChangeState(transition.NextState);
+                    ChangeState(transition.NextState as TState);
                     return;
                 }
             }
         }
-
     }
 }
