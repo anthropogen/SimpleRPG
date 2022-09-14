@@ -28,8 +28,5 @@ namespace EpicRPG.Characters.Enemies
 
             return false;
         }
-
-        private float SqrDistanceToPLayer()
-            => Vector3.SqrMagnitude(player.transform.position - transform.position);
     }
 }

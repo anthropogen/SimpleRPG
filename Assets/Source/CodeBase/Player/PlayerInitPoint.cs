@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EpicRPG.Player
+namespace EpicRPG.Hero
 {
     public class PlayerInitPoint : GameEntity
     {

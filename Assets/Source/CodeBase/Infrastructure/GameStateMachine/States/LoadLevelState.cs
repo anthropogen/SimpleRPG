@@ -1,6 +1,8 @@
-﻿using EpicRPG.Player;
+﻿using EpicRPG.Characters;
+using EpicRPG.Hero;
 using EpicRPG.Services.GameFactory;
 using EpicRPG.Services.PersistentData;
+using EpicRPG.UI;
 using UnityEngine;
 
 namespace EpicRPG.Infrastructure.GameStateMachine
@@ -48,8 +50,14 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         private void CreateGameEntities()
         {
             var hero = gameFactory.CreateHero();
-            gameFactory.CreateHUD();
+            CreateHeroHUD(hero);
             GameObject.FindObjectOfType<FollowingCamera>().SetTarget(hero.transform);
+        }
+
+        private void CreateHeroHUD(GameObject hero)
+        {
+            var hud = gameFactory.CreateHUD();
+            hud.GetComponent<CharacterUI>().Construct(hero.GetComponent<PlayerHealth>());
         }
     }
 }

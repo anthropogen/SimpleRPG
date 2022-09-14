@@ -33,6 +33,11 @@ namespace EpicRPG.Infrastructure.GameStateMachine
             => progressService.Progress = saveLoadService.Load() ?? CreateNewProgress();
 
         private PersistentProgress CreateNewProgress()
-            => new PersistentProgress("Main");
+        {
+            var progress = new PersistentProgress("Main");
+            progress.HeroState.MaxHP = 50;
+            progress.HeroState.ResetHP();
+            return progress;
+        }
     }
 }

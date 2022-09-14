@@ -1,4 +1,4 @@
-﻿using EpicRPG.Player;
+﻿using EpicRPG.Hero;
 using EpicRPG.Services.AssetManagement;
 using EpicRPG.Services.PersistentData;
 using System.Collections.Generic;

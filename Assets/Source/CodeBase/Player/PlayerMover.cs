@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EpicRPG.Player
+namespace EpicRPG.Hero
 {
     public class PlayerMover : GameEntity
     {

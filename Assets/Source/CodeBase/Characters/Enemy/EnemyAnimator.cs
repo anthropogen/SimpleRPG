@@ -7,7 +7,7 @@ namespace EpicRPG.Characters.Enemies
         [SerializeField] private Animator animator;
         private readonly int DieHash = Animator.StringToHash("Die");
         private readonly int VictoryHash = Animator.StringToHash("Victory");
-        private readonly int MoveHash = Animator.StringToHash("Movement");
+        private readonly int MoveHash = Animator.StringToHash("IsMove");
         private readonly int SpeedHash = Animator.StringToHash("Speed");
         private readonly int Attack01Hash = Animator.StringToHash("Attack01");
         private readonly int Attack02Hash = Animator.StringToHash("Attack02");
@@ -35,5 +35,10 @@ namespace EpicRPG.Characters.Enemies
 
         public void Die()
             => animator.SetTrigger(DieHash);
+
+        public void ResetAttack()
+             => animator.ResetTrigger(Attack01Hash);
+        public void ResetForceAttack()
+            => animator.ResetTrigger(Attack02Hash);
     }
 }

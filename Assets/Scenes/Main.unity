@@ -140,7 +140,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1385861c2754b342ab9a5304e36a5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 28246166}
+--- !u!95 &28246166 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95471671811264702, guid: a817c29ea6847604bb2c6c51d9a74bf1, type: 3}
+  m_PrefabInstance: {fileID: 1847283425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &28246167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28246164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2de78ec293703489955dfbc8673e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &48421131
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +170,7 @@ GameObject:
   - component: {fileID: 48421134}
   - component: {fileID: 48421132}
   - component: {fileID: 48421135}
+  - component: {fileID: 48421136}
   m_Layer: 6
   m_Name: States
   m_TagString: Untagged
@@ -172,7 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275b35888618bc046a4116043b3cf66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Transitions>k__BackingField: []
+  <Transitions>k__BackingField:
+  - {fileID: 1085535230}
 --- !u!4 &48421133
 Transform:
   m_ObjectHideFlags: 0
@@ -199,7 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6cb3740eed4d454db38618bb69ae7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Transitions>k__BackingField: []
+  <Transitions>k__BackingField:
+  - {fileID: 1085535230}
 --- !u!114 &48421135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +232,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f151aa467ef16044ad49d511efe11a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Transitions>k__BackingField: []
+  <Transitions>k__BackingField:
+  - {fileID: 1085535231}
+  - {fileID: 1085535233}
+--- !u!114 &48421136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48421131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672ad13a5215c564d8809f0726527e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Transitions>k__BackingField:
+  - {fileID: 1085535232}
+  delay: 2
+--- !u!1 &226252071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226252072}
+  m_Layer: 6
+  m_Name: MeleeAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &226252072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226252071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.255, z: 0.451}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 893033670}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &638768087
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +463,7 @@ GameObject:
   - component: {fileID: 893033675}
   - component: {fileID: 893033674}
   - component: {fileID: 893033673}
+  - component: {fileID: 893033676}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -417,6 +485,7 @@ Transform:
   - {fileID: 1181178246}
   - {fileID: 48421133}
   - {fileID: 1085535229}
+  - {fileID: 226252072}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -471,6 +540,7 @@ MonoBehaviour:
   - {fileID: 48421134}
   - {fileID: 48421132}
   - {fileID: 48421135}
+  - {fileID: 48421136}
   firstState: {fileID: 48421134}
   enemyAnimator: {fileID: 28246165}
   agent: {fileID: 893033671}
@@ -500,6 +570,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fsm: {fileID: 893033673}
+--- !u!114 &893033676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893033669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a307e2b5c8a47264393ad704686ac0b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationReceiver: {fileID: 28246167}
+  meleeAttackPoint: {fileID: 226252072}
+  meleeRadius: 0.5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
+  damage: 3
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +774,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1085535229}
   - component: {fileID: 1085535230}
+  - component: {fileID: 1085535231}
+  - component: {fileID: 1085535232}
+  - component: {fileID: 1085535233}
   m_Layer: 6
   m_Name: Transitions
   m_TagString: Untagged
@@ -718,9 +810,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e0fc365b38e864e8c3dc5e53e6a10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <NextState>k__BackingField: {fileID: 48421135}
   distanceView: 10
   dangerousDistance: 2
   viewAngle: 90
+--- !u!114 &1085535231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085535228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5c254ecc2bfec4db0f4f23d0924b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <NextState>k__BackingField: {fileID: 48421136}
+  attackDistance: 1.5
+--- !u!114 &1085535232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085535228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa266c75e51481146849ad621ed0e6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <NextState>k__BackingField: {fileID: 48421135}
+  attackDistance: 1.6
+--- !u!114 &1085535233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085535228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa266c75e51481146849ad621ed0e6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <NextState>k__BackingField: {fileID: 48421134}
+  attackDistance: 15
 --- !u!1 &1096151361
 GameObject:
   m_ObjectHideFlags: 0

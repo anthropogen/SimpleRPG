@@ -1,28 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
-public class LoadingCurtain : MonoBehaviour
+namespace EpicRPG.UI
 {
-    [SerializeField] private CanvasGroup group;
-    [SerializeField, Range(0, 2)] private float hideDuration = 1;
-    private void Awake()
-        => DontDestroyOnLoad(this);
-    public void Show()
+    public class LoadingCurtain : MonoBehaviour
     {
-        gameObject.SetActive(true);
-        group.alpha = 1;
-    }
-    public void Hide()
-        => StartCoroutine(HideRoutine());
-
-    private IEnumerator HideRoutine()
-    {
-        while (group.alpha > 0)
+        [SerializeField] private CanvasGroup group;
+        [SerializeField, Range(0, 2)] private float hideDuration = 1;
+        private void Awake()
+            => DontDestroyOnLoad(this);
+        public void Show()
         {
-            group.alpha -= Time.deltaTime / hideDuration;
-            yield return null;
+            gameObject.SetActive(true);
+            group.alpha = 1;
         }
-        gameObject.SetActive(false);
+        public void Hide()
+            => StartCoroutine(HideRoutine());
+
+        private IEnumerator HideRoutine()
+        {
+            while (group.alpha > 0)
+            {
+                group.alpha -= Time.deltaTime / hideDuration;
+                yield return null;
+            }
+            gameObject.SetActive(false);
+        }
     }
 }
-

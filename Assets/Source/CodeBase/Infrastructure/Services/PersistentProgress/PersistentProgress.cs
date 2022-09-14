@@ -6,10 +6,11 @@ namespace EpicRPG.Services.PersistentData
     public class PersistentProgress
     {
         public WorldData WorldData;
-
+        public HeroState HeroState;
         public PersistentProgress(string sceneName)
         {
             WorldData = new WorldData(sceneName);
+            HeroState = new HeroState();
         }
     }
 }

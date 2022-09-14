@@ -2,7 +2,7 @@ using EpicRPG.Services.PersistentData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace EpicRPG.Player
+namespace EpicRPG.Hero
 {
     public class Player : GameEntity, ISavable
     {

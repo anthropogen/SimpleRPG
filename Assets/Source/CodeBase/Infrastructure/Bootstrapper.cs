@@ -1,3 +1,4 @@
+using EpicRPG.UI;
 using UnityEngine;
 
 namespace EpicRPG.Infrastructure

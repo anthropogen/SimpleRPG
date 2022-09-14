@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-namespace EpicRPG.Player
+namespace EpicRPG.Hero
 {
     public class FollowingCamera : GameEntity
     {
