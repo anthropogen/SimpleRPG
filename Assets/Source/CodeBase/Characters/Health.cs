@@ -26,7 +26,6 @@ namespace EpicRPG.Characters
             this.Current = current;
         }
 
-
         public void ApplyDamage(float damage)
         {
             Current = Mathf.Max(0, Current - Mathf.Abs(damage));
