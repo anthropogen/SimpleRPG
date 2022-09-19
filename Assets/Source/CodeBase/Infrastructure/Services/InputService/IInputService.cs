@@ -6,5 +6,7 @@ namespace EpicRPG.Services
     {
         Vector2 Axis { get; }
         bool IsAttackButtonUp();
+
+        bool IsForceAttackButtonUp();
     }
 }

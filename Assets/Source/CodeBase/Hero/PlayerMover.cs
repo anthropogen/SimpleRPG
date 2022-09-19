@@ -1,7 +1,4 @@
-using EpicRPG.Infrastructure;
 using EpicRPG.Services;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace EpicRPG.Hero
@@ -20,7 +17,7 @@ namespace EpicRPG.Hero
             inputService = ServiceLocator.Container.Single<IInputService>();
             cam = Camera.main;
         }
-        protected override void Loop()
+        public void Run()
         {
             movementVector = Vector3.zero;
             if (inputService.Axis.sqrMagnitude > 0.001f)
@@ -37,6 +34,12 @@ namespace EpicRPG.Hero
 
             movementVector += Physics.gravity;
             characterController.Move(movementVector * Time.deltaTime * movementSpeed);
+        }
+
+        public void Idle()
+        {
+            animator.StopMove();
+            characterController.Move(Physics.gravity * Time.deltaTime);
         }
     }
 }

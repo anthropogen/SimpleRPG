@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace EpicRPG.Characters.Enemies
 {
-    public abstract class EnemyTransition : Transition<EntityState>
+    public abstract class EnemyTransition : Transition
     {
         protected Hero.Player player;
         public override void Construct<TArgument>(TArgument transitionArguments)

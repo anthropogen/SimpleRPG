@@ -1,4 +1,6 @@
+using EpicRPG.Characters;
 using EpicRPG.Services.PersistentData;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +9,11 @@ namespace EpicRPG.Hero
     public class Player : GameEntity, ISavable
     {
         [SerializeField] private CharacterController characterController;
+        [SerializeField] private PlayerStateMachine stateMachine;
+        protected override void Enable()
+        {
+            stateMachine.Construct(transform);
+        }
 
         public void LoadProgress(PersistentProgress progress)
         {
