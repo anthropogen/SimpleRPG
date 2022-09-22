@@ -1,3 +1,4 @@
+using EpicRPG.StaticData;
 using UnityEngine;
 
 namespace EpicRPG.Characters
@@ -8,8 +9,13 @@ namespace EpicRPG.Characters
         [SerializeField] private Transform meleeAttackPoint;
         [SerializeField, Range(0, 5)] private float meleeRadius = 0.7f;
         [SerializeField] private LayerMask enemyMask;
-        [SerializeField, Range(0, 100)] private float damage;
         private readonly Collider[] hitResults = new Collider[5];
+        private EnemyStaticData staticData;
+
+        public void Construct(EnemyStaticData staticData)
+        {
+            this.staticData = staticData;
+        }
 
         private void OnEnable()
         {
@@ -30,7 +36,7 @@ namespace EpicRPG.Characters
                 if (hit == null) continue;
 
                 if (hit.gameObject.TryGetComponent(out Health health))
-                    health.ApplyDamage(damage);
+                    health.ApplyDamage(staticData.Damage);
             }
 
         }

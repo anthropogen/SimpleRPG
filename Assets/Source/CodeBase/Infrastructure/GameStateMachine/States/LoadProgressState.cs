@@ -21,8 +21,6 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         public void Enter()
         {
             LoadOrCreateNewProgress();
-            var progress = progressService.Progress;
-
             stateMachine.Enter<LoadLevelState, string>(progressService.Progress.WorldData.PositionOnLevel.Level);
         }
         public void Exit()

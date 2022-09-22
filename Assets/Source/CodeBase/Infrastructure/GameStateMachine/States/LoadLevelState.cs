@@ -1,5 +1,6 @@
 ﻿using EpicRPG.Characters;
 using EpicRPG.Hero;
+using EpicRPG.Levels;
 using EpicRPG.Services.GameFactory;
 using EpicRPG.Services.PersistentData;
 using EpicRPG.UI;
@@ -36,9 +37,16 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         }
         private void OnLoaded()
         {
+            InitSpawners();
             CreateGameEntities();
             UpdateProgressReaders();
             gameStateMachine.Enter<GameLoopState>();
+        }
+
+        private void InitSpawners()
+        {
+            foreach (var spawner in GameObject.FindObjectsOfType<EnemySpawner>())
+                gameFactory.Register(spawner);
         }
 
         private void UpdateProgressReaders()

@@ -1,5 +1,6 @@
 ﻿using EpicRPG.EntityFSM;
 using EpicRPG.Hero;
+using EpicRPG.StaticData;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,18 +14,17 @@ namespace EpicRPG.Characters.Enemies
         [SerializeField] private NavMeshAgent agent;
         private Player player;
 
-        public void Construct(Player player)
+        public void Construct(Player player, EnemyStaticData staticData)
         {
             this.player = player;
-            InitStates(transform, player, enemyAnimator, agent);
+            InitStates(staticData, transform, player, enemyAnimator, agent);
             ChangeState(firstState);
         }
 
-        protected void InitStates(Transform transform, Player player, EnemyAnimator enemyAnimator, NavMeshAgent agent)
+        protected void InitStates(EnemyStaticData staticData, Transform transform, Player player, EnemyAnimator enemyAnimator, NavMeshAgent agent)
         {
             foreach (var state in allStates)
-                state.Init(transform, player, enemyAnimator, agent);
-
+                state.Init(staticData, transform, player, enemyAnimator, agent);
         }
 
         public void Death()

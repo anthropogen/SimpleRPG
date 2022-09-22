@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.UI
+namespace EpicRPG.UI
 {
     public class LookAtCamera : GameEntity
     {
         private Camera mainCamera;
 
-        private void Start()
+        private void Awake()
         {
             mainCamera = Camera.main;
         }

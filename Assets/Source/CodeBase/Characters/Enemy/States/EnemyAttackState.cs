@@ -3,7 +3,6 @@ namespace EpicRPG.Characters.Enemies
 {
     public class EnemyAttackState : EnemyState
     {
-        [SerializeField, Range(0, 20)] private float delay = 2f;
         private float cooldown;
         public override void Enter()
         {
@@ -35,7 +34,7 @@ namespace EpicRPG.Characters.Enemies
         }
 
         private void SetCooldown()
-            => cooldown = Time.time + delay;
+            => cooldown = Time.time + staticData.Delay;
 
         private bool CanAttack()
             => cooldown <= Time.time;

@@ -32,12 +32,18 @@ namespace EpicRPG.Infrastructure.GameStateMachine
 
         private void RegisterServices()
         {
+            RegisterStaticData();
             services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             services.RegisterSingle<IInputService>(CreateInputService());
             services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            services.RegisterSingle<IGameFactory>(new GameFactory(
-            services.Single<IAssetProvider>()));
+            services.RegisterSingle<IGameFactory>(new GameFactory(services.Single<IAssetProvider>(),services.Single<IStaticDataService>()));
             services.RegisterSingle<ISaveLoadService>(new SaveLoadService(services.Single<IGameFactory>(), services.Single<IPersistentProgressService>()));
+        }
+
+        private void RegisterStaticData()
+        {
+            services.RegisterSingle<IStaticDataService>(new StaticDataService());
+            services.Single<IStaticDataService>().LoadMonsters();
         }
 
         private void LoadProgress()
