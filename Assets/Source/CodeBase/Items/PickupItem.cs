@@ -1,4 +1,4 @@
-using EpicRPG.Hero;
+using EpicRPG.Characters;
 using UnityEngine;
 
 namespace EpicRPG.Items
@@ -7,12 +7,15 @@ namespace EpicRPG.Items
     public class PickupItem : GameEntity
     {
         [field: SerializeField] public InventoryItem Item { get; private set; }
+
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Player player))
+            if (other.TryGetComponent(out CharacterAttacker attacker))
             {
-                Debug.Log("Pick up");
+                attacker.EquipWeapon(Item as WeaponItem);
             }
+            gameObject.SetActive(false);
         }
     }
 }

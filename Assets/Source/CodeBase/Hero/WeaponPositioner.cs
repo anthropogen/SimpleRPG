@@ -28,6 +28,8 @@ namespace EpicRPG.Hero
             GameObject item = gameFactory.CreateWeapon(weapon);
             item.transform.parent = meleeWeapon.transform;
             item.transform.localPosition = Vector3.zero;
+            item.transform.localScale = Vector3.one;
+            item.transform.localRotation = Quaternion.Euler(Vector3.zero);
             return item.GetComponent<WeaponModel>();
         }
 

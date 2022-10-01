@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Transitions>k__BackingField:
   - {fileID: 3733484527111956693}
+  attacker: {fileID: 6527346530211168034}
 --- !u!114 &4645886158104282763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056900014448455990}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.00005, y: 0.0044, z: -0.00051}
+  m_LocalPosition: {x: -0.00003, y: 0.00407, z: -0.00063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3864168217702696739}
@@ -142,7 +143,6 @@ Transform:
   - {fileID: 3868435605581111874}
   - {fileID: 7971609599256774871}
   - {fileID: 712726025428703265}
-  - {fileID: 1900661623574198357}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -333,36 +333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <NextState>k__BackingField: {fileID: 5705912817570866384}
---- !u!1 &8369495394168652211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1900661623574198357}
-  m_Layer: 7
-  m_Name: MeleePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1900661623574198357
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8369495394168652211}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.17, z: 0.12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3868435604998305740}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3868435604411768807
 PrefabInstance:
   m_ObjectHideFlags: 0

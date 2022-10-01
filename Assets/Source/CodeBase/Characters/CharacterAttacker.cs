@@ -24,7 +24,15 @@ namespace EpicRPG.Characters
         public void EquipWeapon(WeaponItem weaponItem)
         {
             Weapon = weaponItem == null ? unarmed : weaponItem;
-            weaponModel = weaponPositioner.SetWeapon(weaponItem);
+            if (weaponModel != null)
+                weaponModel.gameObject.SetActive(false);
+            weaponModel = weaponPositioner.SetWeapon(Weapon);
+        }
+
+        public void ShowWeaponModel(bool isActive)
+        {
+            if (weaponModel != null)
+                weaponModel.gameObject.SetActive(isActive);
         }
 
         public void MeleeAttack()

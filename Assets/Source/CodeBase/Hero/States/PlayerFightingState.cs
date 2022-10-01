@@ -15,6 +15,7 @@ namespace EpicRPG.Hero
             inputService = ServiceLocator.Container.Single<IInputService>();
             eventReceiver.MeleeHit += attacker.MeleeAttack;
             animator.SetBoolState(attacker.Weapon.AnimationHash, true);
+            attacker.ShowWeaponModel(true);
         }
 
 
@@ -22,6 +23,7 @@ namespace EpicRPG.Hero
         {
             animator.SetBoolState(attacker.Weapon.AnimationHash, false);
             eventReceiver.MeleeHit -= attacker.MeleeAttack;
+            attacker.ShowWeaponModel(false);
         }
 
         public override void Run()
