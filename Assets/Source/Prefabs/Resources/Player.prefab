@@ -75,12 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Transitions>k__BackingField: []
   eventReceiver: {fileID: 4291385381181887652}
-  attackPoint: {fileID: 1900661623574198357}
-  attackRadius: 1
-  damage: 2
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
+  attacker: {fileID: 6527346530211168034}
 --- !u!1 &3056900014448455990
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +120,7 @@ GameObject:
   - component: {fileID: 3868435604998305330}
   - component: {fileID: 3295721398473454126}
   - component: {fileID: 3764202946370773977}
+  - component: {fileID: 6527346530211168034}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -231,6 +227,23 @@ MonoBehaviour:
   animator: {fileID: 7658898659092687452}
   health: {fileID: 3295721398473454126}
   deathState: {fileID: 4645886158104282763}
+--- !u!114 &6527346530211168034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868435604998305743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eec1a8c829fe3249a6095af5bf3a29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  unarmed: {fileID: 11400000, guid: 9448c9e628164dc4fa72102c7d5fc259, type: 2}
+  weaponPositioner: {fileID: 2988704392894291681}
 --- !u!1 &3868435605581111901
 GameObject:
   m_ObjectHideFlags: 0

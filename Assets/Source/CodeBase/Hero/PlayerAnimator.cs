@@ -14,7 +14,6 @@ namespace EpicRPG.Hero
         private readonly int attackHash = Animator.StringToHash("Attack00");
         private readonly int forceAttackHash = Animator.StringToHash("Attack01");
         private readonly int traversalHash = Animator.StringToHash("IsTraversal");
-        private readonly int unarmedHash = Animator.StringToHash("Unarmed");
         public bool IsAttacking { get; set; }
 
         protected override void Enable()
@@ -51,8 +50,8 @@ namespace EpicRPG.Hero
         public void Traversal(bool isTraversal)
             => animator.SetBool(traversalHash, isTraversal);
 
-        public void Unarmed(bool isUnarmed)
-            => animator.SetBool(unarmedHash, isUnarmed);
+        public void SetBoolState(int hash, bool state)
+            => animator.SetBool(hash, state);
     }
 
 }

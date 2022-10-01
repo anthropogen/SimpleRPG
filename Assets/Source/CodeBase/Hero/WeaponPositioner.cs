@@ -10,12 +10,20 @@ namespace EpicRPG.Hero
         [SerializeField] private Transform meleeWeapon;
         private IGameFactory gameFactory;
 
-        private void Start()
+        private void Awake()
         {
             gameFactory = ServiceLocator.Container.Single<IGameFactory>();
         }
 
-        public WeaponModel GetWeaponTransform(MeleeWeapon weapon)
+        public WeaponModel SetWeapon(WeaponItem weaponItem)
+        {
+            if (weaponItem is MeleeWeapon)
+                return SetWeapon(weaponItem as MeleeWeapon);
+
+            else throw new System.InvalidOperationException("I don't know what kind of weapon this is");
+        }
+
+        public WeaponModel SetWeapon(MeleeWeapon weapon)
         {
             GameObject item = gameFactory.CreateWeapon(weapon);
             item.transform.parent = meleeWeapon.transform;
