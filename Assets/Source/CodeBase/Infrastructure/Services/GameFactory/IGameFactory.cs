@@ -1,6 +1,7 @@
 ﻿using EpicRPG.Characters.Enemies;
 using EpicRPG.Characters.Enemy;
 using EpicRPG.Hero;
+using EpicRPG.Items;
 using EpicRPG.Services.PersistentData;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace EpicRPG.Services.GameFactory
         Enemy CreateEnemy(EnemyTypeID enemyTypeID, Transform transform);
         GameObject CreateHero();
         GameObject CreateHUD();
+        GameObject CreateWeapon(WeaponItem weapon);
         void Register(IProgressReader reader);
     }
 }

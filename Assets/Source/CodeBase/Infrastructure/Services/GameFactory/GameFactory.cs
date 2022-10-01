@@ -1,6 +1,7 @@
 ﻿using EpicRPG.Characters.Enemies;
 using EpicRPG.Characters.Enemy;
 using EpicRPG.Hero;
+using EpicRPG.Items;
 using EpicRPG.Services.AssetManagement;
 using EpicRPG.Services.PersistentData;
 using System.Collections.Generic;
@@ -73,5 +74,7 @@ namespace EpicRPG.Services.GameFactory
                 Register(reader);
         }
 
+        public GameObject CreateWeapon(WeaponItem weapon)
+            => GameObject.Instantiate(weapon.Model.gameObject);
     }
 }

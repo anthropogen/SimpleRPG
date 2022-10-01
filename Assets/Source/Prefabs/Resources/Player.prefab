@@ -81,6 +81,36 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!1 &3056900014448455990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3991586420529668456}
+  m_Layer: 7
+  m_Name: MeleePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3991586420529668456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056900014448455990}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.00005, y: 0.0044, z: -0.00051}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3864168217702696739}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &3868435604998305743
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3868435605581111874}
+  - component: {fileID: 2988704392894291681}
   m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
@@ -232,6 +263,19 @@ Transform:
   m_Father: {fileID: 3868435604998305740}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2988704392894291681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868435605581111901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f62533dddf1b44a8eb048009941a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeWeapon: {fileID: 3991586420529668456}
 --- !u!1 &6678106449212149980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1228,11 @@ Transform:
 --- !u!95 &3818332489332101549 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95139111640682058, guid: f7902c99c75cad34f934860c6b6ddd9e, type: 3}
+  m_PrefabInstance: {fileID: 3868435604411768807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3864168217702696739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4284981059377348, guid: f7902c99c75cad34f934860c6b6ddd9e, type: 3}
   m_PrefabInstance: {fileID: 3868435604411768807}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4291385381181887652
