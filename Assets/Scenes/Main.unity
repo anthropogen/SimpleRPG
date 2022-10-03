@@ -1002,7 +1002,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7397074631737004723, guid: 14b94e7e9684eb04f8ee99106bfd8cdb, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7491104314756309327, guid: 14b94e7e9684eb04f8ee99106bfd8cdb, type: 3}
       propertyPath: m_IsActive
@@ -1059,10 +1059,22 @@ PrefabInstance:
     - target: {fileID: 7491230203888326699, guid: 14b94e7e9684eb04f8ee99106bfd8cdb, type: 3}
       propertyPath: <Item>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: 02f53d0c22f85e144819d22289a7a20e, type: 2}
+      objectReference: {fileID: 11400000, guid: 7ad79b2d21183ca47a42ca4fe6584192, type: 2}
     - target: {fileID: 7491230203888326700, guid: 14b94e7e9684eb04f8ee99106bfd8cdb, type: 3}
       propertyPath: m_Name
       value: PickupItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491746582928435217, guid: 14b94e7e9684eb04f8ee99106bfd8cdb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491746582928435217, guid: 14b94e7e9684eb04f8ee99106bfd8cdb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491746582928435217, guid: 14b94e7e9684eb04f8ee99106bfd8cdb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b94e7e9684eb04f8ee99106bfd8cdb, type: 3}
@@ -1079,7 +1091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7561876475103049290, guid: ac86fc8e092831c478a9afa56027e871, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7561876475103049293, guid: ac86fc8e092831c478a9afa56027e871, type: 3}
       propertyPath: m_RootOrder

@@ -6,8 +6,7 @@ namespace EpicRPG.Items
     [RequireComponent(typeof(BoxCollider))]
     public class PickupItem : GameEntity
     {
-        [field: SerializeField] public InventoryItem Item { get; private set; }
-
+        [field: SerializeField] public InventoryItem Item { get; set; }
 
         private void OnTriggerEnter(Collider other)
         {

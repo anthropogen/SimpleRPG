@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c3b0b45dabde63548866281d4a72569b, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: EpicRPGAssembly:EpicRPG.StaticData:EnemyStaticData
-  <HP>k__BackingField: 10
-  <Damage>k__BackingField: 1
-  <Delay>k__BackingField: 1
+  <HP>k__BackingField: 0
+  <Damage>k__BackingField: 0
+  <Delay>k__BackingField: 0
   <TypeID>k__BackingField: 0
   <Prefab>k__BackingField: {fileID: 3569842457594150820, guid: 21e25b598f485e642a9aaf0f769c1638, type: 3}

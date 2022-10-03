@@ -8,6 +8,7 @@ namespace EpicRPG.Hero
     public class WeaponPositioner : GameEntity
     {
         [SerializeField] private Transform meleeWeapon;
+        [SerializeField] private Transform bow;
         private IGameFactory gameFactory;
 
         private void Awake()
@@ -19,6 +20,8 @@ namespace EpicRPG.Hero
         {
             if (weaponItem is MeleeWeapon)
                 return SetWeapon(weaponItem as MeleeWeapon);
+            if (weaponItem is BowItem)
+                return SetWeapon(weaponItem as BowItem);
 
             else throw new System.InvalidOperationException("I don't know what kind of weapon this is");
         }
@@ -27,11 +30,16 @@ namespace EpicRPG.Hero
         {
             GameObject item = gameFactory.CreateWeapon(weapon);
             item.transform.parent = meleeWeapon.transform;
-            item.transform.localPosition = Vector3.zero;
-            item.transform.localScale = Vector3.one;
-            item.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            item.transform.ResetTransform();
             return item.GetComponent<WeaponModel>();
         }
 
+        public WeaponModel SetWeapon(BowItem weapon)
+        {
+            GameObject item = gameFactory.CreateWeapon(weapon);
+            item.transform.parent = bow.transform;
+            item.transform.ResetTransform();
+            return item.GetComponent<WeaponModel>();
+        }
     }
 }

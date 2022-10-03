@@ -289,6 +289,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeWeapon: {fileID: 3991586420529668456}
+  bow: {fileID: 7560123443235577468}
+--- !u!1 &4212601323111068189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7560123443235577468}
+  m_Layer: 7
+  m_Name: BowPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7560123443235577468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212601323111068189}
+  m_LocalRotation: {x: -0.70683366, y: 0.6970502, z: -0.10074469, w: -0.066013545}
+  m_LocalPosition: {x: 0, y: 0.00112, z: -0.00052}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3872556711215050505}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &6678106449212149980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1242,11 @@ Transform:
 --- !u!95 &3818332489332101549 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95139111640682058, guid: f7902c99c75cad34f934860c6b6ddd9e, type: 3}
+  m_PrefabInstance: {fileID: 3868435604411768807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3872556711215050505 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4895438585524462, guid: f7902c99c75cad34f934860c6b6ddd9e, type: 3}
   m_PrefabInstance: {fileID: 3868435604411768807}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &3864168217702696739 stripped

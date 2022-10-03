@@ -11,6 +11,7 @@ public class StaticDataService : IStaticDataService
     private List<InventoryItem> allItems;
     private const string monsterpath = "StaticData/Monsters";
     private const string itemsPath = "Items";
+    private const string projectilesPath = "StaticData/ProjectileData";
     public void LoadMonsters()
     {
         monsters = Resources.LoadAll<EnemyStaticData>(monsterpath).
