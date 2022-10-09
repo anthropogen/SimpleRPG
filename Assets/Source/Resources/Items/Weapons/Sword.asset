@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Sword
-  <Damage>k__BackingField: 10
+  <Damage>k__BackingField: 5
   <Model>k__BackingField: {fileID: 7869573273970471217, guid: b1d57fd5b7445364097f3624f31df901, type: 3}

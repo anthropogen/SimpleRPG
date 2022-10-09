@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Unarmed
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Unarmed
-  <Damage>k__BackingField: 3
+  <Damage>k__BackingField: 2
   <Model>k__BackingField: {fileID: 4376279076750162495, guid: bf9519204544e2b4fb9765e34137929c, type: 3}

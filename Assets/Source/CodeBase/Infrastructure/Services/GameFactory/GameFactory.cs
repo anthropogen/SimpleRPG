@@ -76,5 +76,11 @@ namespace EpicRPG.Services.GameFactory
 
         public GameObject CreateWeapon(WeaponItem weapon)
             => GameObject.Instantiate(weapon.Model.gameObject);
+
+        public Projectile CreateProjectile(ProjectileType projectileType)
+        {
+            var template = staticData.GetProjectile(projectileType);
+            return GameObject.Instantiate(template);
+        }
     }
 }

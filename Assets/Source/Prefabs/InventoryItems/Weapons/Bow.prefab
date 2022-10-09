@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 9166578024963064276}
-  <RadiusAttack>k__BackingField: 0
+  <RadiusAttack>k__BackingField: 25
 --- !u!1 &5131099753148350376
 GameObject:
   m_ObjectHideFlags: 0

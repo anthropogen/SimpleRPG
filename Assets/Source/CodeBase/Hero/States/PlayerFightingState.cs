@@ -14,6 +14,7 @@ namespace EpicRPG.Hero
         {
             inputService = ServiceLocator.Container.Single<IInputService>();
             eventReceiver.MeleeHit += attacker.MeleeAttack;
+            eventReceiver.Fired += attacker.RangeAttack;
             animator.SetBoolState(attacker.Weapon.AnimationHash, true);
             attacker.ShowWeaponModel(true);
         }
@@ -23,6 +24,7 @@ namespace EpicRPG.Hero
         {
             animator.SetBoolState(attacker.Weapon.AnimationHash, false);
             eventReceiver.MeleeHit -= attacker.MeleeAttack;
+            eventReceiver.Fired -= attacker.RangeAttack;
             attacker.ShowWeaponModel(false);
         }
 
@@ -39,6 +41,7 @@ namespace EpicRPG.Hero
         private void OnDisable()
         {
             eventReceiver.MeleeHit -= attacker.MeleeAttack;
+            eventReceiver.Fired -= attacker.RangeAttack;
         }
     }
 }

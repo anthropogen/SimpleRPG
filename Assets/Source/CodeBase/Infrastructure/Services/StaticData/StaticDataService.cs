@@ -9,6 +9,7 @@ public class StaticDataService : IStaticDataService
 {
     private Dictionary<EnemyTypeID, EnemyStaticData> monsters;
     private List<InventoryItem> allItems;
+    private ProjectileStaticData projectileStaticData;
     private const string monsterpath = "StaticData/Monsters";
     private const string itemsPath = "Items";
     private const string projectilesPath = "StaticData/ProjectileData";
@@ -22,6 +23,9 @@ public class StaticDataService : IStaticDataService
         allItems = Resources.LoadAll<InventoryItem>(itemsPath).ToList();
     }
 
+    public void LoadProjectilesData()
+        => projectileStaticData = Resources.Load<ProjectileStaticData>(projectilesPath);
+
     public EnemyStaticData GetDataForEnemy(EnemyTypeID typeID)
     {
         if (monsters.TryGetValue(typeID, out EnemyStaticData enemyData))
@@ -34,5 +38,8 @@ public class StaticDataService : IStaticDataService
     {
         return allItems.FirstOrDefault(i => i.Name == weapon) as WeaponItem;
     }
+
+    public Projectile GetProjectile(ProjectileType type)
+        => projectileStaticData.GetProjectileTempate(type);
 }
 

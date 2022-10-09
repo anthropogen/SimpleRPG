@@ -18,6 +18,7 @@ namespace EpicRPG.Services.GameFactory
         Enemy CreateEnemy(EnemyTypeID enemyTypeID, Transform transform);
         GameObject CreateHero();
         GameObject CreateHUD();
+        Projectile CreateProjectile(ProjectileType projectileType);
         GameObject CreateWeapon(WeaponItem weapon);
         void Register(IProgressReader reader);
     }

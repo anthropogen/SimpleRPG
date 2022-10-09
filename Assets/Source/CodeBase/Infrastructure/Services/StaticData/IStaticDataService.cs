@@ -9,4 +9,6 @@ public interface IStaticDataService : IService
     void LoadInventoryItems();
     EnemyStaticData GetDataForEnemy(EnemyTypeID typeID);
     WeaponItem GetWeapon(string weapon);
+    void LoadProjectilesData();
+    Projectile GetProjectile(ProjectileType type);
 }
