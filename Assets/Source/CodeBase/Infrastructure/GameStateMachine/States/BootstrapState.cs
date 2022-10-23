@@ -43,9 +43,7 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         private void RegisterStaticData()
         {
             services.RegisterSingle<IStaticDataService>(new StaticDataService());
-            services.Single<IStaticDataService>().LoadMonsters();
-            services.Single<IStaticDataService>().LoadInventoryItems();
-            services.Single<IStaticDataService>().LoadProjectilesData();
+            services.Single<IStaticDataService>().Load();
         }
 
         private void LoadProgress()

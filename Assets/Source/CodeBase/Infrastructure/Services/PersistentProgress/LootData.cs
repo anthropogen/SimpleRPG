@@ -10,11 +10,11 @@ namespace EpicRPG.Services.PersistentData
         public Dictionary<string, LootData> PickedItems = new Dictionary<string, LootData>();
         public void Pickup(PickupItem pickupItem)
         {
-            if (!PickedItems.ContainsKey(pickupItem.UniqueID.SaveID))
+            if (!PickedItems.ContainsKey(pickupItem.SaveID))
             {
-                PickedItems[pickupItem.UniqueID.SaveID] = new LootData();
+                PickedItems[pickupItem.SaveID] = new LootData();
             }
-            PickedItems[pickupItem.UniqueID.SaveID].Items.Add(pickupItem.Item);
+            PickedItems[pickupItem.SaveID].Items.Add(pickupItem.Item);
         }
 
         [Serializable]

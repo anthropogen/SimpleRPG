@@ -8,10 +8,11 @@ namespace EpicRPG.Items
     [RequireComponent(typeof(BoxCollider))]
     public class PickupItem : GameEntity
     {
-        [field: SerializeField] public InventoryItem Item { get; set; }
-        [field: SerializeField] public UniqueID UniqueID { get; set; }
+        public InventoryItem Item { get; set; }
+        public string SaveID { get; set; }
         private PersistentProgress progress;
         private bool isPicked;
+
         public void Construct(PersistentProgress progress)
         {
             this.progress = progress;

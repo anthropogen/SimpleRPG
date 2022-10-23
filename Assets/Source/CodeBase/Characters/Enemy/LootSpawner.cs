@@ -6,6 +6,7 @@ using UnityEngine;
 public class LootSpawner : GameEntity
 {
     [SerializeField] private Enemy enemy;
+    public string SaveId;
     private IGameFactory gameFactory;
     private InventoryItem itemToSpawn;
 
@@ -30,7 +31,9 @@ public class LootSpawner : GameEntity
     {
         var loot = gameFactory.CreateLoot(itemToSpawn);
         loot.transform.position = transform.position + UnityEngine.Random.insideUnitSphere * 2;
+        loot.SaveID = SaveId;
     }
+
     private void OnEnemyDeath(Enemy obj)
     {
         enemy.EnemyDeath -= OnEnemyDeath;

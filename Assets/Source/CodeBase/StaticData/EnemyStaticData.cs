@@ -1,6 +1,8 @@
 using EpicRPG.Characters.Enemies;
 using EpicRPG.Characters.Enemy;
 using EpicRPG.Items;
+using EpicRPG.Levels;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace EpicRPG.StaticData

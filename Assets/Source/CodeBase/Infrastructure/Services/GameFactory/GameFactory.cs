@@ -2,6 +2,7 @@
 using EpicRPG.Characters.Enemy;
 using EpicRPG.Hero;
 using EpicRPG.Items;
+using EpicRPG.Levels;
 using EpicRPG.Services.AssetManagement;
 using EpicRPG.Services.PersistentData;
 using System.Collections.Generic;
@@ -102,8 +103,18 @@ namespace EpicRPG.Services.GameFactory
         {
             var pickUp = InstantiateRegisteredObject(AssetsPath.Loot).GetComponent<PickupItem>();
             pickUp.Construct(progressService.Progress);
-            pickUp.Item= staticData.GetDataForEnemy(enemyTypeID).ItemToSpawn;
+            pickUp.Item = staticData.GetDataForEnemy(enemyTypeID).ItemToSpawn;
             return pickUp;
+        }
+
+        public EnemySpawner CreateSpawner(Vector3 position, EnemyTypeID enemyType, string ID)
+        {
+            var spawner = InstantiateRegisteredObject(AssetsPath.Spawner).GetComponent<EnemySpawner>();
+            spawner.Construct(this);
+            spawner.transform.position = position;
+            spawner.EnemyTypeID = enemyType;
+            spawner.SaveID = ID;
+            return spawner;
         }
     }
 }

@@ -5,10 +5,9 @@ using EpicRPG.StaticData;
 
 public interface IStaticDataService : IService
 {
-    void LoadMonsters();
-    void LoadInventoryItems();
+    void Load();
     EnemyStaticData GetDataForEnemy(EnemyTypeID typeID);
     WeaponItem GetWeapon(string weapon);
-    void LoadProjectilesData();
     Projectile GetProjectile(ProjectileType type);
+    LevelStaticData GetLevelDataFor(string sceneKey);
 }

@@ -2,18 +2,16 @@ using EpicRPG.Characters.Enemies;
 using EpicRPG.Characters.Enemy;
 using EpicRPG.Services.GameFactory;
 using EpicRPG.Services.PersistentData;
-using UnityEngine;
 
 namespace EpicRPG.Levels
 {
     public class EnemySpawner : GameEntity, ISavable
     {
-        [field: SerializeField] public EnemyTypeID EnemyTypeID { get; private set; }
-        [field: SerializeField] public UniqueID UniqueID { get; private set; }
-
-        public bool enemyIsDied;
         private IGameFactory factory;
         private Enemy enemy;
+        private bool enemyIsDied;
+        public string SaveID { get; set; }
+        public EnemyTypeID EnemyTypeID { get; set; }
 
         public void Construct(IGameFactory factory)
         {
@@ -23,16 +21,19 @@ namespace EpicRPG.Levels
         public void SaveProgress(PersistentProgress progress)
         {
             if (enemyIsDied)
-                progress.KillData.ClearedSpawners.Add(UniqueID.SaveID);
+                progress.KillData.ClearedSpawners.Add(SaveID);
         }
 
         public void LoadProgress(PersistentProgress progress)
         {
-            if (progress.KillData.ClearedSpawners.Contains(UniqueID.SaveID))
+            if (progress.KillData.ClearedSpawners.Contains(SaveID))
             {
                 enemyIsDied = true;
-                if (!progress.WorldData.LootData.PickedItems.ContainsKey(UniqueID.SaveID))
-                    factory.CreateLootFor(EnemyTypeID);
+                if (!progress.WorldData.LootData.PickedItems.ContainsKey(SaveID))
+                {
+                    var loot = factory.CreateLootFor(EnemyTypeID);
+                    loot.SaveID = SaveID;
+                }
             }
             else
                 Spawn();
@@ -41,6 +42,7 @@ namespace EpicRPG.Levels
         private void Spawn()
         {
             enemy = factory.CreateEnemy(EnemyTypeID, transform);
+            enemy.GetComponent<LootSpawner>().SaveId = SaveID;
             enemy.EnemyDeath += OnEnemyDeath;
         }
 

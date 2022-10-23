@@ -2,6 +2,7 @@
 using EpicRPG.Characters.Enemy;
 using EpicRPG.Hero;
 using EpicRPG.Items;
+using EpicRPG.Levels;
 using EpicRPG.Services.PersistentData;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ namespace EpicRPG.Services.GameFactory
         PickupItem CreateLoot(InventoryItem itemToSpawn);
         PickupItem CreateLootFor(EnemyTypeID enemyTypeID);
         Projectile CreateProjectile(ProjectileType projectileType);
+        EnemySpawner CreateSpawner(Vector3 position, EnemyTypeID enemyTypeID, string iD);
         GameObject CreateWeapon(WeaponItem weapon);
-        void Register(IProgressReader reader);
     }
 }

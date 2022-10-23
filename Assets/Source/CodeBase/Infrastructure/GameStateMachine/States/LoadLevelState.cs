@@ -3,8 +3,10 @@ using EpicRPG.Hero;
 using EpicRPG.Levels;
 using EpicRPG.Services.GameFactory;
 using EpicRPG.Services.PersistentData;
+using EpicRPG.StaticData;
 using EpicRPG.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace EpicRPG.Infrastructure.GameStateMachine
 {
@@ -15,13 +17,15 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         private readonly LoadingCurtain curtain;
         private readonly IGameFactory gameFactory;
         private readonly IPersistentProgressService progressService;
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService)
+        private readonly IStaticDataService staticData;
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData)
         {
             this.gameStateMachine = gameStateMachine;
             this.sceneLoader = sceneLoader;
             this.curtain = curtain;
             this.gameFactory = gameFactory;
             this.progressService = progressService;
+            this.staticData = staticData;
         }
 
         public void Enter(string sceneName)
@@ -45,10 +49,12 @@ namespace EpicRPG.Infrastructure.GameStateMachine
 
         private void InitSpawners()
         {
-            foreach (var spawner in GameObject.FindObjectsOfType<EnemySpawner>())
+            var sceneKey = SceneManager.GetActiveScene().name;
+            LevelStaticData levelData = staticData.GetLevelDataFor(sceneKey);
+
+            foreach (var spawnerData in levelData.EnemySpawners)
             {
-                spawner.Construct(gameFactory);
-                gameFactory.Register(spawner);
+                gameFactory.CreateSpawner(spawnerData.Position, spawnerData.EnemyTypeID, spawnerData.ID);
             }
         }
 
