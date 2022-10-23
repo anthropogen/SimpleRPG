@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: EpicRPGAssembly:EpicRPG.StaticData:EnemyStaticData
   <HP>k__BackingField: 10
   <Damage>k__BackingField: 2
+  <Speed>k__BackingField: 2
   <Delay>k__BackingField: 1
+  <ItemsToSpawn>k__BackingField:
+  - {fileID: 11400000, guid: 623569a194b83474a85017b506a3d194, type: 2}
   <TypeID>k__BackingField: 0
   <Prefab>k__BackingField: {fileID: 3569842457594150820, guid: 21e25b598f485e642a9aaf0f769c1638, type: 3}

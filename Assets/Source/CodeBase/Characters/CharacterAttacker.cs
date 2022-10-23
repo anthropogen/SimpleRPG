@@ -12,6 +12,7 @@ namespace EpicRPG.Characters
         [SerializeField] private LayerMask enemyMask;
         [SerializeField] private Unarmed unarmed;
         [SerializeField] private WeaponPositioner weaponPositioner;
+        [SerializeField, Range(0, 360)] private float maxAngleRangeAttack = 90f;
         private WeaponModel weaponModel;
         private IGameFactory gameFactory;
         private IStaticDataService staticDataService;
@@ -40,6 +41,7 @@ namespace EpicRPG.Characters
 
         public void MeleeAttack()
             => HitEnemies(weaponModel.AttackPoint, weaponModel.RadiusAttack, Weapon.Damage);
+
         public void RangeAttack()
         {
             int hitCount = Physics.OverlapSphereNonAlloc(weaponModel.AttackPoint, weaponModel.RadiusAttack, hitResults, enemyMask);
@@ -47,10 +49,8 @@ namespace EpicRPG.Characters
             var projectile = gameFactory.CreateProjectile(projectileWeapon.ProjectileType);
             projectile.transform.position = weaponModel.AttackPoint;
 
-            if (hitCount > 0)
+            if (hitCount > 0 && TryGetNearbyHit(out Collider nearbyHit))
             {
-                var nearbyHit = GetNearbyHit();
-                Debug.Log(nearbyHit.name);
                 var rotationToTarget = Quaternion.LookRotation(nearbyHit.transform.position - weaponModel.AttackPoint);
                 projectile.transform.rotation = rotationToTarget;
             }
@@ -61,14 +61,15 @@ namespace EpicRPG.Characters
             }
         }
 
-        private Collider GetNearbyHit()
+        private bool TryGetNearbyHit(out Collider nearbyHit)
         {
-            Collider nearbyHit = null;
+            nearbyHit = null;
             float minDistance = float.MaxValue;
 
             foreach (var hit in hitResults)
             {
                 if (hit == null) continue;
+                if (GetAngleToHit(hit) > maxAngleRangeAttack) continue;
                 var sqrDistance = Vector3.SqrMagnitude(hit.transform.position - transform.position);
                 if (sqrDistance < minDistance)
                 {
@@ -79,9 +80,12 @@ namespace EpicRPG.Characters
             return nearbyHit;
         }
 
+        private float GetAngleToHit(Collider hit)
+            => Vector3.Angle(transform.forward, hit.transform.position - transform.position);
+
         private void HitEnemies(Vector3 attackPoint, float attackRadius, float damage)
         {
-            int hitCount = Physics.OverlapSphereNonAlloc(weaponModel.AttackPoint, weaponModel.RadiusAttack, hitResults, enemyMask);
+            int hitCount = Physics.OverlapSphereNonAlloc(attackPoint, attackRadius, hitResults, enemyMask);
             if (hitCount > 0)
             {
                 foreach (var hit in hitResults)
@@ -95,8 +99,6 @@ namespace EpicRPG.Characters
             }
         }
 
-     //   private int SphereRaycast(Vector3 attackPoint, float attackRadius)
-       //     => Physics.OverlapSphereNonAlloc(attackPoint, attackRadius, hitResults, enemyMask);
 
         public void SaveProgress(PersistentProgress progress)
         {

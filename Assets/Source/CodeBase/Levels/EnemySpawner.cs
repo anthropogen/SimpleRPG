@@ -1,6 +1,5 @@
 using EpicRPG.Characters.Enemies;
 using EpicRPG.Characters.Enemy;
-using EpicRPG.Services;
 using EpicRPG.Services.GameFactory;
 using EpicRPG.Services.PersistentData;
 using UnityEngine;
@@ -16,10 +15,11 @@ namespace EpicRPG.Levels
         private IGameFactory factory;
         private Enemy enemy;
 
-        private void Awake()
+        public void Construct(IGameFactory factory)
         {
-            factory = ServiceLocator.Container.Single<IGameFactory>();
+            this.factory = factory;
         }
+
         public void SaveProgress(PersistentProgress progress)
         {
             if (enemyIsDied)
@@ -29,7 +29,11 @@ namespace EpicRPG.Levels
         public void LoadProgress(PersistentProgress progress)
         {
             if (progress.KillData.ClearedSpawners.Contains(UniqueID.SaveID))
+            {
                 enemyIsDied = true;
+                if (!progress.WorldData.LootData.PickedItems.ContainsKey(UniqueID.SaveID))
+                    factory.CreateLootFor(EnemyTypeID);
+            }
             else
                 Spawn();
         }

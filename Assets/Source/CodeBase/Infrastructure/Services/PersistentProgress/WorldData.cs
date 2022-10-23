@@ -6,10 +6,11 @@ namespace EpicRPG.Services.PersistentData
     public class WorldData
     {
         public PositionOnLevel PositionOnLevel;
-
+        public LootOnLevelData LootData;
         public WorldData(string sceneName)
         {
             PositionOnLevel = new PositionOnLevel(sceneName, null);
+            LootData = new LootOnLevelData();
         }
     }
 }

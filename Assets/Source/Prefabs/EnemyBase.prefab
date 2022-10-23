@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 1994209679615273416}
   - component: {fileID: 1994209679615273419}
   - component: {fileID: 1994209679615273422}
+  - component: {fileID: 3990531543681662078}
   m_Layer: 6
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -356,6 +357,21 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &3990531543681662078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994209679615273415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea47fd9d1b427f04ca843b009065f526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1994209679615273417}
+  itemsToSpawn:
+  - {fileID: 11400000, guid: 623569a194b83474a85017b506a3d194, type: 2}
 --- !u!1 &1994209680290471973
 GameObject:
   m_ObjectHideFlags: 0

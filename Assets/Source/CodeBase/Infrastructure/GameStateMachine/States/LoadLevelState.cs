@@ -46,7 +46,10 @@ namespace EpicRPG.Infrastructure.GameStateMachine
         private void InitSpawners()
         {
             foreach (var spawner in GameObject.FindObjectsOfType<EnemySpawner>())
+            {
+                spawner.Construct(gameFactory);
                 gameFactory.Register(spawner);
+            }
         }
 
         private void UpdateProgressReaders()

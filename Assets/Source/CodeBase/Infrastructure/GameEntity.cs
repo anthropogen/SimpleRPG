@@ -5,16 +5,27 @@ public abstract class GameEntity : MonoBehaviour
 {
     private void OnEnable()
     {
-        GameUpdater.Instance.Loop += Loop;
-        GameUpdater.Instance.FixedLoop += FixedLoop;
-        GameUpdater.Instance.LateLoop += LateLoop;
+        if (GameUpdater.Instance != null)
+        {
+            GameUpdater.Instance.Loop += Loop;
+            GameUpdater.Instance.FixedLoop += FixedLoop;
+            GameUpdater.Instance.LateLoop += LateLoop;
+        }
+        else
+            throw new System.NullReferenceException("Doesn't have game updater");
+
         Enable();
     }
+
     private void OnDisable()
     {
-        GameUpdater.Instance.Loop -= Loop;
-        GameUpdater.Instance.FixedLoop -= FixedLoop;
-        GameUpdater.Instance.LateLoop -= LateLoop;
+        if (GameUpdater.Instance != null)
+        {
+            GameUpdater.Instance.Loop -= Loop;
+            GameUpdater.Instance.FixedLoop -= FixedLoop;
+            GameUpdater.Instance.LateLoop -= LateLoop;
+        }
+
         Disable();
     }
 
@@ -23,6 +34,4 @@ public abstract class GameEntity : MonoBehaviour
     protected virtual void FixedLoop() { }
     protected virtual void LateLoop() { }
     protected virtual void Disable() { }
-
-
 }
