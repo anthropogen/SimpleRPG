@@ -1,10 +1,10 @@
 ﻿using SimpleRPG.Characters;
 using SimpleRPG.Hero;
-using SimpleRPG.Levels;
 using SimpleRPG.Services.GameFactory;
 using SimpleRPG.Services.PersistentData;
 using SimpleRPG.StaticData;
 using SimpleRPG.UI;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,19 +39,35 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         {
             curtain.Hide();
         }
+
         private void OnLoaded()
         {
-            InitSpawners();
-            CreateGameEntities();
+            LevelStaticData levelData = GetLevelData();
+
+            InitSpawners(levelData);
+            InitLevelTransfers(levelData);
+            CreateHero(levelData);
             UpdateProgressReaders();
             gameStateMachine.Enter<GameLoopState>();
         }
 
-        private void InitSpawners()
+        private void InitLevelTransfers(LevelStaticData levelData)
+        {
+            foreach (var transferData in levelData.LevelTransfers)
+            {
+                gameFactory.CreateLevelTransfer(transferData.Position, transferData.NextLevel);
+            }
+        }
+
+        private LevelStaticData GetLevelData()
         {
             var sceneKey = SceneManager.GetActiveScene().name;
             LevelStaticData levelData = staticData.GetLevelDataFor(sceneKey);
+            return levelData;
+        }
 
+        private void InitSpawners(LevelStaticData levelData)
+        {
             foreach (var spawnerData in levelData.EnemySpawners)
             {
                 gameFactory.CreateSpawner(spawnerData.Position, spawnerData.EnemyTypeID, spawnerData.ID);
@@ -64,9 +80,10 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
                 readers.LoadProgress(progressService.Progress);
         }
 
-        private void CreateGameEntities()
+        private void CreateHero(LevelStaticData levelData)
         {
             var hero = gameFactory.CreateHero();
+            hero.transform.position = levelData.InitialPlayerPoint;
             CreateHeroHUD(hero);
             GameObject.FindObjectOfType<FollowingCamera>().SetTarget(hero.transform);
         }

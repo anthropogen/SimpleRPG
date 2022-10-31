@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace SimpleRPG.Infrastructure.GameStateMachine
 {
-    public class GameStateMachine
+    public class GameStateMachine : IGameStateMachine
     {
         private readonly Dictionary<Type, IGameExitState> states;
         private readonly SceneLoader sceneLoader;

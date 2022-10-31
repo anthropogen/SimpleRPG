@@ -19,6 +19,7 @@ namespace SimpleRPG.Services.GameFactory
         Enemy CreateEnemy(EnemyTypeID enemyTypeID, Transform transform);
         GameObject CreateHero();
         GameObject CreateHUD();
+        LevelTransfer CreateLevelTransfer(Vector3 position, string nextLevel);
         PickupItem CreateLoot(InventoryItem itemToSpawn);
         PickupItem CreateLootFor(EnemyTypeID enemyTypeID);
         Projectile CreateProjectile(ProjectileType projectileType);

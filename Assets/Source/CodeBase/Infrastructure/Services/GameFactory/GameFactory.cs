@@ -1,6 +1,7 @@
 ﻿using SimpleRPG.Characters.Enemies;
 using SimpleRPG.Characters.Enemy;
 using SimpleRPG.Hero;
+using SimpleRPG.Infrastructure.GameStateMachine;
 using SimpleRPG.Items;
 using SimpleRPG.Levels;
 using SimpleRPG.Services.AssetManagement;
@@ -16,22 +17,24 @@ namespace SimpleRPG.Services.GameFactory
         private readonly IAssetProvider assets;
         private readonly IStaticDataService staticData;
         private readonly IPersistentProgressService progressService;
+        private readonly IGameStateMachine gameStateMachine;
         public LazyInitializy<Player> LazyPlayer { get; private set; } = new LazyInitializy<Player>();
         public List<ISavable> Savables { get; } = new List<ISavable>();
         public List<IProgressReader> ProgressReaders { get; } = new List<IProgressReader>();
 
         public GameObject HeroGameObject { get; private set; }
 
-        public GameFactory(IAssetProvider assets, IStaticDataService staticData, IPersistentProgressService progressService)
+        public GameFactory(IAssetProvider assets, IStaticDataService staticData, IPersistentProgressService progressService, IGameStateMachine gameStateMachine)
         {
             this.assets = assets;
             this.staticData = staticData;
             this.progressService = progressService;
+            this.gameStateMachine = gameStateMachine;
         }
 
         public GameObject CreateHero()
         {
-            HeroGameObject = InstantiateRegisteredObject(AssetsPath.Player, GameObject.FindObjectOfType<PlayerInitPoint>().Point);
+            HeroGameObject = InstantiateRegisteredObject(AssetsPath.Player);
             LazyPlayer.Value = HeroGameObject.GetComponent<Player>();
             return HeroGameObject;
         }
@@ -115,6 +118,14 @@ namespace SimpleRPG.Services.GameFactory
             spawner.EnemyTypeID = enemyType;
             spawner.SaveID = ID;
             return spawner;
+        }
+
+        public LevelTransfer CreateLevelTransfer(Vector3 position, string nextLevel)
+        {
+            var levelTransfer = InstantiateRegisteredObject(AssetsPath.LevelTransfer).GetComponent<LevelTransfer>();
+            levelTransfer.Construct(gameStateMachine, nextLevel);
+            levelTransfer.transform.position = position;
+            return levelTransfer;
         }
     }
 }

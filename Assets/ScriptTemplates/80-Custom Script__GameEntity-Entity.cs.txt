@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SimpleRPG.Infrastructure;
 
-public class #SCRIPTNAME# : GameEntity
-{
+ public class #SCRIPTNAME# : GameEntity
+ {
    
-}
+ }
 

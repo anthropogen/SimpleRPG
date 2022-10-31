@@ -32,7 +32,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
 
         private PersistentProgress CreateNewProgress()
         {
-            var progress = new PersistentProgress("Main");
+            var progress = new PersistentProgress("Village");
             progress.HeroState.MaxHP = 50;
             progress.HeroState.ResetHP();
             return progress;

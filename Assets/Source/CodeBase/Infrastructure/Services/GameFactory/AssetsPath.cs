@@ -6,5 +6,6 @@
         public const string Player = "Player";
         public const string Loot = "PickupItem";
         public const string Spawner = "SpawnPoint";
+        public const string LevelTransfer = "LevelTransfer";
     }
 }

@@ -33,10 +33,11 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         private void RegisterServices()
         {
             RegisterStaticData();
+            services.RegisterSingle<IGameStateMachine>(gameStateMachine);
             services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             services.RegisterSingle<IInputService>(CreateInputService());
             services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            services.RegisterSingle<IGameFactory>(new GameFactory(services.Single<IAssetProvider>(), services.Single<IStaticDataService>(), services.Single<IPersistentProgressService>()));
+            services.RegisterSingle<IGameFactory>(new GameFactory(services.Single<IAssetProvider>(), services.Single<IStaticDataService>(), services.Single<IPersistentProgressService>(), gameStateMachine));
             services.RegisterSingle<ISaveLoadService>(new SaveLoadService(services.Single<IGameFactory>(), services.Single<IPersistentProgressService>()));
         }
 
