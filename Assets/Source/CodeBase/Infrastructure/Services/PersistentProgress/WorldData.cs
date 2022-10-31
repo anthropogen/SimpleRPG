@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EpicRPG.Services.PersistentData
+namespace SimpleRPG.Services.PersistentData
 {
     [Serializable]
     public class WorldData

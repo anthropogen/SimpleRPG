@@ -1,9 +1,10 @@
-using EpicRPG.Items;
-using EpicRPG.Services;
-using EpicRPG.Services.GameFactory;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.Items;
+using SimpleRPG.Services;
+using SimpleRPG.Services.GameFactory;
 using UnityEngine;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public class WeaponPositioner : GameEntity
     {

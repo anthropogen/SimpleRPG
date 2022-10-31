@@ -1,11 +1,11 @@
-using EpicRPG.Characters.Enemies;
-using EpicRPG.Characters.Enemy;
-using EpicRPG.Items;
-using EpicRPG.Levels;
+using SimpleRPG.Characters.Enemies;
+using SimpleRPG.Characters.Enemy;
+using SimpleRPG.Items;
+using SimpleRPG.Levels;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EpicRPG.StaticData
+namespace SimpleRPG.StaticData
 {
     [CreateAssetMenu(fileName = "EnemyData", menuName = "Static Data/Enemy")]
     public class EnemyStaticData : ScriptableObject

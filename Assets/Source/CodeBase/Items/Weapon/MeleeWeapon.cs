@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EpicRPG.Items
+namespace SimpleRPG.Items
 {
     [CreateAssetMenu(fileName = "newMeleeWeapon", menuName = "Items/Weapon/MeleeWeapon", order = 51)]
     public class MeleeWeapon : WeaponItem

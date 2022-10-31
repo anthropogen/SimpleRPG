@@ -1,7 +1,7 @@
-﻿using EpicRPG.EntityFSM;
+﻿using SimpleRPG.EntityFSM;
 using UnityEngine;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public abstract class PlayerState : EntityState
     {

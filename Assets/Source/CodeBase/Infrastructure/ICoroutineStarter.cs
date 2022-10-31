@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace EpicRPG.Infrastructure
+namespace SimpleRPG.Infrastructure
 {
     public interface ICoroutineStarter
     {

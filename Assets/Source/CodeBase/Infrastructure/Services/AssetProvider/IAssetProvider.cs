@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EpicRPG.Services.AssetManagement
+namespace SimpleRPG.Services.AssetManagement
 {
     public interface IAssetProvider : IService
     {

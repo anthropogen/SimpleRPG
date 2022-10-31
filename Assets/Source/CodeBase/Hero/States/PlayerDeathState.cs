@@ -1,7 +1,7 @@
-using EpicRPG.Characters;
+using SimpleRPG.Characters;
 using UnityEngine;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public class PlayerDeathState : PlayerState
     {

@@ -1,6 +1,7 @@
-using EpicRPG.Characters.Enemies;
-using EpicRPG.Items;
-using EpicRPG.Services.GameFactory;
+using SimpleRPG.Characters.Enemies;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.Items;
+using SimpleRPG.Services.GameFactory;
 using UnityEngine;
 
 public class LootSpawner : GameEntity

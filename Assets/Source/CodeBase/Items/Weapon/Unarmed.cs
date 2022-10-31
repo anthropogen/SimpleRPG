@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EpicRPG.Items
+namespace SimpleRPG.Items
 {
     [CreateAssetMenu(fileName = "newUnarmed", menuName = "Items/Weapon/Unarmed", order = 51)]
     public class Unarmed : MeleeWeapon

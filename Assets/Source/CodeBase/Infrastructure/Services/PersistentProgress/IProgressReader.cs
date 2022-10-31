@@ -1,5 +1,5 @@
 ﻿
-namespace EpicRPG.Services.PersistentData
+namespace SimpleRPG.Services.PersistentData
 {
     public interface IProgressReader
     {

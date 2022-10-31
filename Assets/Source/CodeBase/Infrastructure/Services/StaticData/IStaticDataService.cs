@@ -1,7 +1,7 @@
-﻿using EpicRPG.Characters.Enemy;
-using EpicRPG.Items;
-using EpicRPG.Services;
-using EpicRPG.StaticData;
+﻿using SimpleRPG.Characters.Enemy;
+using SimpleRPG.Items;
+using SimpleRPG.Services;
+using SimpleRPG.StaticData;
 
 public interface IStaticDataService : IService
 {

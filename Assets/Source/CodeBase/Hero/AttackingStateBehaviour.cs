@@ -1,4 +1,4 @@
-using EpicRPG.Hero;
+using SimpleRPG.Hero;
 using UnityEngine;
 
 public class AttackingStateBehaviour : StateMachineBehaviour

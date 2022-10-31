@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace EpicRPG.Characters
+namespace SimpleRPG.Characters
 {
     public class Health : MonoBehaviour
     {

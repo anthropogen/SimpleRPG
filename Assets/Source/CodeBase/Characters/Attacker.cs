@@ -1,7 +1,8 @@
-using EpicRPG.StaticData;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.StaticData;
 using UnityEngine;
 
-namespace EpicRPG.Characters
+namespace SimpleRPG.Characters
 {
     public class Attacker : GameEntity
     {

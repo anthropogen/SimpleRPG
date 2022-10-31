@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EpicRPG.Services.PersistentData
+namespace SimpleRPG.Services.PersistentData
 {
     [Serializable]
     public class KillData

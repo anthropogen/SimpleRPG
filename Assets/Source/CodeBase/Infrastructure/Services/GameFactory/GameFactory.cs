@@ -1,15 +1,15 @@
-﻿using EpicRPG.Characters.Enemies;
-using EpicRPG.Characters.Enemy;
-using EpicRPG.Hero;
-using EpicRPG.Items;
-using EpicRPG.Levels;
-using EpicRPG.Services.AssetManagement;
-using EpicRPG.Services.PersistentData;
+﻿using SimpleRPG.Characters.Enemies;
+using SimpleRPG.Characters.Enemy;
+using SimpleRPG.Hero;
+using SimpleRPG.Items;
+using SimpleRPG.Levels;
+using SimpleRPG.Services.AssetManagement;
+using SimpleRPG.Services.PersistentData;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace EpicRPG.Services.GameFactory
+namespace SimpleRPG.Services.GameFactory
 {
     public class GameFactory : IGameFactory
     {

@@ -1,4 +1,4 @@
-﻿namespace EpicRPG.Characters.Enemy
+﻿namespace SimpleRPG.Characters.Enemy
 {
     public enum EnemyTypeID
     {

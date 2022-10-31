@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EpicRPG.Items
+namespace SimpleRPG.Items
 {
     public abstract class WeaponItem : InventoryItem
     {

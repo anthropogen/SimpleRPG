@@ -1,5 +1,5 @@
-﻿using EpicRPG.Levels;
-using EpicRPG.StaticData;
+﻿using SimpleRPG.Levels;
+using SimpleRPG.StaticData;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;

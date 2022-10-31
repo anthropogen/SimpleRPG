@@ -1,6 +1,7 @@
+using SimpleRPG.Infrastructure;
 using UnityEngine;
 
-namespace EpicRPG.EntityFSM
+namespace SimpleRPG.EntityFSM
 {
     public abstract class EntityStateMachine<TState> : GameEntity where TState : EntityState
     {

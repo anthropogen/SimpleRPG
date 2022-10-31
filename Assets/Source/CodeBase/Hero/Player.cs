@@ -1,10 +1,11 @@
-using EpicRPG.Characters;
-using EpicRPG.Services.PersistentData;
+using SimpleRPG.Characters;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.Services.PersistentData;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public class Player : GameEntity, ISavable
     {

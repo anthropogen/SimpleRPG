@@ -1,10 +1,10 @@
-﻿using EpicRPG.EntityFSM;
-using EpicRPG.Hero;
-using EpicRPG.StaticData;
+﻿using SimpleRPG.EntityFSM;
+using SimpleRPG.Hero;
+using SimpleRPG.StaticData;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace EpicRPG.Characters.Enemies
+namespace SimpleRPG.Characters.Enemies
 {
     public abstract class EnemyState : EntityState
     {

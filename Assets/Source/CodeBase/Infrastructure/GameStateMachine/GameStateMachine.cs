@@ -1,12 +1,12 @@
-using EpicRPG.Services;
-using EpicRPG.Services.GameFactory;
-using EpicRPG.Services.PersistentData;
-using EpicRPG.Services.SaveLoad;
-using EpicRPG.UI;
+using SimpleRPG.Services;
+using SimpleRPG.Services.GameFactory;
+using SimpleRPG.Services.PersistentData;
+using SimpleRPG.Services.SaveLoad;
+using SimpleRPG.UI;
 using System;
 using System.Collections.Generic;
 
-namespace EpicRPG.Infrastructure.GameStateMachine
+namespace SimpleRPG.Infrastructure.GameStateMachine
 {
     public class GameStateMachine
     {

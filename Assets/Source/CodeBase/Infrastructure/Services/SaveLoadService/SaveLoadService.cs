@@ -1,8 +1,8 @@
-﻿using EpicRPG.Services.GameFactory;
-using EpicRPG.Services.PersistentData;
+﻿using SimpleRPG.Services.GameFactory;
+using SimpleRPG.Services.PersistentData;
 using UnityEngine;
 
-namespace EpicRPG.Services.SaveLoad
+namespace SimpleRPG.Services.SaveLoad
 {
     public class SaveLoadService : ISaveLoadService
     {

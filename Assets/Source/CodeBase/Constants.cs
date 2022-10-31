@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EpicRPG
+namespace SimpleRPG
 {
     public static class AnimationConstants
     {

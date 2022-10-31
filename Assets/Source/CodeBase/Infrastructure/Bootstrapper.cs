@@ -1,7 +1,7 @@
-using EpicRPG.UI;
+using SimpleRPG.UI;
 using UnityEngine;
 
-namespace EpicRPG.Infrastructure
+namespace SimpleRPG.Infrastructure
 {
     public class Bootstrapper : MonoBehaviour, ICoroutineStarter
     {

@@ -1,6 +1,6 @@
-﻿using EpicRPG.Services.PersistentData;
+﻿using SimpleRPG.Services.PersistentData;
 
-namespace EpicRPG.Services.SaveLoad
+namespace SimpleRPG.Services.SaveLoad
 {
     public interface ISaveLoadService : IService
     {

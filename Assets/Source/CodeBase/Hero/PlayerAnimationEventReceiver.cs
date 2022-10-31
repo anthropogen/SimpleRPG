@@ -1,6 +1,7 @@
-﻿using System;
+﻿using SimpleRPG.Infrastructure;
+using System;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public class PlayerAnimationEventReceiver : GameEntity
     {

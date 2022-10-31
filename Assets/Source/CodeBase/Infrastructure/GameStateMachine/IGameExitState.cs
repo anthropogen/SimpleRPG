@@ -1,4 +1,4 @@
-﻿namespace EpicRPG.Infrastructure.GameStateMachine
+﻿namespace SimpleRPG.Infrastructure.GameStateMachine
 {
     public interface IGameExitState
     {

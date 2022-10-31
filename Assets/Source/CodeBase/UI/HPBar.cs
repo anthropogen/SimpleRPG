@@ -1,7 +1,8 @@
+using SimpleRPG.Infrastructure;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace EpicRPG.UI
+namespace SimpleRPG.UI
 {
     public class HPBar : GameEntity
     {

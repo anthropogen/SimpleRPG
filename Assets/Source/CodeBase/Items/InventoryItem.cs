@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EpicRPG.Items
+namespace SimpleRPG.Items
 {
     [CreateAssetMenu(fileName = "newItem", menuName = "Items/New Item", order = 51)]
     public class InventoryItem : ScriptableObject

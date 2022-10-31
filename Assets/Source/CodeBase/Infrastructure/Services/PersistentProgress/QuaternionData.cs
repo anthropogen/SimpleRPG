@@ -1,4 +1,4 @@
-﻿namespace EpicRPG.Services.PersistentData
+﻿namespace SimpleRPG.Services.PersistentData
 {
     public class QuaternionData
     {

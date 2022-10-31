@@ -1,8 +1,8 @@
-﻿using EpicRPG.Levels;
+﻿using SimpleRPG.Levels;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EpicRPG.StaticData
+namespace SimpleRPG.StaticData
 {
     [CreateAssetMenu(fileName = "LevelData", menuName = "Static Data/Level")]
     public class LevelStaticData : ScriptableObject

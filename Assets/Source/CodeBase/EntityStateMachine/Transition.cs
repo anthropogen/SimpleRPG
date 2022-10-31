@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EpicRPG.EntityFSM
+namespace SimpleRPG.EntityFSM
 {
     public abstract class Transition : MonoBehaviour
     {

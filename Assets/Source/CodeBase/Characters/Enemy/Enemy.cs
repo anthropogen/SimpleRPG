@@ -1,11 +1,12 @@
-using EpicRPG.Hero;
-using EpicRPG.StaticData;
-using EpicRPG.UI;
+using SimpleRPG.Hero;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.StaticData;
+using SimpleRPG.UI;
 using System;
 using System.Collections;
 using UnityEngine;
 
-namespace EpicRPG.Characters.Enemies
+namespace SimpleRPG.Characters.Enemies
 {
     [RequireComponent(typeof(EnemyStateMachine))]
     public class Enemy : GameEntity

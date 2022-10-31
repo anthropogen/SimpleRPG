@@ -1,11 +1,11 @@
-﻿using EpicRPG.Services;
-using EpicRPG.Services.AssetManagement;
-using EpicRPG.Services.GameFactory;
-using EpicRPG.Services.PersistentData;
-using EpicRPG.Services.SaveLoad;
+﻿using SimpleRPG.Services;
+using SimpleRPG.Services.AssetManagement;
+using SimpleRPG.Services.GameFactory;
+using SimpleRPG.Services.PersistentData;
+using SimpleRPG.Services.SaveLoad;
 using UnityEngine;
 
-namespace EpicRPG.Infrastructure.GameStateMachine
+namespace SimpleRPG.Infrastructure.GameStateMachine
 {
     public class BootstrapState : IGameEnterState
     {

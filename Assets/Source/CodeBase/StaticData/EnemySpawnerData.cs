@@ -1,8 +1,8 @@
-﻿using EpicRPG.Characters.Enemy;
+﻿using SimpleRPG.Characters.Enemy;
 using System;
 using UnityEngine;
 
-namespace EpicRPG.StaticData
+namespace SimpleRPG.StaticData
 {
     [Serializable]
     public class EnemySpawnerData

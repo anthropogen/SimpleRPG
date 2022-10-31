@@ -1,7 +1,7 @@
-using EpicRPG.EntityFSM;
+using SimpleRPG.EntityFSM;
 using UnityEngine;
 
-namespace EpicRPG.Characters.Enemies
+namespace SimpleRPG.Characters.Enemies
 {
     public abstract class EnemyTransition : Transition
     {

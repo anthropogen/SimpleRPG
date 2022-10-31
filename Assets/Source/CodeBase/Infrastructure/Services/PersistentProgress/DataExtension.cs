@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EpicRPG.Services.PersistentData
+namespace SimpleRPG.Services.PersistentData
 {
     public static class DataExtension
     {

@@ -1,6 +1,6 @@
-﻿using EpicRPG.Services.PersistentData;
+﻿using SimpleRPG.Services.PersistentData;
 
-namespace EpicRPG.Characters
+namespace SimpleRPG.Characters
 {
     public class PlayerHealth : Health, ISavable
     {

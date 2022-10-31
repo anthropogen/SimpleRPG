@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace EpicRPG.EntityFSM
+namespace SimpleRPG.EntityFSM
 {
     public abstract class EntityState : MonoBehaviour, IEntityState
     {

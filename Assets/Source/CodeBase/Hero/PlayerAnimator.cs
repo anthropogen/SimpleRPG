@@ -1,7 +1,8 @@
-﻿using EpicRPG.Characters;
+﻿using SimpleRPG.Characters;
+using SimpleRPG.Infrastructure;
 using UnityEngine;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public class PlayerAnimator : GameEntity
     {

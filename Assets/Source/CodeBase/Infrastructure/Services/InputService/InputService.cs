@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EpicRPG.Services
+namespace SimpleRPG.Services
 {
     public abstract class InputService : IInputService
     {

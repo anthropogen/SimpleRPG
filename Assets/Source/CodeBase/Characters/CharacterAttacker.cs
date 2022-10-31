@@ -1,11 +1,12 @@
-using EpicRPG.Hero;
-using EpicRPG.Items;
-using EpicRPG.Services;
-using EpicRPG.Services.GameFactory;
-using EpicRPG.Services.PersistentData;
+using SimpleRPG.Hero;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.Items;
+using SimpleRPG.Services;
+using SimpleRPG.Services.GameFactory;
+using SimpleRPG.Services.PersistentData;
 using UnityEngine;
 
-namespace EpicRPG.Characters
+namespace SimpleRPG.Characters
 {
     public class CharacterAttacker : GameEntity, ISavable
     {

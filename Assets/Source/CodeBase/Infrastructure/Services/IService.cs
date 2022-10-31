@@ -1,4 +1,4 @@
-﻿namespace EpicRPG.Services
+﻿namespace SimpleRPG.Services
 {
     public interface IService { }
 }

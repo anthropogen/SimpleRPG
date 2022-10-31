@@ -1,14 +1,14 @@
-﻿using EpicRPG.Characters;
-using EpicRPG.Hero;
-using EpicRPG.Levels;
-using EpicRPG.Services.GameFactory;
-using EpicRPG.Services.PersistentData;
-using EpicRPG.StaticData;
-using EpicRPG.UI;
+﻿using SimpleRPG.Characters;
+using SimpleRPG.Hero;
+using SimpleRPG.Levels;
+using SimpleRPG.Services.GameFactory;
+using SimpleRPG.Services.PersistentData;
+using SimpleRPG.StaticData;
+using SimpleRPG.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace EpicRPG.Infrastructure.GameStateMachine
+namespace SimpleRPG.Infrastructure.GameStateMachine
 {
     public class LoadLevelState : IGameEnterParamState<string>
     {

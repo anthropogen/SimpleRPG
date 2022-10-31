@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EpicRPG.Characters.Enemies
+namespace SimpleRPG.Characters.Enemies
 {
     public class IdleEnemyState : EnemyState
     {

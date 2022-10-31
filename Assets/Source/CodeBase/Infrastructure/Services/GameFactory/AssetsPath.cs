@@ -1,4 +1,4 @@
-﻿namespace EpicRPG.Services.AssetManagement
+﻿namespace SimpleRPG.Services.AssetManagement
 {
     public static class AssetsPath
     {

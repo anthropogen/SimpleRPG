@@ -1,4 +1,4 @@
-namespace EpicRPG
+namespace SimpleRPG
 {
     public class LazyInitializy<T>
     {

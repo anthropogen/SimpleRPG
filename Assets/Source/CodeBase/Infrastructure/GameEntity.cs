@@ -1,37 +1,39 @@
-using EpicRPG.Infrastructure;
 using UnityEngine;
 
-public abstract class GameEntity : MonoBehaviour
+namespace SimpleRPG.Infrastructure
 {
-    private void OnEnable()
+    public abstract class GameEntity : MonoBehaviour
     {
-        if (GameUpdater.Instance != null)
+        private void OnEnable()
         {
-            GameUpdater.Instance.Loop += Loop;
-            GameUpdater.Instance.FixedLoop += FixedLoop;
-            GameUpdater.Instance.LateLoop += LateLoop;
-        }
-        else
-            throw new System.NullReferenceException("Doesn't have game updater");
+            if (GameUpdater.Instance != null)
+            {
+                GameUpdater.Instance.Loop += Loop;
+                GameUpdater.Instance.FixedLoop += FixedLoop;
+                GameUpdater.Instance.LateLoop += LateLoop;
+            }
+            else
+                throw new System.NullReferenceException("Doesn't have game updater");
 
-        Enable();
-    }
-
-    private void OnDisable()
-    {
-        if (GameUpdater.Instance != null)
-        {
-            GameUpdater.Instance.Loop -= Loop;
-            GameUpdater.Instance.FixedLoop -= FixedLoop;
-            GameUpdater.Instance.LateLoop -= LateLoop;
+            Enable();
         }
 
-        Disable();
-    }
+        private void OnDisable()
+        {
+            if (GameUpdater.Instance != null)
+            {
+                GameUpdater.Instance.Loop -= Loop;
+                GameUpdater.Instance.FixedLoop -= FixedLoop;
+                GameUpdater.Instance.LateLoop -= LateLoop;
+            }
 
-    protected virtual void Enable() { }
-    protected virtual void Loop() { }
-    protected virtual void FixedLoop() { }
-    protected virtual void LateLoop() { }
-    protected virtual void Disable() { }
+            Disable();
+        }
+
+        protected virtual void Enable() { }
+        protected virtual void Loop() { }
+        protected virtual void FixedLoop() { }
+        protected virtual void LateLoop() { }
+        protected virtual void Disable() { }
+    }
 }

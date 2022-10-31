@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using SimpleRPG.Infrastructure;
+using UnityEngine;
 
-namespace EpicRPG.UI
+namespace SimpleRPG.UI
 {
     public class LookAtCamera : GameEntity
     {

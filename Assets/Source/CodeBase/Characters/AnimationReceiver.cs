@@ -1,6 +1,7 @@
+using SimpleRPG.Infrastructure;
 using System;
 
-namespace EpicRPG.Characters
+namespace SimpleRPG.Characters
 {
     public class AnimationReceiver : GameEntity
     {

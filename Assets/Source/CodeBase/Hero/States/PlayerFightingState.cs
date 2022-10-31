@@ -1,8 +1,8 @@
-﻿using EpicRPG.Characters;
-using EpicRPG.Services;
+﻿using SimpleRPG.Characters;
+using SimpleRPG.Services;
 using UnityEngine;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public class PlayerFightingState : PlayerState
     {

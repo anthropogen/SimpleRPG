@@ -1,6 +1,7 @@
-﻿using EpicRPG.Characters.Enemy;
+﻿using SimpleRPG.Characters.Enemy;
+using SimpleRPG.Infrastructure;
 
-namespace EpicRPG.Levels
+namespace SimpleRPG.Levels
 {
     public class EnemySpawnMarker : GameEntity
     {

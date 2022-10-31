@@ -1,8 +1,8 @@
-﻿using EpicRPG.Services;
-using EpicRPG.Infrastructure.GameStateMachine;
-using EpicRPG.UI;
+﻿using SimpleRPG.Services;
+using SimpleRPG.Infrastructure.GameStateMachine;
+using SimpleRPG.UI;
 
-namespace EpicRPG.Infrastructure
+namespace SimpleRPG.Infrastructure
 {
     public class Game
     {

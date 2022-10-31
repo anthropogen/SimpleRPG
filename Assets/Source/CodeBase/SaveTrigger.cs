@@ -1,5 +1,6 @@
-using EpicRPG.Services;
-using EpicRPG.Services.SaveLoad;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.Services;
+using SimpleRPG.Services.SaveLoad;
 using UnityEngine;
 
 public class SaveTrigger : GameEntity

@@ -1,4 +1,4 @@
-﻿namespace EpicRPG.Characters.Enemies
+﻿namespace SimpleRPG.Characters.Enemies
 {
     public class ChaseEnemyState : EnemyState
     {

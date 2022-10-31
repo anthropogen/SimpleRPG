@@ -1,6 +1,6 @@
-﻿using EpicRPG.EntityFSM;
+﻿using SimpleRPG.EntityFSM;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public abstract class PlayerTransition:Transition
     {

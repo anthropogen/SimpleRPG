@@ -1,7 +1,8 @@
-using EpicRPG.Services;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.Services;
 using UnityEngine;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public class PlayerMover : GameEntity
     {

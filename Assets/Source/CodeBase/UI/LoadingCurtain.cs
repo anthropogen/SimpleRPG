@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace EpicRPG.UI
+namespace SimpleRPG.UI
 {
     public class LoadingCurtain : MonoBehaviour
     {

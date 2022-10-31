@@ -1,4 +1,4 @@
-﻿namespace EpicRPG.EntityFSM
+﻿namespace SimpleRPG.EntityFSM
 {
     public interface IEntityState
     {

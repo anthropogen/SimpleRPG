@@ -1,9 +1,10 @@
-using EpicRPG.Characters.Enemies;
-using EpicRPG.Characters.Enemy;
-using EpicRPG.Services.GameFactory;
-using EpicRPG.Services.PersistentData;
+using SimpleRPG.Characters.Enemies;
+using SimpleRPG.Characters.Enemy;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.Services.GameFactory;
+using SimpleRPG.Services.PersistentData;
 
-namespace EpicRPG.Levels
+namespace SimpleRPG.Levels
 {
     public class EnemySpawner : GameEntity, ISavable
     {

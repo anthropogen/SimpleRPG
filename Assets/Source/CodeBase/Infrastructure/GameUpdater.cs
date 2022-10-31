@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace EpicRPG.Infrastructure
+namespace SimpleRPG.Infrastructure
 {
     public class GameUpdater : MonoBehaviour
     {

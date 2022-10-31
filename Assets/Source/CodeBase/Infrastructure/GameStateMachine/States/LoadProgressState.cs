@@ -1,9 +1,9 @@
-﻿using EpicRPG.Services.PersistentData;
-using EpicRPG.Services.SaveLoad;
+﻿using SimpleRPG.Services.PersistentData;
+using SimpleRPG.Services.SaveLoad;
 using System;
 using UnityEngine;
 
-namespace EpicRPG.Infrastructure.GameStateMachine
+namespace SimpleRPG.Infrastructure.GameStateMachine
 {
     public class LoadProgressState : IGameEnterState
     {

@@ -1,7 +1,7 @@
-using EpicRPG.Services;
+using SimpleRPG.Services;
 using UnityEngine;
 
-namespace EpicRPG.Hero
+namespace SimpleRPG.Hero
 {
     public class AttackTransition : PlayerTransition
     {

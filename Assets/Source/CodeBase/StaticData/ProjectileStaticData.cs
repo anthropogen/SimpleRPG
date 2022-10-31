@@ -1,10 +1,10 @@
-using EpicRPG.Items;
+using SimpleRPG.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace EpicRPG.StaticData
+namespace SimpleRPG.StaticData
 {
     [CreateAssetMenu(fileName = "newProjectileData", menuName = "Static Data/Projectiles")]
     public class ProjectileStaticData : ScriptableObject

@@ -1,4 +1,4 @@
-﻿namespace EpicRPG.Items
+﻿namespace SimpleRPG.Items
 {
     public enum ProjectileType
     {

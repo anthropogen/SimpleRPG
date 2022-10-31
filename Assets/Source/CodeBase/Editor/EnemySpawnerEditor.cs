@@ -1,4 +1,4 @@
-using EpicRPG.Levels;
+using SimpleRPG.Levels;
 using UnityEditor;
 using UnityEngine;
 

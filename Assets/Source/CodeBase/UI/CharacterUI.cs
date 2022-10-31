@@ -1,7 +1,7 @@
-﻿using EpicRPG.Characters;
+﻿using SimpleRPG.Characters;
 using UnityEngine;
 
-namespace EpicRPG.UI
+namespace SimpleRPG.UI
 {
     public class CharacterUI : MonoBehaviour
     {

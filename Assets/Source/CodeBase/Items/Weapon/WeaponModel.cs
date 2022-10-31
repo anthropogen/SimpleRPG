@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using SimpleRPG.Infrastructure;
+using UnityEngine;
 
-namespace EpicRPG.Items
+namespace SimpleRPG.Items
 {
     public class WeaponModel : GameEntity
     {

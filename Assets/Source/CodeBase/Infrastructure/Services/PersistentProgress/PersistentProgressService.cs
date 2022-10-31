@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine.SceneManagement;
 
-namespace EpicRPG.Services.PersistentData
+namespace SimpleRPG.Services.PersistentData
 {
     public class PersistentProgressService : IPersistentProgressService
     {

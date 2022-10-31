@@ -1,6 +1,6 @@
-using EpicRPG.Characters.Enemy;
-using EpicRPG.Items;
-using EpicRPG.StaticData;
+using SimpleRPG.Characters.Enemy;
+using SimpleRPG.Items;
+using SimpleRPG.StaticData;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;

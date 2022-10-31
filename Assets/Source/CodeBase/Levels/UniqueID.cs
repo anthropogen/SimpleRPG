@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using SimpleRPG.Infrastructure;
+using UnityEngine;
 
-namespace EpicRPG.Levels
+namespace SimpleRPG.Levels
 {
     public class UniqueID : GameEntity
     {

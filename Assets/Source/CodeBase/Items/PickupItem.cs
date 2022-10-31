@@ -1,9 +1,10 @@
-using EpicRPG.Characters;
-using EpicRPG.Levels;
-using EpicRPG.Services.PersistentData;
+using SimpleRPG.Characters;
+using SimpleRPG.Infrastructure;
+using SimpleRPG.Levels;
+using SimpleRPG.Services.PersistentData;
 using UnityEngine;
 
-namespace EpicRPG.Items
+namespace SimpleRPG.Items
 {
     [RequireComponent(typeof(BoxCollider))]
     public class PickupItem : GameEntity
