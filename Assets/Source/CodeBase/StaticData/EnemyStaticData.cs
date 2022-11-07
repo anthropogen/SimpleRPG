@@ -1,9 +1,7 @@
-using SimpleRPG.Characters.Enemies;
 using SimpleRPG.Characters.Enemy;
 using SimpleRPG.Items;
-using SimpleRPG.Levels;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace SimpleRPG.StaticData
 {
@@ -16,6 +14,6 @@ namespace SimpleRPG.StaticData
         [field: SerializeField, Range(1, 1000)] public float Delay { get; private set; }
         [field: SerializeField] public InventoryItem ItemToSpawn { get; private set; }
         [field: SerializeField] public EnemyTypeID TypeID { get; private set; }
-        [field: SerializeField] public Enemy Prefab { get; private set; }
+        [field: SerializeField] public AssetReferenceGameObject Prefab { get; private set; }
     }
 }

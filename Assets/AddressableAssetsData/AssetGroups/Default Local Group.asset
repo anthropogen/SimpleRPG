@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 602a7b0c376117a43ac8e3e779531361
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 21e25b598f485e642a9aaf0f769c1638
+    m_Address: Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d38b1e53b1c066a4ab9720c82b8ea42c, type: 2}
   m_SchemaSet:

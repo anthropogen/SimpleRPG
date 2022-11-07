@@ -40,9 +40,10 @@ namespace SimpleRPG.Levels
                 Spawn();
         }
 
-        private void Spawn()
+        private async void Spawn()
         {
-            enemy = factory.CreateEnemy(EnemyTypeID, transform);
+            var enemyObject = await factory.CreateEnemy(EnemyTypeID, transform);
+            enemy = enemyObject.GetComponent<Enemy>();
             enemy.GetComponent<LootSpawner>().SaveId = SaveID;
             enemy.EnemyDeath += OnEnemyDeath;
         }

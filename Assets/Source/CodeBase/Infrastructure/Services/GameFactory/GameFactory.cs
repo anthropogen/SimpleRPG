@@ -7,6 +7,7 @@ using SimpleRPG.Levels;
 using SimpleRPG.Services.AssetManagement;
 using SimpleRPG.Services.PersistentData;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -42,12 +43,16 @@ namespace SimpleRPG.Services.GameFactory
         public GameObject CreateHUD()
             => InstantiateRegisteredObject(AssetsPath.HUD);
 
-        public Enemy CreateEnemy(EnemyTypeID enemyTypeID, Transform parent)
+        public async Task<GameObject> CreateEnemy(EnemyTypeID enemyTypeID, Transform parent)
         {
             var data = staticData.GetDataForEnemy(enemyTypeID);
-            var enemy = GameObject.Instantiate<Enemy>(data.Prefab, parent.position, Quaternion.identity, parent);
+
+            var prefab = await data.Prefab.LoadAssetAsync().Task;
+
+            var enemy = GameObject.Instantiate(prefab, parent.position, Quaternion.identity, parent);
+
             enemy.GetComponent<NavMeshAgent>().speed = data.Speed;
-            enemy.Construct(data, LazyPlayer);
+            enemy.GetComponent<Enemy>().Construct(data, LazyPlayer);
             enemy.GetComponent<LootSpawner>().Construct(this, data.ItemToSpawn);
             return enemy;
         }

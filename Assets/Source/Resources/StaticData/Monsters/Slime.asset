@@ -16,7 +16,10 @@ MonoBehaviour:
   <Damage>k__BackingField: 2
   <Speed>k__BackingField: 2
   <Delay>k__BackingField: 1
-  <ItemsToSpawn>k__BackingField:
-  - {fileID: 11400000, guid: 623569a194b83474a85017b506a3d194, type: 2}
+  <ItemToSpawn>k__BackingField: {fileID: 0}
   <TypeID>k__BackingField: 0
-  <Prefab>k__BackingField: {fileID: 3569842457594150820, guid: 21e25b598f485e642a9aaf0f769c1638, type: 3}
+  <Prefab>k__BackingField:
+    m_AssetGUID: 21e25b598f485e642a9aaf0f769c1638
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

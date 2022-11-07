@@ -5,6 +5,7 @@ using SimpleRPG.Items;
 using SimpleRPG.Levels;
 using SimpleRPG.Services.PersistentData;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace SimpleRPG.Services.GameFactory
@@ -16,7 +17,7 @@ namespace SimpleRPG.Services.GameFactory
         GameObject HeroGameObject { get; }
         LazyInitializy<Player> LazyPlayer { get; }
         void CleanUp();
-        Enemy CreateEnemy(EnemyTypeID enemyTypeID, Transform transform);
+        Task<GameObject> CreateEnemy(EnemyTypeID enemyTypeID, Transform transform);
         GameObject CreateHero();
         GameObject CreateHUD();
         LevelTransfer CreateLevelTransfer(Vector3 position, string nextLevel);
