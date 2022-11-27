@@ -25,14 +25,14 @@ namespace SimpleRPG.Levels
                 progress.KillData.ClearedSpawners.Add(SaveID);
         }
 
-        public void LoadProgress(PersistentProgress progress)
+        public async void LoadProgress(PersistentProgress progress)
         {
             if (progress.KillData.ClearedSpawners.Contains(SaveID))
             {
                 enemyIsDied = true;
                 if (!progress.WorldData.LootData.PickedItems.ContainsKey(SaveID))
                 {
-                    var loot = factory.CreateLootFor(EnemyTypeID);
+                    var loot = await factory.CreateLootFor(EnemyTypeID);
                     loot.SaveID = SaveID;
                 }
             }

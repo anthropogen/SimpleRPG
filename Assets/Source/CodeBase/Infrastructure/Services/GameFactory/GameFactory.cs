@@ -9,6 +9,7 @@ using SimpleRPG.Services.PersistentData;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.AI;
 
 namespace SimpleRPG.Services.GameFactory
@@ -33,21 +34,36 @@ namespace SimpleRPG.Services.GameFactory
             this.gameStateMachine = gameStateMachine;
         }
 
-        public GameObject CreateHero()
+        public async void WarmUp()
         {
-            HeroGameObject = InstantiateRegisteredObject(AssetsPath.Player);
+            await assets.Load<GameObject>(AssetsAddress.Loot);
+            await assets.Load<GameObject>(AssetsAddress.Spawner);
+            await assets.Load<GameObject>(AssetsAddress.HUD);
+            await assets.Load<GameObject>(AssetsAddress.LevelTransfer);
+            await assets.Load<GameObject>(AssetsAddress.Player);
+        }
+
+        public async Task<GameObject> CreateHero()
+        {
+            var template = await assets.Load<GameObject>(AssetsAddress.Player);
+            HeroGameObject = InstantiateRegisteredObject(template);
             LazyPlayer.Value = HeroGameObject.GetComponent<Player>();
             return HeroGameObject;
         }
 
-        public GameObject CreateHUD()
-            => InstantiateRegisteredObject(AssetsPath.HUD);
+        public async Task<GameObject> CreateHUD()
+        {
+            var prefab = await assets.Load<GameObject>(AssetsAddress.HUD);
+            return InstantiateRegisteredObject(prefab);
+        }
 
         public async Task<GameObject> CreateEnemy(EnemyTypeID enemyTypeID, Transform parent)
         {
             var data = staticData.GetDataForEnemy(enemyTypeID);
 
-            var prefab = await data.Prefab.LoadAssetAsync().Task;
+            var handle = Addressables.LoadAssetAsync<GameObject>(data.Prefab);
+            var prefab = await handle.Task;
+            Addressables.Release(handle);
 
             var enemy = GameObject.Instantiate(prefab, parent.position, Quaternion.identity, parent);
 
@@ -61,6 +77,7 @@ namespace SimpleRPG.Services.GameFactory
         {
             ProgressReaders.Clear();
             Savables.Clear();
+            assets.Cleanup();
         }
 
         public void Register(IProgressReader reader)
@@ -70,16 +87,16 @@ namespace SimpleRPG.Services.GameFactory
             ProgressReaders.Add(reader);
         }
 
-        private GameObject InstantiateRegisteredObject(string path)
+        private GameObject InstantiateRegisteredObject(GameObject template)
         {
-            var regObject = assets.Instantiate(path);
+            var regObject = GameObject.Instantiate(template);
             RegisterProgressWatchers(regObject);
             return regObject;
         }
 
-        private GameObject InstantiateRegisteredObject(string path, Vector3 position)
+        private GameObject InstantiateRegisteredObject(GameObject template, Vector3 position)
         {
-            var regObject = assets.InstantiateAt(path, position);
+            var regObject = GameObject.Instantiate(template, position, Quaternion.identity); ;
             RegisterProgressWatchers(regObject);
             return regObject;
         }
@@ -99,35 +116,38 @@ namespace SimpleRPG.Services.GameFactory
             return GameObject.Instantiate(template);
         }
 
-        public PickupItem CreateLoot(InventoryItem itemToSpawn)
+        public async Task<PickupItem> CreateLoot(InventoryItem itemToSpawn)
         {
-            var pickUp = InstantiateRegisteredObject(AssetsPath.Loot).GetComponent<PickupItem>();
+            var template = await assets.Load<GameObject>(AssetsAddress.Loot);
+            var pickUp = InstantiateRegisteredObject(template).GetComponent<PickupItem>();
             pickUp.Construct(progressService.Progress);
             pickUp.Item = itemToSpawn;
             return pickUp;
         }
 
-        public PickupItem CreateLootFor(EnemyTypeID enemyTypeID)
+        public async Task<PickupItem> CreateLootFor(EnemyTypeID enemyTypeID)
         {
-            var pickUp = InstantiateRegisteredObject(AssetsPath.Loot).GetComponent<PickupItem>();
+            var template = await assets.Load<GameObject>(AssetsAddress.Loot);
+            var pickUp = InstantiateRegisteredObject(template).GetComponent<PickupItem>();
             pickUp.Construct(progressService.Progress);
             pickUp.Item = staticData.GetDataForEnemy(enemyTypeID).ItemToSpawn;
             return pickUp;
         }
 
-        public EnemySpawner CreateSpawner(Vector3 position, EnemyTypeID enemyType, string ID)
+        public async Task<EnemySpawner> CreateSpawner(Vector3 position, EnemyTypeID enemyType, string ID)
         {
-            var spawner = InstantiateRegisteredObject(AssetsPath.Spawner).GetComponent<EnemySpawner>();
+            var template = await assets.Load<GameObject>(AssetsAddress.Spawner);
+            var spawner = InstantiateRegisteredObject(template, position).GetComponent<EnemySpawner>();
             spawner.Construct(this);
-            spawner.transform.position = position;
             spawner.EnemyTypeID = enemyType;
             spawner.SaveID = ID;
             return spawner;
         }
 
-        public LevelTransfer CreateLevelTransfer(Vector3 position, string nextLevel)
+        public async Task<LevelTransfer> CreateLevelTransfer(Vector3 position, string nextLevel)
         {
-            var levelTransfer = InstantiateRegisteredObject(AssetsPath.LevelTransfer).GetComponent<LevelTransfer>();
+            var template = await assets.Load<GameObject>(AssetsAddress.LevelTransfer);
+            var levelTransfer = InstantiateRegisteredObject(template).GetComponent<LevelTransfer>();
             levelTransfer.Construct(gameStateMachine, nextLevel);
             levelTransfer.transform.position = position;
             return levelTransfer;

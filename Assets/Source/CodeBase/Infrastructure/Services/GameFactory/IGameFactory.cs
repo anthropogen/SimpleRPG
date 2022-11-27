@@ -18,13 +18,14 @@ namespace SimpleRPG.Services.GameFactory
         LazyInitializy<Player> LazyPlayer { get; }
         void CleanUp();
         Task<GameObject> CreateEnemy(EnemyTypeID enemyTypeID, Transform transform);
-        GameObject CreateHero();
-        GameObject CreateHUD();
-        LevelTransfer CreateLevelTransfer(Vector3 position, string nextLevel);
-        PickupItem CreateLoot(InventoryItem itemToSpawn);
-        PickupItem CreateLootFor(EnemyTypeID enemyTypeID);
+        Task<GameObject> CreateHero();
+        Task<GameObject> CreateHUD();
+        Task<LevelTransfer> CreateLevelTransfer(Vector3 position, string nextLevel);
+        Task<PickupItem> CreateLoot(InventoryItem itemToSpawn);
+        Task<PickupItem> CreateLootFor(EnemyTypeID enemyTypeID);
         Projectile CreateProjectile(ProjectileType projectileType);
-        EnemySpawner CreateSpawner(Vector3 position, EnemyTypeID enemyTypeID, string iD);
+        Task<EnemySpawner> CreateSpawner(Vector3 position, EnemyTypeID enemyTypeID, string iD);
         GameObject CreateWeapon(WeaponItem weapon);
+        void WarmUp();
     }
 }

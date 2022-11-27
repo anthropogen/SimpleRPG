@@ -19,6 +19,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             this.sceneLoader = sceneLoader;
             this.services = services;
             RegisterServices();
+            services.Single<IAssetProvider>().Initialize();
         }
 
         public void Enter()

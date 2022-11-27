@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace SimpleRPG.Services.AssetManagement
 {
     public interface IAssetProvider : IService
     {
-        GameObject Instantiate(string path);
-        GameObject InstantiateAt(string path, Vector3 position);
+        void Cleanup();
+        void Initialize();
+        Task<T> Load<T>(AssetReference reference) where T : class;
+        Task<T> Load<T>(string addres) where T : class;
     }
 }

@@ -5,6 +5,7 @@ using SimpleRPG.Services.PersistentData;
 using SimpleRPG.StaticData;
 using SimpleRPG.UI;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +32,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         public void Enter(string sceneName)
         {
             gameFactory.CleanUp();
+            gameFactory.WarmUp();
             sceneLoader.Load(sceneName, OnLoaded);
             curtain.Show();
         }
@@ -40,13 +42,13 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             curtain.Hide();
         }
 
-        private void OnLoaded()
+        private async void OnLoaded()
         {
             LevelStaticData levelData = GetLevelData();
 
-            InitSpawners(levelData);
-            InitLevelTransfers(levelData);
-            CreateHero(levelData);
+            await InitSpawners(levelData);
+           InitLevelTransfers(levelData);
+            await CreateHero(levelData);
             UpdateProgressReaders();
             gameStateMachine.Enter<GameLoopState>();
         }
@@ -66,11 +68,11 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             return levelData;
         }
 
-        private void InitSpawners(LevelStaticData levelData)
+        private async Task InitSpawners(LevelStaticData levelData)
         {
             foreach (var spawnerData in levelData.EnemySpawners)
             {
-                gameFactory.CreateSpawner(spawnerData.Position, spawnerData.EnemyTypeID, spawnerData.ID);
+              await  gameFactory.CreateSpawner(spawnerData.Position, spawnerData.EnemyTypeID, spawnerData.ID);
             }
         }
 
@@ -80,17 +82,17 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
                 readers.LoadProgress(progressService.Progress);
         }
 
-        private void CreateHero(LevelStaticData levelData)
+        private async Task CreateHero(LevelStaticData levelData)
         {
-            var hero = gameFactory.CreateHero();
+            var hero = await gameFactory.CreateHero();
             hero.transform.position = levelData.InitialPlayerPoint;
-            CreateHeroHUD(hero);
+            await CreateHeroHUD(hero);
             GameObject.FindObjectOfType<FollowingCamera>().SetTarget(hero.transform);
         }
 
-        private void CreateHeroHUD(GameObject hero)
+        private async Task CreateHeroHUD(GameObject hero)
         {
-            var hud = gameFactory.CreateHUD();
+            var hud = await gameFactory.CreateHUD();
             hud.GetComponent<CharacterUI>().Construct(hero.GetComponent<PlayerHealth>());
         }
     }

@@ -21,6 +21,26 @@ MonoBehaviour:
     m_Address: Slime
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 14b94e7e9684eb04f8ee99106bfd8cdb
+    m_Address: PickupItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d36120663e09dcd4fbb13aca7ee20987
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5fb9d950c738c394a9e3970896fdf519
+    m_Address: LevelTransfer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ac86fc8e092831c478a9afa56027e871
+    m_Address: SpawnPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3c017a92cf3b7fe4ba5a401d70643e0a
+    m_Address: HUD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d38b1e53b1c066a4ab9720c82b8ea42c, type: 2}
   m_SchemaSet:

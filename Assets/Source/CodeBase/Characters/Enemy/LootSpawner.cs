@@ -28,9 +28,9 @@ public class LootSpawner : GameEntity
         enemy.EnemyDeath -= OnEnemyDeath;
     }
 
-    public void SpawnLoot()
+    public async void SpawnLoot()
     {
-        var loot = gameFactory.CreateLoot(itemToSpawn);
+        var loot = await gameFactory.CreateLoot(itemToSpawn);
         loot.transform.position = transform.position + UnityEngine.Random.insideUnitSphere * 2;
         loot.SaveID = SaveId;
     }

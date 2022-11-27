@@ -1,6 +1,6 @@
 ﻿namespace SimpleRPG.Services.AssetManagement
 {
-    public static class AssetsPath
+    public static class AssetsAddress
     {
         public const string HUD = "HUD";
         public const string Player = "Player";
