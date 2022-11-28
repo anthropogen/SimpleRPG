@@ -2,7 +2,9 @@ using SimpleRPG.Characters.Enemies;
 using SimpleRPG.Infrastructure;
 using SimpleRPG.Items;
 using SimpleRPG.Services.GameFactory;
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LootSpawner : GameEntity
 {
@@ -10,7 +12,6 @@ public class LootSpawner : GameEntity
     public string SaveId;
     private IGameFactory gameFactory;
     private InventoryItem itemToSpawn;
-
     public void Construct(IGameFactory gameFactory, InventoryItem spawnItem)
     {
         this.gameFactory = gameFactory;
@@ -22,7 +23,6 @@ public class LootSpawner : GameEntity
         enemy.EnemyDeath += OnEnemyDeath;
     }
 
-
     protected override void Disable()
     {
         enemy.EnemyDeath -= OnEnemyDeath;
@@ -31,13 +31,13 @@ public class LootSpawner : GameEntity
     public async void SpawnLoot()
     {
         var loot = await gameFactory.CreateLoot(itemToSpawn);
-        loot.transform.position = transform.position + UnityEngine.Random.insideUnitSphere * 2;
+        loot.transform.position = transform.position + Random.insideUnitSphere * 2;
         loot.SaveID = SaveId;
     }
 
-    private void OnEnemyDeath(Enemy obj)
+    private void OnEnemyDeath(Enemy enemy)
     {
-        enemy.EnemyDeath -= OnEnemyDeath;
+        this.enemy.EnemyDeath -= OnEnemyDeath;
         SpawnLoot();
     }
 }

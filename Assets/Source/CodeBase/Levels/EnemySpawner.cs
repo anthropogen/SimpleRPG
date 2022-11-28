@@ -30,7 +30,7 @@ namespace SimpleRPG.Levels
             if (progress.KillData.ClearedSpawners.Contains(SaveID))
             {
                 enemyIsDied = true;
-                if (!progress.WorldData.LootData.PickedItems.ContainsKey(SaveID))
+                if (progress.WorldData.LootData.Has(SaveID) == false)
                 {
                     var loot = await factory.CreateLootFor(EnemyTypeID);
                     loot.SaveID = SaveID;
@@ -52,7 +52,9 @@ namespace SimpleRPG.Levels
         {
             enemyIsDied = true;
             if (enemy != null)
+            {
                 enemy.EnemyDeath -= OnEnemyDeath;
+            }
         }
 
         private void OnDestroy()
