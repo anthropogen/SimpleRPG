@@ -4,7 +4,6 @@ using SimpleRPG.Services.GameFactory;
 using SimpleRPG.Services.PersistentData;
 using SimpleRPG.StaticData;
 using SimpleRPG.UI;
-using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,9 +16,10 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         private readonly SceneLoader sceneLoader;
         private readonly LoadingCurtain curtain;
         private readonly IGameFactory gameFactory;
+        private readonly IUIFactory uiFactory;
         private readonly IPersistentProgressService progressService;
         private readonly IStaticDataService staticData;
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory = null)
         {
             this.gameStateMachine = gameStateMachine;
             this.sceneLoader = sceneLoader;
@@ -27,6 +27,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             this.gameFactory = gameFactory;
             this.progressService = progressService;
             this.staticData = staticData;
+            this.uiFactory = uiFactory;
         }
 
         public void Enter(string sceneName)
@@ -47,7 +48,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             LevelStaticData levelData = GetLevelData();
 
             await InitSpawners(levelData);
-           InitLevelTransfers(levelData);
+            InitLevelTransfers(levelData);
             await CreateHero(levelData);
             UpdateProgressReaders();
             gameStateMachine.Enter<GameLoopState>();
@@ -72,7 +73,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         {
             foreach (var spawnerData in levelData.EnemySpawners)
             {
-              await  gameFactory.CreateSpawner(spawnerData.Position, spawnerData.EnemyTypeID, spawnerData.ID);
+                await gameFactory.CreateSpawner(spawnerData.Position, spawnerData.EnemyTypeID, spawnerData.ID);
             }
         }
 
@@ -92,7 +93,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
 
         private async Task CreateHeroHUD(GameObject hero)
         {
-            var hud = await gameFactory.CreateHUD();
+            var hud = await uiFactory.CreateHUD();
             hud.GetComponent<CharacterUI>().Construct(hero.GetComponent<PlayerHealth>());
         }
     }

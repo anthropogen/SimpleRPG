@@ -22,7 +22,8 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, container),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, container.Single<IPersistentProgressService>(), container.Single<ISaveLoadService>()),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, container.Single<IGameFactory>(), container.Single<IPersistentProgressService>(), container.Single<IStaticDataService>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain,
+                container.Single<IGameFactory>(), container.Single<IPersistentProgressService>(), container.Single<IStaticDataService>(), container.Single<IUIFactory>()),
                 [typeof(GameLoopState)] = new GameLoopState()
             };
         }

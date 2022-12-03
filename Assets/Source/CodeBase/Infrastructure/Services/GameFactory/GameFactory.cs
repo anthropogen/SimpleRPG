@@ -51,12 +51,6 @@ namespace SimpleRPG.Services.GameFactory
             return HeroGameObject;
         }
 
-        public async Task<GameObject> CreateHUD()
-        {
-            var prefab = await assets.Load<GameObject>(AssetsAddress.HUD);
-            return InstantiateRegisteredObject(prefab);
-        }
-
         public async Task<GameObject> CreateEnemy(EnemyTypeID enemyTypeID, Transform parent)
         {
             var data = staticData.GetDataForEnemy(enemyTypeID);
@@ -87,7 +81,7 @@ namespace SimpleRPG.Services.GameFactory
             ProgressReaders.Add(reader);
         }
 
-        private GameObject InstantiateRegisteredObject(GameObject template)
+        public GameObject InstantiateRegisteredObject(GameObject template)
         {
             var regObject = GameObject.Instantiate(template);
             RegisterProgressWatchers(regObject);
