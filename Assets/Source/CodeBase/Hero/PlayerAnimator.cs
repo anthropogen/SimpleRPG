@@ -7,7 +7,6 @@ namespace SimpleRPG.Hero
     public class PlayerAnimator : GameEntity
     {
         [SerializeField] private Animator animator;
-        [SerializeField] private Health health;
         private readonly int moveHash = Animator.StringToHash("IsMove");
         private readonly int speedHash = Animator.StringToHash("Speed");
         private readonly int deathHash = Animator.StringToHash("Death");
@@ -16,16 +15,6 @@ namespace SimpleRPG.Hero
         private readonly int forceAttackHash = Animator.StringToHash("Attack01");
         private readonly int traversalHash = Animator.StringToHash("IsTraversal");
         public bool IsAttacking { get; set; }
-
-        protected override void Enable()
-        {
-            health.AppliedDamage += Hit;
-        }
-
-        protected override void Disable()
-        {
-            health.AppliedDamage -= Hit;
-        }
 
         public void Move(float speed)
         {
