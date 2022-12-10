@@ -14,10 +14,21 @@ namespace SimpleRPG.Services.GameFactory
             this.gameFactory = gameFactory;
             this.assets = assets;
         }
+        public async void WarmUp()
+        {
+            await assets.Load<GameObject>(AssetsAddress.HUD);
+            await assets.Load<GameObject>(AssetsAddress.Inventory);
+        }
 
         public async Task<GameObject> CreateHUD()
+            => await InstantiateRegisteredObject(AssetsAddress.HUD);
+
+        public async Task<GameObject> CreateInventoryWindow()
+            => await InstantiateRegisteredObject(AssetsAddress.Inventory);
+
+        private async Task<GameObject> InstantiateRegisteredObject(string address)
         {
-            var prefab = await assets.Load<GameObject>(AssetsAddress.HUD);
+            var prefab = await assets.Load<GameObject>(address);
             return gameFactory.InstantiateRegisteredObject(prefab);
         }
     }

@@ -38,7 +38,6 @@ namespace SimpleRPG.Services.GameFactory
         {
             await assets.Load<GameObject>(AssetsAddress.Loot);
             await assets.Load<GameObject>(AssetsAddress.Spawner);
-            await assets.Load<GameObject>(AssetsAddress.HUD);
             await assets.Load<GameObject>(AssetsAddress.LevelTransfer);
             await assets.Load<GameObject>(AssetsAddress.Player);
         }

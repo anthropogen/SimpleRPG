@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: HUD
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 81ec944ec7bdfbe4cb285523530816dc
+    m_Address: InventoryWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d38b1e53b1c066a4ab9720c82b8ea42c, type: 2}
   m_SchemaSet:

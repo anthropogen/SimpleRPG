@@ -26,6 +26,8 @@ namespace SimpleRPG.Infrastructure
                 GameUpdater.Instance.FixedLoop -= FixedLoop;
                 GameUpdater.Instance.LateLoop -= LateLoop;
             }
+            else
+                Debug.LogError("Doesn't have game updater");
 
             Disable();
         }

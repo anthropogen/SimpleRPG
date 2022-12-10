@@ -34,6 +34,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         {
             gameFactory.CleanUp();
             gameFactory.WarmUp();
+            uiFactory.WarmUp();
             sceneLoader.Load(sceneName, OnLoaded);
             curtain.Show();
         }
