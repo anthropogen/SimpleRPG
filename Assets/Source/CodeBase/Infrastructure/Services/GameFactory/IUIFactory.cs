@@ -7,7 +7,7 @@ namespace SimpleRPG.Services.GameFactory
     public interface IUIFactory : IService
     {
         void WarmUp();
-        Task<GameObject> CreateHUD();
         Task<GameObject> CreateInventoryWindow();
+        void CreateUIRoot();
     }
 }

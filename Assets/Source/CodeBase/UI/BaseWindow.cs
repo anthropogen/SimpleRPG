@@ -8,6 +8,7 @@ namespace SimpleRPG.UI
     {
         [SerializeField] private Button closeButton;
         [field: SerializeField] public WindowsID ID { get; private set; }
+
         private void Awake()
         {
             closeButton.onClick.AddListener(() => Close());
@@ -15,6 +16,7 @@ namespace SimpleRPG.UI
         }
 
         protected virtual void OnAwake() { }
+
         private void Close()
             => gameObject.SetActive(false);
 

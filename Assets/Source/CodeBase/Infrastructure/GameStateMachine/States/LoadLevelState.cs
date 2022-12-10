@@ -4,6 +4,7 @@ using SimpleRPG.Services.GameFactory;
 using SimpleRPG.Services.PersistentData;
 using SimpleRPG.StaticData;
 using SimpleRPG.UI;
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -41,6 +42,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
 
         public void Exit()
         {
+            GC.Collect();
             curtain.Hide();
         }
 
@@ -52,6 +54,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             InitLevelTransfers(levelData);
             await CreateHero(levelData);
             UpdateProgressReaders();
+            uiFactory.CreateUIRoot();
             gameStateMachine.Enter<GameLoopState>();
         }
 
@@ -94,7 +97,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
 
         private async Task CreateHeroHUD(GameObject hero)
         {
-            var hud = await uiFactory.CreateHUD();
+            var hud = await gameFactory.CreateHUD();
             hud.GetComponent<CharacterUI>().Construct(hero.GetComponent<PlayerHealth>());
         }
     }

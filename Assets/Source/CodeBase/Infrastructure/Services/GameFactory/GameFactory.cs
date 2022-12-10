@@ -6,6 +6,8 @@ using SimpleRPG.Items;
 using SimpleRPG.Levels;
 using SimpleRPG.Services.AssetManagement;
 using SimpleRPG.Services.PersistentData;
+using SimpleRPG.Services.WindowsService;
+using SimpleRPG.UI;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -20,18 +22,21 @@ namespace SimpleRPG.Services.GameFactory
         private readonly IStaticDataService staticData;
         private readonly IPersistentProgressService progressService;
         private readonly IGameStateMachine gameStateMachine;
+        private readonly IWindowsService windowsService;
+
         public LazyInitializy<Player> LazyPlayer { get; private set; } = new LazyInitializy<Player>();
         public List<ISavable> Savables { get; } = new List<ISavable>();
         public List<IProgressReader> ProgressReaders { get; } = new List<IProgressReader>();
 
         public GameObject HeroGameObject { get; private set; }
 
-        public GameFactory(IAssetProvider assets, IStaticDataService staticData, IPersistentProgressService progressService, IGameStateMachine gameStateMachine)
+        public GameFactory(IAssetProvider assets, IStaticDataService staticData, IPersistentProgressService progressService, IGameStateMachine gameStateMachine, IWindowsService windowsService)
         {
             this.assets = assets;
             this.staticData = staticData;
             this.progressService = progressService;
             this.gameStateMachine = gameStateMachine;
+            this.windowsService = windowsService;
         }
 
         public async void WarmUp()
@@ -65,7 +70,17 @@ namespace SimpleRPG.Services.GameFactory
             enemy.GetComponent<LootSpawner>().Construct(this, data.ItemToSpawn);
             return enemy;
         }
+        public async Task<GameObject> CreateHUD()
+        {
+            var prefab = await assets.Load<GameObject>(AssetsAddress.HUD);
+            var result = InstantiateRegisteredObject(prefab);
+            foreach (var button in result.GetComponentsInChildren<WindowButton>())
+            {
+                button.Construct(windowsService);
+            }
 
+            return result;
+        }
         public void CleanUp()
         {
             ProgressReaders.Clear();

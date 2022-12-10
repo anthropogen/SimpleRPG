@@ -17,6 +17,7 @@ namespace SimpleRPG.Services.GameFactory
         GameObject HeroGameObject { get; }
         LazyInitializy<Player> LazyPlayer { get; }
         void CleanUp();
+        Task<GameObject> CreateHUD();
         Task<GameObject> CreateEnemy(EnemyTypeID enemyTypeID, Transform transform);
         Task<GameObject> CreateHero();
         Task<LevelTransfer> CreateLevelTransfer(Vector3 position, string nextLevel);
