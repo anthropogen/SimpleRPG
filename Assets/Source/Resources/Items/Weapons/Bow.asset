@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Bow
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: bbf8638a8a75d9c42b93639213c92c9b, type: 3}
+  <IsStackable>k__BackingField: 0
   <Damage>k__BackingField: 5
   <Model>k__BackingField: {fileID: 3421107558127740487, guid: 94984b72bd60724489b680735eec7bbd, type: 3}
   <ProjectileType>k__BackingField: 0

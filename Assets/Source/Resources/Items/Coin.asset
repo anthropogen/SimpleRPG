@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Coin
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Coin
+  <Description>k__BackingField: Coins
+  <Icon>k__BackingField: {fileID: 21300000, guid: 394899dbf2938874ca7d1025f7598406, type: 3}
+  <IsStackable>k__BackingField: 1
