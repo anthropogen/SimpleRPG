@@ -1,4 +1,5 @@
 using SimpleRPG.Characters;
+using SimpleRPG.Hero;
 using SimpleRPG.Infrastructure;
 using SimpleRPG.Services.PersistentData;
 using System;
@@ -10,6 +11,7 @@ namespace SimpleRPG.Items
     public class PickupItem : GameEntity
     {
         public InventoryItem Item { get; set; }
+        public int Count { get; set; }
         public string SaveID { get; set; }
         private PersistentProgress progress;
         private bool isPicked;
@@ -22,10 +24,9 @@ namespace SimpleRPG.Items
         private void OnTriggerEnter(Collider other)
         {
             if (isPicked) return;
-            if (other.TryGetComponent(out CharacterAttacker attacker))
+            if (other.TryGetComponent(out Player player))
             {
-                if (Item is WeaponItem)
-                    attacker.EquipWeapon(Item as WeaponItem);
+                player.GetComponentInChildren<Inventory>().AddToFirstEmptySlot(Item, Count);
             }
             progress.WorldData.LootData.Pickup(this);
             isPicked = true;

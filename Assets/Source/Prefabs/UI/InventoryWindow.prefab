@@ -325,8 +325,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_AnchoredPosition: {x: -22.099976, y: 0}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6979387935101126929
 CanvasRenderer:
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 150, y: 150}
-  m_Spacing: {x: 10, y: 25}
+  m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &6979387935819475527
@@ -881,7 +881,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotTemplate: {fileID: 1283740547156961834, guid: 3a655bc239e735c44b8b06018216339c, type: 3}
-  container: {fileID: 6979387935819475526}
+  slotsContainer: {fileID: 6979387935819475526}
+  dragContainer: {fileID: 6979387935478707242}
 --- !u!1 &6979387936095576978
 GameObject:
   m_ObjectHideFlags: 0

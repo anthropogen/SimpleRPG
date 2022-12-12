@@ -10,4 +10,5 @@ public interface IStaticDataService : IService
     WeaponItem GetWeapon(string weapon);
     Projectile GetProjectile(ProjectileType type);
     LevelStaticData GetLevelDataFor(string sceneKey);
+    InventoryItem GetDataForItem(string name);
 }

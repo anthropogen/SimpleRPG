@@ -24,6 +24,7 @@ namespace SimpleRPG.Services.GameFactory
         private readonly IGameStateMachine gameStateMachine;
         private readonly IWindowsService windowsService;
 
+        public static Player Player { get; private set; }
         public LazyInitializy<Player> LazyPlayer { get; private set; } = new LazyInitializy<Player>();
         public List<ISavable> Savables { get; } = new List<ISavable>();
         public List<IProgressReader> ProgressReaders { get; } = new List<IProgressReader>();
@@ -51,7 +52,9 @@ namespace SimpleRPG.Services.GameFactory
         {
             var template = await assets.Load<GameObject>(AssetsAddress.Player);
             HeroGameObject = InstantiateRegisteredObject(template);
+            HeroGameObject.GetComponentInChildren<Inventory>().Construct(staticData);
             LazyPlayer.Value = HeroGameObject.GetComponent<Player>();
+            Player = LazyPlayer.Value;
             return HeroGameObject;
         }
 
@@ -67,7 +70,7 @@ namespace SimpleRPG.Services.GameFactory
 
             enemy.GetComponent<NavMeshAgent>().speed = data.Speed;
             enemy.GetComponent<Enemy>().Construct(data, LazyPlayer);
-            enemy.GetComponent<LootSpawner>().Construct(this, data.ItemToSpawn);
+            enemy.GetComponent<LootSpawner>().Construct(this, data.ItemToSpawn, count: 1);
             return enemy;
         }
         public async Task<GameObject> CreateHUD()
@@ -124,12 +127,13 @@ namespace SimpleRPG.Services.GameFactory
             return GameObject.Instantiate(template);
         }
 
-        public async Task<PickupItem> CreateLoot(InventoryItem itemToSpawn)
+        public async Task<PickupItem> CreateLoot(InventoryItem itemToSpawn, int count)
         {
             var template = await assets.Load<GameObject>(AssetsAddress.Loot);
             var pickUp = InstantiateRegisteredObject(template).GetComponent<PickupItem>();
             pickUp.Construct(progressService.Progress);
             pickUp.Item = itemToSpawn;
+            pickUp.Count = count;
             return pickUp;
         }
 

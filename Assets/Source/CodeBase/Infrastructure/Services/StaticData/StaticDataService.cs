@@ -22,6 +22,7 @@ public class StaticDataService : IStaticDataService
             return enemyData;
         return null;
     }
+
     public Projectile GetProjectile(ProjectileType type)
         => projectileStaticData.GetProjectileTempate(type);
 
@@ -30,6 +31,9 @@ public class StaticDataService : IStaticDataService
 
     public WeaponItem GetWeapon(string weapon)
         => allItems.FirstOrDefault(i => i.Name == weapon) as WeaponItem;
+
+    public InventoryItem GetDataForItem(string name)
+        => allItems.FirstOrDefault(i => i.Name == name);
 
     public void Load()
     {
@@ -50,6 +54,7 @@ public class StaticDataService : IStaticDataService
 
     private void LoadProjectilesData()
         => projectileStaticData = Resources.Load<ProjectileStaticData>(projectilesPath);
+
 
 }
 

@@ -1,14 +1,18 @@
 using SimpleRPG.Infrastructure;
+using SimpleRPG.Levels;
+using SimpleRPG.Services.PersistentData;
 using System;
 using System.Linq;
 using UnityEngine;
 
 namespace SimpleRPG.Items
 {
-    public class Inventory : GameEntity
+    public class Inventory : GameEntity, ISavable
     {
+        [SerializeField] private UniqueID uniqueID;
         [field: SerializeField, Min(1)] public int Capacity { get; private set; } = 16;
         private InventorySlot[] slots;
+        private IStaticDataService staticData;
         public event Action InventoryUpdated;
 
         private void Awake()
@@ -17,6 +21,9 @@ namespace SimpleRPG.Items
             for (int i = 0; i < slots.Length; i++)
                 slots[i] = new InventorySlot();
         }
+
+        public void Construct(IStaticDataService staticData)
+            => this.staticData = staticData;
 
         public bool HasFreeSlot()
             => slots.FirstOrDefault(s => s.Item == null) != null;
@@ -121,5 +128,43 @@ namespace SimpleRPG.Items
 
         private int ClampIndex(int index)
                 => Mathf.Clamp(index, 0, Capacity);
+
+
+        public void SaveProgress(PersistentProgress progress)
+        {
+            var data = progress.InventoriesState.Inventories.FirstOrDefault(i => i.ID == uniqueID.SaveID);
+            if (data == null)
+            {
+                data = new InventoryData();
+                progress.InventoriesState.Inventories.Add(data);
+            }
+            data.ID = uniqueID.SaveID;
+            data.Items.Clear();
+            for (int i = 0; i < Capacity; i++)
+            {
+                if (slots[i].Item != null)
+                    data.Items.Add(new SlotData(slots[i].Item.Name, slots[i].Count));
+                else
+                    data.Items.Add(null);
+            }
+        }
+
+        public void LoadProgress(PersistentProgress progress)
+        {
+            var data = progress.InventoriesState.Inventories.FirstOrDefault(i => i.ID == uniqueID.SaveID);
+            if (data == null) return;
+            Capacity = data.Items.Count;
+            slots = new InventorySlot[Capacity];
+            for (int i = 0; i < data.Items.Count; i++)
+            {
+                slots[i] = new InventorySlot();
+                if (data.Items[i] != null)
+                {
+                    slots[i].Item = staticData.GetDataForItem(data.Items[i].Name);
+                    slots[i].Count = data.Items[i].Count;
+                }
+            }
+            InventoryUpdated?.Invoke();
+        }
     }
 }

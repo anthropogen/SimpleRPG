@@ -21,7 +21,7 @@ namespace SimpleRPG.Services.GameFactory
         Task<GameObject> CreateEnemy(EnemyTypeID enemyTypeID, Transform transform);
         Task<GameObject> CreateHero();
         Task<LevelTransfer> CreateLevelTransfer(Vector3 position, string nextLevel);
-        Task<PickupItem> CreateLoot(InventoryItem itemToSpawn);
+        Task<PickupItem> CreateLoot(InventoryItem itemToSpawn, int count);
         Task<PickupItem> CreateLootFor(EnemyTypeID enemyTypeID);
         Projectile CreateProjectile(ProjectileType projectileType);
         Task<EnemySpawner> CreateSpawner(Vector3 position, EnemyTypeID enemyTypeID, string iD);

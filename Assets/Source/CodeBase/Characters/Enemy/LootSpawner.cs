@@ -12,10 +12,12 @@ public class LootSpawner : GameEntity
     public string SaveId;
     private IGameFactory gameFactory;
     private InventoryItem itemToSpawn;
-    public void Construct(IGameFactory gameFactory, InventoryItem spawnItem)
+    private int count;
+    public void Construct(IGameFactory gameFactory, InventoryItem spawnItem, int count)
     {
         this.gameFactory = gameFactory;
         itemToSpawn = spawnItem;
+        this.count = count;
     }
 
     protected override void Enable()
@@ -30,7 +32,7 @@ public class LootSpawner : GameEntity
 
     public async void SpawnLoot()
     {
-        var loot = await gameFactory.CreateLoot(itemToSpawn);
+        var loot = await gameFactory.CreateLoot(itemToSpawn, count);
         loot.transform.position = transform.position + Random.insideUnitSphere * 2;
         loot.SaveID = SaveId;
     }

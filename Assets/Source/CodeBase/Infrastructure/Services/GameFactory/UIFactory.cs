@@ -1,4 +1,6 @@
+using SimpleRPG.Items;
 using SimpleRPG.Services.AssetManagement;
+using SimpleRPG.UI;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -26,6 +28,7 @@ namespace SimpleRPG.Services.GameFactory
         {
             var prefab = await assets.Load<GameObject>(AssetsAddress.Inventory);
             var window = GameObject.Instantiate(prefab);
+            window.GetComponentInChildren<InventoryView>().Construct(GameFactory.Player.GetComponentInChildren<Inventory>());
             window.transform.SetParent(uiRoot);
             return window;
         }
