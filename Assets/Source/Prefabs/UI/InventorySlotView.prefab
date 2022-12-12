@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2959922627593567416}
   - component: {fileID: 2414251405433259294}
   - component: {fileID: 2858745039012095614}
+  - component: {fileID: 4846393327734295556}
   m_Layer: 5
   m_Name: InventoryDragItem
   m_TagString: Untagged
@@ -89,6 +90,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5053eb28ad1d34c8d1d9ec9c77beb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &4846393327734295556
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381596475140420796}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2551064042164630504
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,3 +193,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 2414251405433259294}
+  dragItem: {fileID: 2858745039012095614}

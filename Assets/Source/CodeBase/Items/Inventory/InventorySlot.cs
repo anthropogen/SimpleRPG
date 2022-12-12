@@ -1,5 +1,4 @@
 ﻿using System;
-using SimpleRPG.Items;
 
 namespace SimpleRPG.Items
 {
@@ -33,6 +32,8 @@ namespace SimpleRPG.Items
             {
                 if (value < 0) throw new InvalidOperationException("Items count can't be less zero");
                 count = value;
+                if (count == 0)
+                    item = null;
             }
         }
     }

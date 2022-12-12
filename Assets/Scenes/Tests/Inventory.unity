@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5643112370258333328, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: dragContainer
+      value: 
+      objectReference: {fileID: 1548577170}
+    - target: {fileID: 5643112370258333328, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: slotsContainer
+      value: 
+      objectReference: {fileID: 78107990}
     - target: {fileID: 6979387934112862357, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -137,6 +145,26 @@ PrefabInstance:
     - target: {fileID: 6979387934112862357, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979387935101126958, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979387935101126958, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979387935101126958, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -22.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979387935101126958, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979387935819475528, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: m_Spacing.x
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6979387936095576978, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
       propertyPath: m_Name
@@ -333,6 +361,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!224 &78107990 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6979387935819475526, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+  m_PrefabInstance: {fileID: 59886436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &942725952
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,9 +375,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 942725954}
+  - component: {fileID: 942725956}
   - component: {fileID: 942725953}
   - component: {fileID: 942725955}
-  - component: {fileID: 942725956}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -493,6 +526,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1548577170 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6979387935478707242, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+  m_PrefabInstance: {fileID: 59886436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1632481943
 GameObject:
   m_ObjectHideFlags: 0

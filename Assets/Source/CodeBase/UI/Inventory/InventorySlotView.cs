@@ -8,15 +8,17 @@ namespace SimpleRPG.UI
     public class InventorySlotView : GameEntity, IDragContainer<InventoryItem>
     {
         [SerializeField] private Image icon;
+        [SerializeField] private InventoryDragItem dragItem;
         private int index;
         private Inventory inventory;
         private InventoryItem item;
 
-        public void Construct(Inventory inventory, int index)
+        public void Construct(Inventory inventory, int index, Transform dragContainer)
         {
             this.index = index;
             this.inventory = inventory;
             item = inventory.GetItem(index);
+            dragItem.Construct(this, dragContainer);
             SetIcon(item);
         }
 
