@@ -64,23 +64,27 @@ namespace SimpleRPG.Items
             return slots[index].Count;
         }
 
-        public bool AddToFirstEmptySlot(InventoryItem item, int count)
+        public bool AddToFirstEmptyOrStackSlot(InventoryItem item, int count)
         {
-            int index = FindEmptySlot();
+            int index = FindStack(item);
+            if (index < 0)
+                index = FindEmptySlot();
             if (index < 0)
                 return false;
 
             slots[index].Item = item;
-            slots[index].Count = count;
+            slots[index].Count += count;
             InventoryUpdated?.Invoke();
             return true;
         }
 
+
+
         public bool AddItemToSlot(int index, InventoryItem item, int count)
         {
             index = ClampIndex(index);
-            if (slots[index].Item != null && slots[index].Item.Name != item.Name)
-                return AddToFirstEmptySlot(item, count);
+            if (slots[index].Item != null && (slots[index].Item.Name != item.Name || item.IsStackable == false))
+                return AddToFirstEmptyOrStackSlot(item, count);
 
             slots[index].Item = item;
             slots[index].Count += count;
@@ -129,6 +133,14 @@ namespace SimpleRPG.Items
         private int ClampIndex(int index)
                 => Mathf.Clamp(index, 0, Capacity);
 
+        private int FindStack(InventoryItem item)
+        {
+            for (int i = 0; i < slots.Length; i++)
+                if (slots[i].Item != null && slots[i].Item.Name == item.Name && item.IsStackable == true)
+                    return i;
+
+            return -1;
+        }
 
         public void SaveProgress(PersistentProgress progress)
         {

@@ -26,7 +26,7 @@ namespace SimpleRPG.Items
             if (isPicked) return;
             if (other.TryGetComponent(out Player player))
             {
-                player.GetComponentInChildren<Inventory>().AddToFirstEmptySlot(Item, Count);
+                player.GetComponentInChildren<Inventory>().AddToFirstEmptyOrStackSlot(Item, Count);
             }
             progress.WorldData.LootData.Pickup(this);
             isPicked = true;

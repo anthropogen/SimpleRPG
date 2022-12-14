@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b92d6b44cad2ae409a2a882c556a3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniqueID: {fileID: 0}
   <Capacity>k__BackingField: 16
 --- !u!4 &942725954
 Transform:
@@ -395,6 +396,8 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: 7ad79b2d21183ca47a42ca4fe6584192, type: 2}
   - {fileID: 11400000, guid: 623569a194b83474a85017b506a3d194, type: 2}
+  - {fileID: 11400000, guid: 623569a194b83474a85017b506a3d194, type: 2}
+  - {fileID: 11400000, guid: 7ad79b2d21183ca47a42ca4fe6584192, type: 2}
   inventory: {fileID: 942725953}
   inventoryView: {fileID: 59886437}
 --- !u!114 &942725956

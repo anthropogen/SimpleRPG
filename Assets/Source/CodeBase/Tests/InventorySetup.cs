@@ -13,7 +13,7 @@ public class InventorySetup : GameEntity
     private void Start()
     {
         foreach (var item in items)
-            inventory.AddToFirstEmptySlot(item, 1);
+            inventory.AddToFirstEmptyOrStackSlot(item, 1);
 
         inventoryView.Construct(inventory);
     }
