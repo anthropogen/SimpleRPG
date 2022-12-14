@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4109676963785664814}
   - component: {fileID: 6195748692641758617}
+  - component: {fileID: 6156193333241220780}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -124,6 +125,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: {fileID: 7050425424067914185}
   <Capacity>k__BackingField: 16
+--- !u!114 &6156193333241220780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399679037007176636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7a1ad7529d8b64aaa865a38b13ffeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3056900014448455990
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +291,7 @@ MonoBehaviour:
   animator: {fileID: 7658898659092687452}
   health: {fileID: 3295721398473454126}
   deathState: {fileID: 4645886158104282763}
+  attacker: {fileID: 6527346530211168034}
 --- !u!114 &6527346530211168034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,8 +307,10 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  equipment: {fileID: 6156193333241220780}
   unarmed: {fileID: 11400000, guid: 9448c9e628164dc4fa72102c7d5fc259, type: 2}
   weaponPositioner: {fileID: 2988704392894291681}
+  playerStateMachine: {fileID: 0}
   maxAngleRangeAttack: 90
 --- !u!1 &3868435605581111901
 GameObject:

@@ -138,6 +138,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6979387934112862357, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979387935819475526, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000029087067
+      objectReference: {fileID: 0}
     - target: {fileID: 6979387936095576978, guid: 81ec944ec7bdfbe4cb285523530816dc, type: 3}
       propertyPath: m_Name
       value: InventoryWindow

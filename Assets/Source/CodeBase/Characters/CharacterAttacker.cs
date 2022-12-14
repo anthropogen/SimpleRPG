@@ -4,6 +4,8 @@ using SimpleRPG.Items;
 using SimpleRPG.Services;
 using SimpleRPG.Services.GameFactory;
 using SimpleRPG.Services.PersistentData;
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace SimpleRPG.Characters
@@ -11,6 +13,7 @@ namespace SimpleRPG.Characters
     public class CharacterAttacker : GameEntity, ISavable
     {
         [SerializeField] private LayerMask enemyMask;
+        [SerializeField] private Equipment equipment;
         [SerializeField] private Unarmed unarmed;
         [SerializeField] private WeaponPositioner weaponPositioner;
         [SerializeField, Range(0, 360)] private float maxAngleRangeAttack = 90f;
@@ -18,20 +21,24 @@ namespace SimpleRPG.Characters
         private IGameFactory gameFactory;
         private IStaticDataService staticDataService;
         private readonly Collider[] hitResults = new Collider[5];
-        public WeaponItem Weapon { get; private set; }
+        public event Action<WeaponItem, WeaponItem> WeaponChanged;
+        public WeaponItem Weapon { get; set; }
 
         private void Awake()
         {
             staticDataService = ServiceLocator.Container.Single<IStaticDataService>();
             gameFactory = ServiceLocator.Container.Single<IGameFactory>();
+            equipment.EquipedItemsChanged += TryEquipWeapon;
         }
 
         public void EquipWeapon(WeaponItem weaponItem)
         {
+            var oldWeapon = Weapon == null ? unarmed : Weapon;
             Weapon = weaponItem == null ? unarmed : weaponItem;
             if (weaponModel != null)
                 weaponModel.gameObject.SetActive(false);
             weaponModel = weaponPositioner.SetWeapon(Weapon);
+            WeaponChanged?.Invoke(oldWeapon, Weapon);
         }
 
         public void ShowWeaponModel(bool isActive)
@@ -61,7 +68,23 @@ namespace SimpleRPG.Characters
                 projectile.transform.rotation = rotationToForward;
             }
         }
+        public void SaveProgress(PersistentProgress progress)
+        {
 
+        }
+
+        public void LoadProgress(PersistentProgress progress)
+        {
+            var weapon = progress.Equipment.FirstOrDefault(i => i.Location == EquipLocation.Weapon);
+            if (weapon == null || string.IsNullOrEmpty(weapon.Name))
+            {
+                EquipWeapon(unarmed);
+            }
+            else
+            {
+                EquipWeapon(staticDataService.GetWeapon(weapon.Name));
+            }
+        }
         private bool TryGetNearbyHit(out Collider nearbyHit)
         {
             nearbyHit = null;
@@ -99,24 +122,10 @@ namespace SimpleRPG.Characters
                 }
             }
         }
-
-
-        public void SaveProgress(PersistentProgress progress)
+        private void TryEquipWeapon()
         {
-            progress.Weapon = Weapon.Name;
+            var weapon = equipment.GetItemFrom(EquipLocation.Weapon) as WeaponItem;
+            EquipWeapon(weapon);
         }
-
-        public void LoadProgress(PersistentProgress progress)
-        {
-            if (string.IsNullOrEmpty(progress.Weapon))
-            {
-                EquipWeapon(unarmed);
-            }
-            else
-            {
-                EquipWeapon(staticDataService.GetWeapon(progress.Weapon));
-            }
-        }
-
     }
 }

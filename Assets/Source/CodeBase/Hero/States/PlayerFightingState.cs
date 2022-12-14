@@ -1,5 +1,7 @@
 ﻿using SimpleRPG.Characters;
+using SimpleRPG.Items;
 using SimpleRPG.Services;
+using System;
 using UnityEngine;
 
 namespace SimpleRPG.Hero
@@ -15,14 +17,15 @@ namespace SimpleRPG.Hero
             inputService = ServiceLocator.Container.Single<IInputService>();
             eventReceiver.MeleeHit += attacker.MeleeAttack;
             eventReceiver.Fired += attacker.RangeAttack;
-            animator.SetBoolState(attacker.Weapon.AnimationHash, true);
             attacker.ShowWeaponModel(true);
+            SetHashState(true);
         }
+
 
 
         public override void Exit()
         {
-            animator.SetBoolState(attacker.Weapon.AnimationHash, false);
+            SetHashState(false);
             eventReceiver.MeleeHit -= attacker.MeleeAttack;
             eventReceiver.Fired -= attacker.RangeAttack;
             attacker.ShowWeaponModel(false);
@@ -36,12 +39,21 @@ namespace SimpleRPG.Hero
             }
             mover.Run();
         }
-
+        public void SetHashState(bool value)
+               => animator.SetBoolState(attacker.Weapon.AnimationHash, value);
+        public void ResetHashFor(WeaponItem oldWeapon)
+        {
+            if (oldWeapon == null)
+                return;
+            animator.SetBoolState(oldWeapon.AnimationHash, false);
+        }
 
         private void OnDisable()
         {
             eventReceiver.MeleeHit -= attacker.MeleeAttack;
             eventReceiver.Fired -= attacker.RangeAttack;
         }
+
+
     }
 }

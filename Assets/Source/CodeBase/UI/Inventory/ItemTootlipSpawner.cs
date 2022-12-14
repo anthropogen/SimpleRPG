@@ -31,6 +31,8 @@ public class ItemTootlipSpawner : GameEntity, IPointerEnterHandler, IPointerExit
     protected override void Enable()
     {
         itemHolder = GetComponent<IItemHolder>();
+        if (itemHolder == null)
+            itemHolder = GetComponentInParent<IItemHolder>();
     }
 
     private void UpdateTootlipPosition()

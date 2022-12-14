@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace SimpleRPG.Services.PersistentData
 {
@@ -8,8 +9,9 @@ namespace SimpleRPG.Services.PersistentData
         public WorldData WorldData;
         public HeroState HeroState;
         public KillData KillData;
-        public string Weapon;
         public InventoriesState InventoriesState;
+        public List<EquipmentSlotData> Equipment = new List<EquipmentSlotData>();
+
         public PersistentProgress(string sceneName)
         {
             KillData = new KillData();
