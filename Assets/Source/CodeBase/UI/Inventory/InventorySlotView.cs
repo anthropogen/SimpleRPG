@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace SimpleRPG.UI
 {
-    public class InventorySlotView : GameEntity, IDragContainer<InventoryItem>
+    public class InventorySlotView : GameEntity, IItemHolder, IDragContainer<InventoryItem>
     {
         [SerializeField] private Image icon;
         [SerializeField] private InventoryDragItem dragItem;

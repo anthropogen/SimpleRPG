@@ -8,6 +8,7 @@ namespace SimpleRPG.UI
     public class InventoryView : GameEntity
     {
         [SerializeField] private InventorySlotView slotTemplate;
+        [SerializeField] private ItemTootlip itemTootlip;
         [SerializeField] private Transform slotsContainer;
         [SerializeField] private Transform dragContainer;
         private Inventory inventory;
@@ -41,6 +42,7 @@ namespace SimpleRPG.UI
         {
             var slotView = Instantiate(slotTemplate, slotsContainer);
             slotView.Construct(inventory, i, dragContainer);
+            slotView.GetComponent<ItemTootlipSpawner>().Construct(itemTootlip);
             slotViews.Add(slotView);
         }
     }

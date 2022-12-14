@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_SizeDelta: {x: -30, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2959922627593567416
 CanvasRenderer:
@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 9112979443418432196}
   - component: {fileID: 7336921238365612708}
   - component: {fileID: 1283740547156961834}
+  - component: {fileID: 6022308097695855366}
   m_Layer: 5
   m_Name: InventorySlotView
   m_TagString: Untagged
@@ -194,3 +195,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2414251405433259294}
   dragItem: {fileID: 2858745039012095614}
+--- !u!114 &6022308097695855366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551064042164630504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ca10b9d736bef419e542840d253152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
