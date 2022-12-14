@@ -24,7 +24,6 @@ namespace SimpleRPG.Services.GameFactory
         private readonly IGameStateMachine gameStateMachine;
         private readonly IWindowsService windowsService;
 
-        public static Player Player { get; private set; }
         public LazyInitializy<Player> LazyPlayer { get; private set; } = new LazyInitializy<Player>();
         public List<ISavable> Savables { get; } = new List<ISavable>();
         public List<IProgressReader> ProgressReaders { get; } = new List<IProgressReader>();
@@ -54,7 +53,6 @@ namespace SimpleRPG.Services.GameFactory
             HeroGameObject = InstantiateRegisteredObject(template);
             HeroGameObject.GetComponentInChildren<Inventory>().Construct(staticData);
             LazyPlayer.Value = HeroGameObject.GetComponent<Player>();
-            Player = LazyPlayer.Value;
             return HeroGameObject;
         }
 
