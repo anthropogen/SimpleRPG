@@ -11,6 +11,7 @@ namespace SimpleRPG.Services.PersistentData
         public KillData KillData;
         public InventoriesState InventoriesState;
         public List<EquipmentSlotData> Equipment = new List<EquipmentSlotData>();
+        public List<SlotData> Actions = new List<SlotData>();
 
         public PersistentProgress(string sceneName)
         {

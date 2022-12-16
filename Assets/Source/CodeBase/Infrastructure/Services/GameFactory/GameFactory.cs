@@ -53,6 +53,7 @@ namespace SimpleRPG.Services.GameFactory
             HeroGameObject = InstantiateRegisteredObject(template);
             HeroGameObject.GetComponentInChildren<Inventory>().Construct(staticData);
             HeroGameObject.GetComponentInChildren<Equipment>().Construct(staticData);
+            HeroGameObject.GetComponentInChildren<ActionStore>().Construct(staticData);
             LazyPlayer.Value = HeroGameObject.GetComponent<Player>();
             return HeroGameObject;
         }

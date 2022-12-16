@@ -1,14 +1,19 @@
 using SimpleRPG.Infrastructure;
+using SimpleRPG.Services.PersistentData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace SimpleRPG.Items
 {
-    public class ActionStore : GameEntity
+    public class ActionStore : GameEntity, ISavable
     {
         private Dictionary<int, ActionItemSlot> actions = new Dictionary<int, ActionItemSlot>();
+        private IStaticDataService staticData;
         public event Action StoreChanged;
+
+        public void Construct(IStaticDataService staticData)
+                 => this.staticData = staticData;
 
         public void AddAction(ActionItem item, int count, int index)
         {
@@ -67,7 +72,26 @@ namespace SimpleRPG.Items
             if (actions[index].Item.IsConsumable)
                 actions[index].Count--;
             Debug.Log($"used action {actions[index].Item.Name}");
+        }
 
+        public void SaveProgress(PersistentProgress progress)
+        {
+            progress.Actions.Clear();
+            foreach (int index in actions.Keys)
+            {
+                var slot = actions[index];
+                progress.Actions.Add(new SlotData(slot.Item.Name, slot.Count));
+            }
+        }
+
+        public void LoadProgress(PersistentProgress progress)
+        {
+            actions.Clear();
+            for (int i = 0; i < progress.Actions.Count; i++)
+            {
+                var item = staticData.GetDataForItem(progress.Actions[i].Name) as ActionItem;
+                actions[i] = new ActionItemSlot(item, progress.Actions[i].Count);
+            }
         }
     }
 }
