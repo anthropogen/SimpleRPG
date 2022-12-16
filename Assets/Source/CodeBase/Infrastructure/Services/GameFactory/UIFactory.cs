@@ -40,9 +40,13 @@ namespace SimpleRPG.Services.GameFactory
             window.GetComponentInChildren<InventoryView>().Construct(lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<Inventory>());
             window.GetComponentInChildren<InventoryDropper>().Construct(lazyGameFactory.Value);
             var equipment = lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<Equipment>();
+            var actionStore = lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<ActionStore>();
            
             foreach (var slot in window.GetComponentsInChildren<EquipmentSlotView>())
                 slot.Construct(equipment);
+
+            foreach (var action in window.GetComponentsInChildren<ActionItemSlotView>())
+                action.Construct(actionStore);
 
             window.transform.SetParent(uiRoot);
             return window;

@@ -1,5 +1,6 @@
 using SimpleRPG.Infrastructure;
 using SimpleRPG.Items;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,8 @@ namespace SimpleRPG.UI
     public class EquipmentSlotView : GameEntity, IDragContainer<InventoryItem>, IItemHolder
     {
         [SerializeField] private EquipLocation location;
-        [SerializeField] private Image icon;
         [SerializeField] private InventoryDragItem dragItem;
+        [SerializeField] private ItemIcon icon;
         [SerializeField] private Transform dragContainer;
         [SerializeField] private ItemTootlip itemTootlip;
         private Equipment equipment;
@@ -55,15 +56,7 @@ namespace SimpleRPG.UI
             => equipment.RemoveItemFrom(location);
 
         private void SetIcon(InventoryItem item)
-        {
-            if (item == null)
-                icon.enabled = false;
-            else
-            {
-                icon.sprite = item.Icon;
-                icon.enabled = true;
-            }
-        }
+            => icon.SetIcon(item, 1);
 
         private void Redraw()
             => SetIcon(equipment.GetItemFrom(location));

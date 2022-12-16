@@ -8,9 +8,8 @@ namespace SimpleRPG.UI
 {
     public class InventorySlotView : GameEntity, IItemHolder, IDragContainer<InventoryItem>
     {
-        [SerializeField] private Image icon;
-        [SerializeField] private TMP_Text itemCountText;
         [SerializeField] private InventoryDragItem dragItem;
+        [SerializeField] private ItemIcon icon;
         private int index;
         private Inventory inventory;
         private InventoryItem item;
@@ -52,23 +51,7 @@ namespace SimpleRPG.UI
 
         private void SetIcon(InventoryItem item, int count)
         {
-            if (item == null)
-            {
-                icon.enabled = false;
-                itemCountText.enabled = false;
-                return;
-            }
-            if (count <= 1)
-            {
-                itemCountText.enabled = false;
-            }
-            else
-            {
-                itemCountText.text = count.ToString();
-                itemCountText.enabled = true;
-            }
-            icon.enabled = true;
-            icon.sprite = item.Icon;
+            icon.SetIcon(item, count);
         }
     }
 }

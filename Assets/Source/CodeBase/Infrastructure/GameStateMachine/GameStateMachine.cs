@@ -2,6 +2,7 @@ using SimpleRPG.Services;
 using SimpleRPG.Services.GameFactory;
 using SimpleRPG.Services.PersistentData;
 using SimpleRPG.Services.SaveLoad;
+using SimpleRPG.Services.WindowsService;
 using SimpleRPG.UI;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,8 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, container),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, container.Single<IPersistentProgressService>(), container.Single<ISaveLoadService>()),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain,
-                container.Single<IGameFactory>(), container.Single<IPersistentProgressService>(), container.Single<IStaticDataService>(), container.Single<IUIFactory>()),
+                container.Single<IGameFactory>(), container.Single<IPersistentProgressService>(), container.Single<IStaticDataService>(),
+                container.Single<IUIFactory>(), container.Single<IWindowsService>()),
                 [typeof(GameLoopState)] = new GameLoopState()
             };
         }

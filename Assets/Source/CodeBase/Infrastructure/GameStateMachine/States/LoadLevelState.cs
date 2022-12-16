@@ -2,6 +2,7 @@
 using SimpleRPG.Hero;
 using SimpleRPG.Services.GameFactory;
 using SimpleRPG.Services.PersistentData;
+using SimpleRPG.Services.WindowsService;
 using SimpleRPG.StaticData;
 using SimpleRPG.UI;
 using System;
@@ -20,7 +21,8 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         private readonly IUIFactory uiFactory;
         private readonly IPersistentProgressService progressService;
         private readonly IStaticDataService staticData;
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory = null)
+        private readonly IWindowsService windowsService;
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory, IWindowsService windowsService)
         {
             this.gameStateMachine = gameStateMachine;
             this.sceneLoader = sceneLoader;
@@ -29,6 +31,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             this.progressService = progressService;
             this.staticData = staticData;
             this.uiFactory = uiFactory;
+            this.windowsService = windowsService;
         }
 
         public void Enter(string sceneName)
@@ -52,9 +55,9 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
 
             await InitSpawners(levelData);
             InitLevelTransfers(levelData);
+            uiFactory.CreateUIRoot();
             await CreateHero(levelData);
             UpdateProgressReaders();
-            uiFactory.CreateUIRoot();
             gameStateMachine.Enter<GameLoopState>();
         }
 
@@ -99,6 +102,8 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         {
             var hud = await gameFactory.CreateHUD();
             hud.GetComponent<CharacterUI>().Construct(hero.GetComponent<PlayerHealth>());
+            var inventoryWindow = await windowsService.OpenWindow(WindowsID.Inventory);
+            inventoryWindow.Close();
         }
     }
 }

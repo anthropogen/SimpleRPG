@@ -17,10 +17,10 @@ namespace SimpleRPG.UI
 
         protected virtual void OnAwake() { }
 
-        private void Close()
+        public virtual void Close()
             => gameObject.SetActive(false);
 
-        public void Open()
+        public virtual void Open()
             => gameObject.SetActive(true);
     }
 }
