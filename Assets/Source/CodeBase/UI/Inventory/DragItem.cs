@@ -1,5 +1,4 @@
 ﻿using SimpleRPG.Infrastructure;
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 namespace SimpleRPG.UI
