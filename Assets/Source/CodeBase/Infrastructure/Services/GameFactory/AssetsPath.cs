@@ -8,5 +8,6 @@
         public const string Spawner = "SpawnPoint";
         public const string LevelTransfer = "LevelTransfer";
         public const string Inventory = "InventoryWindow";
+        public const string Dialogue = "DialogueWindow";
     }
 }

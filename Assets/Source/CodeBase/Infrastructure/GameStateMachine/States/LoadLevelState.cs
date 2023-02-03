@@ -1,4 +1,5 @@
 ﻿using SimpleRPG.Characters;
+using SimpleRPG.Dialogue;
 using SimpleRPG.Hero;
 using SimpleRPG.Services.GameFactory;
 using SimpleRPG.Services.PersistentData;
@@ -52,7 +53,7 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
         private async void OnLoaded()
         {
             LevelStaticData levelData = GetLevelData();
-
+            windowsService.Clear();
             await InitSpawners(levelData);
             InitLevelTransfers(levelData);
             uiFactory.CreateUIRoot();
@@ -103,6 +104,9 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
             var hud = await gameFactory.CreateHUD();
             hud.GetComponent<CharacterUI>().Construct(hero.GetComponent<PlayerHealth>());
             var inventoryWindow = await windowsService.OpenWindow(WindowsID.Inventory);
+            var dialogueWindow = await windowsService.OpenWindow(WindowsID.Dialogue);
+            dialogueWindow.Close();
+            hero.GetComponent<PlayerConversant>().Construct(dialogueWindow as DialogueWindow);
             inventoryWindow.Close();
         }
     }

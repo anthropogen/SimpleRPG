@@ -45,6 +45,10 @@ MonoBehaviour:
     m_Address: InventoryWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 72cfe1352c0d2054d8108ad2600efdc2
+    m_Address: DialogueWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d38b1e53b1c066a4ab9720c82b8ea42c, type: 2}
   m_SchemaSet:

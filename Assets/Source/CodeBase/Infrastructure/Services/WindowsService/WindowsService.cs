@@ -17,10 +17,13 @@ namespace SimpleRPG.Services.WindowsService
             windows = new Dictionary<WindowsID, BaseWindow>();
         }
 
+        public void Clear()
+            => windows.Clear();
+
         public async Task<BaseWindow> OpenWindow(WindowsID windowsID)
         {
             BaseWindow result = null;
-            if (windows.TryGetValue(windowsID, out result))
+            if (windows.TryGetValue(windowsID, out result) && result != null)
                 return result;
 
             var window = await CreateWindow(windowsID);
@@ -35,6 +38,8 @@ namespace SimpleRPG.Services.WindowsService
             {
                 case WindowsID.Inventory:
                     return await uIFactory.CreateInventoryWindow();
+                case WindowsID.Dialogue:
+                    return await uIFactory.CreateDialogueWindow();
                 default:
                     throw new InvalidOperationException($"I can't create this {windowsID} window");
             }

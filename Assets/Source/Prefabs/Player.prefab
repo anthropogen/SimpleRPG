@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 3295721398473454126}
   - component: {fileID: 3764202946370773977}
   - component: {fileID: 6527346530211168034}
+  - component: {fileID: 6274849554293971276}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -324,6 +325,20 @@ MonoBehaviour:
   unarmed: {fileID: 11400000, guid: 9448c9e628164dc4fa72102c7d5fc259, type: 2}
   weaponPositioner: {fileID: 2988704392894291681}
   maxAngleRangeAttack: 90
+--- !u!114 &6274849554293971276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868435604998305743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b36e424968a5e488c4a69394b337e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 11400000, guid: ca8f137844fd42e4382c799f64f0be42, type: 2}
+  currentDialogue: {fileID: 0}
 --- !u!1 &3868435605581111901
 GameObject:
   m_ObjectHideFlags: 0

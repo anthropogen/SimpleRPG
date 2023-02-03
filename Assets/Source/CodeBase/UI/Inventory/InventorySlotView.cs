@@ -1,8 +1,6 @@
 using SimpleRPG.Infrastructure;
 using SimpleRPG.Items;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 namespace SimpleRPG.UI
 {

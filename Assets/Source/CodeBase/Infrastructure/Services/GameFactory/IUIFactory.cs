@@ -9,5 +9,6 @@ namespace SimpleRPG.Services.GameFactory
         void WarmUp();
         Task<GameObject> CreateInventoryWindow();
         void CreateUIRoot();
+        Task<GameObject> CreateDialogueWindow();
     }
 }

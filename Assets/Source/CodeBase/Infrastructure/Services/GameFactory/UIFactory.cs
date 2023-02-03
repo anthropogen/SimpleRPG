@@ -1,3 +1,4 @@
+using SimpleRPG.Dialogue;
 using SimpleRPG.Items;
 using SimpleRPG.Services.AssetManagement;
 using SimpleRPG.UI;
@@ -28,6 +29,7 @@ namespace SimpleRPG.Services.GameFactory
         {
             await assets.Load<GameObject>(AssetsAddress.HUD);
             await assets.Load<GameObject>(AssetsAddress.Inventory);
+            await assets.Load<GameObject>(AssetsAddress.Dialogue);
         }
 
         public void CreateUIRoot()
@@ -36,19 +38,29 @@ namespace SimpleRPG.Services.GameFactory
         public async Task<GameObject> CreateInventoryWindow()
         {
             var prefab = await assets.Load<GameObject>(AssetsAddress.Inventory);
-            var window = GameObject.Instantiate(prefab);
+            var window = GameObject.Instantiate(prefab,uiRoot);
             window.GetComponentInChildren<InventoryView>().Construct(lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<Inventory>());
             window.GetComponentInChildren<InventoryDropper>().Construct(lazyGameFactory.Value);
             var equipment = lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<Equipment>();
             var actionStore = lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<ActionStore>();
-           
+
             foreach (var slot in window.GetComponentsInChildren<EquipmentSlotView>())
                 slot.Construct(equipment);
 
             foreach (var action in window.GetComponentsInChildren<ActionItemSlotView>())
                 action.Construct(actionStore);
 
-            window.transform.SetParent(uiRoot);
+            return window;
+        }
+
+        public async Task<GameObject> CreateDialogueWindow()
+        {
+            var prefab = await assets.Load<GameObject>(AssetsAddress.Dialogue);
+            var window = GameObject.Instantiate(prefab,uiRoot);
+
+            var conversant = lazyGameFactory.Value.LazyPlayer.Value.GetComponent<PlayerConversant>();
+            window.GetComponent<DialogueWindow>().Construct(conversant);
+
             return window;
         }
     }

@@ -2,6 +2,7 @@
 {
     public enum WindowsID
     {
-        Inventory
+        Inventory,
+        Dialogue
     }
 }

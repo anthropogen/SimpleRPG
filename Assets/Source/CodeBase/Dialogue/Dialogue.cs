@@ -33,6 +33,13 @@ namespace SimpleRPG.Dialogue
                     yield return nodesLookup[id];
             }
         }
+
+        public IEnumerable<DialogueNode> GetPlayerChildren(DialogueNode parentNode)
+            => GetAllChildren(parentNode).Where(n => n.IsPlayerSpeaking);
+
+        public IEnumerable<DialogueNode> GetAiChildren(DialogueNode parentNode)
+           => GetAllChildren(parentNode).Where(n => !n.IsPlayerSpeaking);
+
 #if UNITY_EDITOR
         public void DeleteNode(DialogueNode nodeToDelete)
         {
