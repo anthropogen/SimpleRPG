@@ -2,7 +2,7 @@ using SimpleRPG.Items;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(InventoryItem))]
+[CustomEditor(typeof(InventoryItem), true)]
 public class InventoryItemEditor : Editor
 {
     private InventoryItem item;
