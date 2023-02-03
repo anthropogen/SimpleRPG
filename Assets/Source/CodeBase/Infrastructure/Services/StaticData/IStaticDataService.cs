@@ -11,4 +11,5 @@ public interface IStaticDataService : IService
     Projectile GetProjectile(ProjectileType type);
     LevelStaticData GetLevelDataFor(string sceneKey);
     InventoryItem GetDataForItem(string name);
+    NPCStaticData GetDataForNpc(string ID);
 }

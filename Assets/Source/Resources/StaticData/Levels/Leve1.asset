@@ -15,9 +15,9 @@ MonoBehaviour:
   <Name>k__BackingField: Village
   <EnemySpawners>k__BackingField:
   - EnemyTypeID: 0
-    ID: Main 8df88aed-5713-4b30-b005-db82817bf983
-    Position: {x: -2.48, y: 0, z: 2.5}
+    ID: Village 5d8a501a-8caa-4338-b1a4-ef0498c1a016
+    Position: {x: -2.48, y: 0, z: 40.1}
   <LevelTransfers>k__BackingField:
-  - Position: {x: -5.57, y: 0, z: 7.2}
+  - Position: {x: -25.3, y: 0, z: 43.5}
     NextLevel: Dungeon
   <InitialPlayerPoint>k__BackingField: {x: 0, y: 0, z: 0}

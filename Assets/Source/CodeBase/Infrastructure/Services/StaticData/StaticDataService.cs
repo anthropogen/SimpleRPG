@@ -1,6 +1,7 @@
 using SimpleRPG.Characters.Enemy;
 using SimpleRPG.Items;
 using SimpleRPG.StaticData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,6 +9,7 @@ using UnityEngine;
 public class StaticDataService : IStaticDataService
 {
     private Dictionary<EnemyTypeID, EnemyStaticData> monsters;
+    private Dictionary<string, NPCStaticData> npcs;
     private List<InventoryItem> allItems;
     private ProjectileStaticData projectileStaticData;
     private List<LevelStaticData> levelsData;
@@ -15,11 +17,18 @@ public class StaticDataService : IStaticDataService
     private const string itemsPath = "Items";
     private const string projectilesPath = "StaticData/ProjectileData";
     private const string levelsPath = "StaticData/Levels";
-
+    private const string npcPath = "StaticData/NPC";
     public EnemyStaticData GetDataForEnemy(EnemyTypeID typeID)
     {
         if (monsters.TryGetValue(typeID, out EnemyStaticData enemyData))
             return enemyData;
+        return null;
+    }
+
+    public NPCStaticData GetDataForNpc(string ID)
+    {
+        if (npcs.TryGetValue(ID, out NPCStaticData data))
+            return data;
         return null;
     }
 
@@ -41,7 +50,12 @@ public class StaticDataService : IStaticDataService
         LoadInventoryItems();
         LoadLevelData();
         LoadProjectilesData();
+        LoadNPCs();
     }
+
+    private void LoadNPCs()
+        => npcs = Resources.LoadAll<NPCStaticData>(npcPath).
+            ToDictionary(n => n.ID, n => n);
 
     private void LoadMonsters()
         => monsters = Resources.LoadAll<EnemyStaticData>(monsterpath).
