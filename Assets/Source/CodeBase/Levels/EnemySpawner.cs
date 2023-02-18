@@ -11,12 +11,14 @@ namespace SimpleRPG.Levels
         private IGameFactory factory;
         private Enemy enemy;
         private bool enemyIsDied;
-        public string SaveID { get; set; }
-        public EnemyTypeID EnemyTypeID { get; set; }
+        public string SaveID { get; private set; }
+        public EnemyTypeID EnemyTypeID { get; private set; }
 
-        public void Construct(IGameFactory factory)
+        public void Construct(IGameFactory factory, EnemyTypeID enemyType, string iD)
         {
             this.factory = factory;
+            EnemyTypeID = enemyType;
+            SaveID = iD;
         }
 
         public void SaveProgress(PersistentProgress progress)

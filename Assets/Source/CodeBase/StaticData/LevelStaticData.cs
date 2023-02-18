@@ -10,6 +10,7 @@ namespace SimpleRPG.StaticData
         [field: SerializeField] public string Name { get; set; }
         [field: SerializeField] public List<EnemySpawnerData> EnemySpawners { get; set; }
         [field: SerializeField] public List<LevelTransferData> LevelTransfers { get; set; }
+        [field: SerializeField] public List<NPCSpawnerData> NPCSpawners { get; set; }
         [field: SerializeField] public Vector3 InitialPlayerPoint { get; set; }
     }
 }

@@ -16,7 +16,7 @@ public class LevelStaticDataEditor : Editor
         {
             var staticData = target as LevelStaticData;
             staticData.Name = SceneManager.GetActiveScene().name;
-           
+
             staticData.LevelTransfers = FindObjectsOfType<LevelTransferMarker>().
                 Select(t =>
                 new LevelTransferData(t.transform.position,
@@ -29,6 +29,16 @@ public class LevelStaticDataEditor : Editor
                 m.GetComponent<UniqueID>().SaveID,
                 m.transform.position
                 )).ToList();
+
+            staticData.NPCSpawners =
+                FindObjectsOfType<NPCSpawnMarker>().
+                Select(m => new NPCSpawnerData(
+                    m.transform.position,
+                    m.transform.rotation,
+                    m.ID,
+                    m.GetComponent<UniqueID>().SaveID
+                    )).ToList();
+
             staticData.InitialPlayerPoint = FindObjectOfType<PlayerInitPoint>().Point;
             EditorUtility.SetDirty(target);
         }

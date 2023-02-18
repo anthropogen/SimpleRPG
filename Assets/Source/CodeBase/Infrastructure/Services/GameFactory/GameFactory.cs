@@ -42,7 +42,7 @@ namespace SimpleRPG.Services.GameFactory
         public async void WarmUp()
         {
             await assets.Load<GameObject>(AssetsAddress.Loot);
-            await assets.Load<GameObject>(AssetsAddress.Spawner);
+            await assets.Load<GameObject>(AssetsAddress.EnemySpawner);
             await assets.Load<GameObject>(AssetsAddress.LevelTransfer);
             await assets.Load<GameObject>(AssetsAddress.Player);
         }
@@ -73,6 +73,14 @@ namespace SimpleRPG.Services.GameFactory
             enemy.GetComponent<LootSpawner>().Construct(this, data.ItemToSpawn, count: 1);
             return enemy;
         }
+
+        public async Task<GameObject> CreateNPC(string id, Transform parent)
+        {
+            var prefab = await assets.Load<GameObject>(id);
+            var npc = InstantiateRegisteredObject(prefab, parent.position, parent, parent.rotation);
+            return npc;
+        }
+
         public async Task<GameObject> CreateHUD()
         {
             var prefab = await assets.Load<GameObject>(AssetsAddress.HUD);
@@ -84,6 +92,7 @@ namespace SimpleRPG.Services.GameFactory
 
             return result;
         }
+
         public void CleanUp()
         {
             ProgressReaders.Clear();
@@ -103,19 +112,6 @@ namespace SimpleRPG.Services.GameFactory
             var regObject = GameObject.Instantiate(template);
             RegisterProgressWatchers(regObject);
             return regObject;
-        }
-
-        private GameObject InstantiateRegisteredObject(GameObject template, Vector3 position)
-        {
-            var regObject = GameObject.Instantiate(template, position, Quaternion.identity); ;
-            RegisterProgressWatchers(regObject);
-            return regObject;
-        }
-
-        private void RegisterProgressWatchers(GameObject gObject)
-        {
-            foreach (var reader in gObject.GetComponentsInChildren<IProgressReader>())
-                Register(reader);
         }
 
         public GameObject CreateWeapon(WeaponItem weapon)
@@ -146,13 +142,20 @@ namespace SimpleRPG.Services.GameFactory
             return pickUp;
         }
 
-        public async Task<EnemySpawner> CreateSpawner(Vector3 position, EnemyTypeID enemyType, string ID)
+        public async Task<EnemySpawner> CreateEnemySpawner(Vector3 position, EnemyTypeID enemyType, string ID)
         {
-            var template = await assets.Load<GameObject>(AssetsAddress.Spawner);
+            var template = await assets.Load<GameObject>(AssetsAddress.EnemySpawner);
             var spawner = InstantiateRegisteredObject(template, position).GetComponent<EnemySpawner>();
-            spawner.Construct(this);
-            spawner.EnemyTypeID = enemyType;
-            spawner.SaveID = ID;
+            spawner.Construct(this, enemyType, ID);
+            return spawner;
+        }
+
+        public async Task<NPCSpawner> CreateNPCSpawner(Vector3 position, Quaternion rotation, string ID, string saveID)
+        {
+            var template = await assets.Load<GameObject>(AssetsAddress.NPCSpawner);
+            var spawner = InstantiateRegisteredObject(template, position).GetComponent<NPCSpawner>();
+            spawner.transform.rotation = rotation;
+            spawner.Construct(this, ID, saveID);
             return spawner;
         }
 
@@ -163,6 +166,26 @@ namespace SimpleRPG.Services.GameFactory
             levelTransfer.Construct(gameStateMachine, nextLevel);
             levelTransfer.transform.position = position;
             return levelTransfer;
+        }
+
+        private GameObject InstantiateRegisteredObject(GameObject template, Vector3 position)
+        {
+            var regObject = GameObject.Instantiate(template, position, Quaternion.identity); ;
+            RegisterProgressWatchers(regObject);
+            return regObject;
+        }
+
+        private GameObject InstantiateRegisteredObject(GameObject template, Vector3 position, Transform parent, Quaternion rotation)
+        {
+            var regObject = GameObject.Instantiate(template, position, rotation, parent); ;
+            RegisterProgressWatchers(regObject);
+            return regObject;
+        }
+
+        private void RegisterProgressWatchers(GameObject gObject)
+        {
+            foreach (var reader in gObject.GetComponentsInChildren<IProgressReader>())
+                Register(reader);
         }
     }
 }

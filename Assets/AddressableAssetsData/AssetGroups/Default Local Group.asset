@@ -34,7 +34,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: ac86fc8e092831c478a9afa56027e871
-    m_Address: SpawnPoint
+    m_Address: EnemySpawnPoint
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 3c017a92cf3b7fe4ba5a401d70643e0a
@@ -47,6 +47,14 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 72cfe1352c0d2054d8108ad2600efdc2
     m_Address: DialogueWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 31deba2ba79711e4b9220592fe867ada
+    m_Address: NPCSpawnPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 59ded47abf2575045861018af2712ee2
+    m_Address: Fermer
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

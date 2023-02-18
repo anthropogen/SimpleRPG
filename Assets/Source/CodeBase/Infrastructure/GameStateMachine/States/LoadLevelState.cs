@@ -79,10 +79,27 @@ namespace SimpleRPG.Infrastructure.GameStateMachine
 
         private async Task InitSpawners(LevelStaticData levelData)
         {
+            GameObject enemyParent = CreateSpawnerParent("EnemyRoot");
             foreach (var spawnerData in levelData.EnemySpawners)
             {
-                await gameFactory.CreateSpawner(spawnerData.Position, spawnerData.EnemyTypeID, spawnerData.ID);
+                var spawner = await gameFactory.CreateEnemySpawner(spawnerData.Position, spawnerData.EnemyTypeID, spawnerData.ID);
+                spawner.transform.SetParent(enemyParent.transform);
             }
+
+            GameObject npcParent = CreateSpawnerParent("NPCRoot");
+            foreach (var spawnerData in levelData.NPCSpawners)
+            {
+                var spawner = await gameFactory.CreateNPCSpawner(spawnerData.Position, spawnerData.Rotation, spawnerData.ID, spawnerData.SaveID);
+                spawner.transform.SetParent(npcParent.transform);
+            }
+        }
+
+        private static GameObject CreateSpawnerParent(string name)
+        {
+            GameObject spawnParent = new GameObject();
+            spawnParent.name = name;
+            spawnParent.transform.position = Vector3.zero;
+            return spawnParent;
         }
 
         private void UpdateProgressReaders()

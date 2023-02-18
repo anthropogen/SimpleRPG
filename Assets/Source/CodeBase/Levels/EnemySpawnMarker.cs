@@ -1,5 +1,4 @@
 ﻿using SimpleRPG.Characters.Enemy;
-using SimpleRPG.Infrastructure;
 using UnityEngine;
 
 namespace SimpleRPG.Levels
