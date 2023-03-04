@@ -22,6 +22,7 @@ MonoBehaviour:
     NextLevel: Dungeon
   <NPCSpawners>k__BackingField:
   - Position: {x: -4.0299997, y: 0, z: 5.84}
+    Rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
     ID: Fermer
     SaveID: Village 7d50160a-d8e8-4938-a1a1-b2725a898252
   <InitialPlayerPoint>k__BackingField: {x: 0, y: 0, z: 0}

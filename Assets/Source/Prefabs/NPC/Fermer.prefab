@@ -80,6 +80,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fermer
       objectReference: {fileID: 0}
+    - target: {fileID: 6198068599370350680, guid: c85edb8c45823f74e81bf4022aa69fd5, type: 3}
+      propertyPath: Name
+      value: 'Fermer '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6198068599370350680, guid: c85edb8c45823f74e81bf4022aa69fd5, type: 3}
+      propertyPath: name
+      value: Fermer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6198068599370350680, guid: c85edb8c45823f74e81bf4022aa69fd5, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: ca8f137844fd42e4382c799f64f0be42, type: 2}
     - target: {fileID: 6558432267997713921, guid: c85edb8c45823f74e81bf4022aa69fd5, type: 3}
       propertyPath: m_RootOrder
       value: 0

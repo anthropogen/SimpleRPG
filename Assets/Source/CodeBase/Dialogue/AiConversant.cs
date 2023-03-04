@@ -10,6 +10,7 @@ public class AiConversant : GameEntity
     [SerializeField] private Dialogue dialogue;
     [SerializeField] private PlayerDetector playerDetector;
     [SerializeField] private Button dialogueButton;
+    [SerializeField] private new string name;
 
     private void OnEnable()
     {
@@ -33,7 +34,7 @@ public class AiConversant : GameEntity
     private void StartDialogueWith(Player player)
     {
         dialogueButton.gameObject.SetActive(false);
-        player.GetComponentInChildren<PlayerConversant>().StartDialogue(dialogue);
+        player.GetComponentInChildren<PlayerConversant>().StartDialogue(this, dialogue, name);
     }
 }
 

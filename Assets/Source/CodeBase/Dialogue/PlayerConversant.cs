@@ -10,6 +10,7 @@ namespace SimpleRPG.Dialogue
         private Dialogue currentDialogue;
         private DialogueNode currentNode;
         private DialogueWindow dialogueWindow;
+        private AiConversant currentAiConversant;
         public bool IsChoosing { get; private set; }
         public bool HasDialogue => currentDialogue != null;
 
@@ -18,11 +19,13 @@ namespace SimpleRPG.Dialogue
             this.dialogueWindow = dialogueWindow;
         }
 
-        public void StartDialogue(Dialogue newDialogue)
+        public void StartDialogue(AiConversant aiConversant, Dialogue newDialogue, string name)
         {
+            currentAiConversant = aiConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
             dialogueWindow.Open();
+            dialogueWindow.UpdateConversantName(name);
             dialogueWindow.UpdateText();
         }
 
@@ -62,6 +65,14 @@ namespace SimpleRPG.Dialogue
             currentNode = node;
             IsChoosing = false;
             Next();
+        }
+
+        public void Quit()
+        {
+            currentDialogue = null;
+            currentNode = null;
+            IsChoosing = false;
+            currentAiConversant = null;
         }
     }
 }

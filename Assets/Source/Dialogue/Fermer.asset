@@ -23,6 +23,27 @@ MonoBehaviour:
     width: 200
     height: 150
   <IsPlayerSpeaking>k__BackingField: 0
+--- !u!114 &-1680086565533082105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d021a9e98ac672845be883b45a181d8d, type: 3}
+  m_Name: 9e362288-678f-42b6-8dc0-8873676b77ac
+  m_EditorClassIdentifier: 
+  text: Good bye
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 982
+    y: 37
+    width: 200
+    height: 150
+  <IsPlayerSpeaking>k__BackingField: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +62,7 @@ MonoBehaviour:
   - {fileID: 2358617635193272941}
   - {fileID: 3582497492022374353}
   - {fileID: 8326396006856903513}
+  - {fileID: -1680086565533082105}
 --- !u!114 &1563398998521623560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +142,8 @@ MonoBehaviour:
   m_Name: 26190459-a15e-4c64-9ea3-317da557fb07
   m_EditorClassIdentifier: 
   text: Fuck you
-  children: []
+  children:
+  - 9e362288-678f-42b6-8dc0-8873676b77ac
   rect:
     serializedVersion: 2
     x: 782

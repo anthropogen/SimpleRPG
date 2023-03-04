@@ -3,6 +3,7 @@
     public enum WindowsID
     {
         Inventory,
-        Dialogue
+        Dialogue,
+        Quest
     }
 }

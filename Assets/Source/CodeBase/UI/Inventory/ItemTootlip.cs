@@ -1,15 +1,18 @@
 using SimpleRPG.Infrastructure;
 using TMPro;
 using UnityEngine;
-public class ItemTootlip : GameEntity
-{
-    [SerializeField] private TMP_Text title;
-    [SerializeField] private TMP_Text body;
 
-    public void UpdateTootlip(string title, string body)
+namespace SimpleRPG.UI
+{
+    public class ItemTootlip : GameEntity
     {
-        this.title.text = title;
-        this.body.text = body;
+        [SerializeField] private TMP_Text title;
+        [SerializeField] private TMP_Text body;
+
+        public void UpdateTootlip(string title, string body)
+        {
+            this.title.text = title;
+            this.body.text = body;
+        }
     }
 }
-

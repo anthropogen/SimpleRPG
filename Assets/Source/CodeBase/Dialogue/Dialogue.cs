@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SimpleRPG.Dialogue
 {
-    [CreateAssetMenu(fileName = "newDialogue", menuName = "Dialogue/CreateDialogue", order = 51)]
+    [CreateAssetMenu(fileName = "newDialogue", menuName = "Dialogue/Create Dialogue", order = 51)]
     public class Dialogue : ScriptableObject, ISerializationCallbackReceiver
     {
         [field: SerializeField] public List<DialogueNode> Nodes { get; private set; } = new List<DialogueNode>();

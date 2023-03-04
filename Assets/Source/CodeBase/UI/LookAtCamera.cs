@@ -15,7 +15,7 @@ namespace SimpleRPG.UI
         protected override void LateLoop()
         {
             Quaternion rotation = mainCamera.transform.rotation;
-            transform.LookAt(transform.position + rotation * Vector3.back, rotation * Vector3.up);
+            transform.LookAt(transform.position + rotation * Vector3.forward, rotation * Vector3.up);
         }
     }
 }

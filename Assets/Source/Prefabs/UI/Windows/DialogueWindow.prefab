@@ -966,8 +966,8 @@ MonoBehaviour:
   closeButton: {fileID: 5280336048526059758}
   <ID>k__BackingField: 0
   aiText: {fileID: 4305680407952778375}
+  conversantName: {fileID: 4838817436499687914}
   nextButton: {fileID: 6690364193257505635}
-  closeButton: {fileID: 5280336048526059758}
   choisesRoot: {fileID: 3223027221785045945}
   aiResponse: {fileID: 6011676029942322174}
   choiseButtonTemplate: {fileID: 3225992622814031676, guid: 4925caf3f19e0e648b0393f4faa20746, type: 3}

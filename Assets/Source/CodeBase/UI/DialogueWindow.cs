@@ -1,4 +1,5 @@
 using SimpleRPG.Dialogue;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace SimpleRPG.UI
     public class DialogueWindow : BaseWindow
     {
         [SerializeField] private TMP_Text aiText;
+        [SerializeField] private TMP_Text conversantName;
         [SerializeField] private Button nextButton;
         [SerializeField] private Transform choisesRoot;
         [SerializeField] private Transform aiResponse;
@@ -28,8 +30,12 @@ namespace SimpleRPG.UI
 
         protected override void Disable()
         {
+            playerConversant.Quit();
             nextButton.onClick.RemoveAllListeners();
         }
+
+        public void UpdateConversantName(string name)
+            => conversantName.text = name;
 
         public void UpdateText()
         {
