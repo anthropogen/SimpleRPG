@@ -2,6 +2,7 @@ using SimpleRPG.Dialogue;
 using SimpleRPG.Items;
 using SimpleRPG.Services.AssetManagement;
 using SimpleRPG.UI;
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -10,9 +11,9 @@ namespace SimpleRPG.Services.GameFactory
     public class UIFactory : IUIFactory
     {
         private readonly IAssetProvider assets;
-        private readonly LazyInitializy<IGameFactory> lazyGameFactory;
+        private readonly Lazy<IGameFactory> lazyGameFactory;
         private Transform uiRoot;
-        public UIFactory(IAssetProvider assets, LazyInitializy<IGameFactory> lazyGameFactory)
+        public UIFactory(IAssetProvider assets, Lazy<IGameFactory> lazyGameFactory)
         {
             this.assets = assets;
             this.lazyGameFactory = lazyGameFactory;
@@ -21,8 +22,7 @@ namespace SimpleRPG.Services.GameFactory
         public UIFactory(IAssetProvider assets, IGameFactory gameFactory)
         {
             this.assets = assets;
-            lazyGameFactory = new LazyInitializy<IGameFactory>();
-            lazyGameFactory.Value = gameFactory;
+            lazyGameFactory = new Lazy<IGameFactory>(gameFactory);
         }
 
         public async void WarmUp()
@@ -38,11 +38,11 @@ namespace SimpleRPG.Services.GameFactory
         public async Task<GameObject> CreateInventoryWindow()
         {
             var prefab = await assets.Load<GameObject>(AssetsAddress.Inventory);
-            var window = GameObject.Instantiate(prefab,uiRoot);
-            window.GetComponentInChildren<InventoryView>().Construct(lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<Inventory>());
+            var window = GameObject.Instantiate(prefab, uiRoot);
+            window.GetComponentInChildren<InventoryView>().Construct(lazyGameFactory.Value.Player.GetComponentInChildren<Inventory>());
             window.GetComponentInChildren<InventoryDropper>().Construct(lazyGameFactory.Value);
-            var equipment = lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<Equipment>();
-            var actionStore = lazyGameFactory.Value.LazyPlayer.Value.GetComponentInChildren<ActionStore>();
+            var equipment = lazyGameFactory.Value.Player.GetComponentInChildren<Equipment>();
+            var actionStore = lazyGameFactory.Value.Player.GetComponentInChildren<ActionStore>();
 
             foreach (var slot in window.GetComponentsInChildren<EquipmentSlotView>())
                 slot.Construct(equipment);
@@ -56,9 +56,9 @@ namespace SimpleRPG.Services.GameFactory
         public async Task<GameObject> CreateDialogueWindow()
         {
             var prefab = await assets.Load<GameObject>(AssetsAddress.Dialogue);
-            var window = GameObject.Instantiate(prefab,uiRoot);
+            var window = GameObject.Instantiate(prefab, uiRoot);
 
-            var conversant = lazyGameFactory.Value.LazyPlayer.Value.GetComponent<PlayerConversant>();
+            var conversant = lazyGameFactory.Value.Player.GetComponent<PlayerConversant>();
             window.GetComponent<DialogueWindow>().Construct(conversant);
 
             return window;

@@ -15,7 +15,7 @@ public class InventoryDropper : GameEntity, IDragDestination<InventoryItem>
     public async void AddItem(InventoryItem item, int count)
     {
         var loot = await gameFactory.CreateLoot(item, count);
-        loot.transform.position = gameFactory.LazyPlayer.Value.transform.position + dropOffset;
+        loot.transform.position = gameFactory.Player.transform.position + dropOffset;
     }
 
     public int MaxAcceptable(InventoryItem item)

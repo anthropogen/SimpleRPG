@@ -4,6 +4,7 @@ using SimpleRPG.Hero;
 using SimpleRPG.Items;
 using SimpleRPG.Levels;
 using SimpleRPG.Services.PersistentData;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace SimpleRPG.Services.GameFactory
         List<ISavable> Savables { get; }
         List<IProgressReader> ProgressReaders { get; }
         GameObject HeroGameObject { get; }
-        LazyInitializy<Player> LazyPlayer { get; }
+        Player Player { get; }
         void CleanUp();
         Task<GameObject> CreateHUD();
         Task<GameObject> CreateNPC(string id, Transform transform);

@@ -8,6 +8,7 @@ using SimpleRPG.Services.AssetManagement;
 using SimpleRPG.Services.PersistentData;
 using SimpleRPG.Services.WindowsService;
 using SimpleRPG.UI;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace SimpleRPG.Services.GameFactory
         private readonly IGameStateMachine gameStateMachine;
         private readonly IWindowsService windowsService;
 
-        public LazyInitializy<Player> LazyPlayer { get; private set; } = new LazyInitializy<Player>();
+        public Player Player { get; private set; }
         public List<ISavable> Savables { get; } = new List<ISavable>();
         public List<IProgressReader> ProgressReaders { get; } = new List<IProgressReader>();
 
@@ -54,7 +55,7 @@ namespace SimpleRPG.Services.GameFactory
             HeroGameObject.GetComponentInChildren<Inventory>().Construct(staticData);
             HeroGameObject.GetComponentInChildren<Equipment>().Construct(staticData);
             HeroGameObject.GetComponentInChildren<ActionStore>().Construct(staticData);
-            LazyPlayer.Value = HeroGameObject.GetComponent<Player>();
+            Player = HeroGameObject.GetComponent<Player>();
             return HeroGameObject;
         }
 
@@ -69,7 +70,7 @@ namespace SimpleRPG.Services.GameFactory
             var enemy = GameObject.Instantiate(prefab, parent.position, Quaternion.identity, parent);
 
             enemy.GetComponent<NavMeshAgent>().speed = data.Speed;
-            enemy.GetComponent<Enemy>().Construct(data, LazyPlayer);
+            enemy.GetComponent<Enemy>().Construct(data, new Lazy<Player>(Player));
             enemy.GetComponent<LootSpawner>().Construct(this, data.ItemToSpawn, count: 1);
             return enemy;
         }

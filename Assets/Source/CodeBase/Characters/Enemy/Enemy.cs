@@ -15,11 +15,11 @@ namespace SimpleRPG.Characters.Enemies
         [SerializeField] private Health health;
         [SerializeField] private CharacterUI characterUI;
         [SerializeField] private Attacker attacker;
-        private LazyInitializy<Player> player;
+        private Lazy<Player> player;
         public event Action<Enemy> EnemyDeath;
         public EnemyStaticData StaticData { get; private set; }
 
-        public void Construct(EnemyStaticData data, LazyInitializy<Player> player)
+        public void Construct(EnemyStaticData data, Lazy<Player> player)
         {
             this.player = player;
             StaticData = data;
