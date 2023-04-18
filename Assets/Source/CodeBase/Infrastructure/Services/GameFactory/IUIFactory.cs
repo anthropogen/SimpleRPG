@@ -1,5 +1,4 @@
-﻿using SimpleRPG.UI;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine;
 
 namespace SimpleRPG.Services.GameFactory
@@ -10,5 +9,6 @@ namespace SimpleRPG.Services.GameFactory
         Task<GameObject> CreateInventoryWindow();
         void CreateUIRoot();
         Task<GameObject> CreateDialogueWindow();
+        Task<GameObject> CreateQuestWindow();
     }
 }

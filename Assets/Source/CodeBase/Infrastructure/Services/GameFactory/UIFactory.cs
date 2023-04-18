@@ -28,8 +28,8 @@ namespace SimpleRPG.Services.GameFactory
         public async void WarmUp()
         {
             await assets.Load<GameObject>(AssetsAddress.HUD);
-            await assets.Load<GameObject>(AssetsAddress.Inventory);
-            await assets.Load<GameObject>(AssetsAddress.Dialogue);
+            await assets.Load<GameObject>(AssetsAddress.InventoryWindow);
+            await assets.Load<GameObject>(AssetsAddress.DialogueWindow);
         }
 
         public void CreateUIRoot()
@@ -37,7 +37,7 @@ namespace SimpleRPG.Services.GameFactory
 
         public async Task<GameObject> CreateInventoryWindow()
         {
-            var prefab = await assets.Load<GameObject>(AssetsAddress.Inventory);
+            var prefab = await assets.Load<GameObject>(AssetsAddress.InventoryWindow);
             var window = GameObject.Instantiate(prefab, uiRoot);
             window.GetComponentInChildren<InventoryView>().Construct(lazyGameFactory.Value.Player.GetComponentInChildren<Inventory>());
             window.GetComponentInChildren<InventoryDropper>().Construct(lazyGameFactory.Value);
@@ -55,12 +55,19 @@ namespace SimpleRPG.Services.GameFactory
 
         public async Task<GameObject> CreateDialogueWindow()
         {
-            var prefab = await assets.Load<GameObject>(AssetsAddress.Dialogue);
+            var prefab = await assets.Load<GameObject>(AssetsAddress.DialogueWindow);
             var window = GameObject.Instantiate(prefab, uiRoot);
 
             var conversant = lazyGameFactory.Value.Player.GetComponent<PlayerConversant>();
             window.GetComponent<DialogueWindow>().Construct(conversant);
 
+            return window;
+        }
+
+        public async Task<GameObject> CreateQuestWindow()
+        {
+            var prefab = await assets.Load<GameObject>(AssetsAddress.QuestWindow);
+            var window = GameObject.Instantiate(prefab, uiRoot);
             return window;
         }
     }

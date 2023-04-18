@@ -1,6 +1,5 @@
 ﻿using SimpleRPG.Infrastructure;
 using SimpleRPG.Services.WindowsService;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SimpleRPG.Infrastructure;
 using SimpleRPG.Quests;
-using SimpleRPG.Services.GameFactory;
 
 namespace SimpleRPG.UI
 {

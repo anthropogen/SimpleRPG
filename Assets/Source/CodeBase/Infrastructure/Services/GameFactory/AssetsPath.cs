@@ -8,7 +8,8 @@
         public const string EnemySpawner = "EnemySpawnPoint";
         public const string NPCSpawner = "NPCSpawnPoint";
         public const string LevelTransfer = "LevelTransfer";
-        public const string Inventory = "InventoryWindow";
-        public const string Dialogue = "DialogueWindow";
+        public const string InventoryWindow = "InventoryWindow";
+        public const string DialogueWindow = "DialogueWindow";
+        public const string QuestWindow = "QuestWindow";
     }
 }

@@ -11,6 +11,7 @@ namespace SimpleRPG.Services.WindowsService
     {
         private readonly IUIFactory uIFactory;
         private readonly Dictionary<WindowsID, BaseWindow> windows;
+
         public WindowsService(IUIFactory uIFactory)
         {
             this.uIFactory = uIFactory;
@@ -40,6 +41,8 @@ namespace SimpleRPG.Services.WindowsService
                     return await uIFactory.CreateInventoryWindow();
                 case WindowsID.Dialogue:
                     return await uIFactory.CreateDialogueWindow();
+                case WindowsID.Quest:
+                    return await uIFactory.CreateQuestWindow();
                 default:
                     throw new InvalidOperationException($"I can't create this {windowsID} window");
             }
